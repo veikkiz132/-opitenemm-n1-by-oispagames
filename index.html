@@ -2,229 +2,127 @@
 <html lang="fi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Veikkiz</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f8faf5">
+<meta name="description" content="Pihojen kunnossapito ympäri vuoden – nurmikonleikkuu, pihan siistiminen ja talvikauden lumityöt.">
+<title>VS Pihojen kunnossapito</title>
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,Helvetica,sans-serif;
-}
-
-body{
-    background:#000;
-    color:white;
-    overflow:hidden;
-}
-
-/* Hampurilaisvalikko */
-.menu-btn{
-    position:fixed;
-    top:20px;
-    left:20px;
-    font-size:40px;
-    color:#ff0000;
-    cursor:pointer;
-    text-shadow:0 0 15px red;
-    z-index:1000;
-}
-
-.sidebar{
-    position:fixed;
-    top:0;
-    left:-260px;
-    width:260px;
-    height:100%;
-    background:#111;
-    transition:.35s;
-    padding-top:80px;
-    box-shadow:0 0 25px red;
-    z-index:999;
-}
-
-.sidebar a{
-    display:block;
-    padding:18px 30px;
-    color:#00fff7;
-    text-decoration:none;
-    font-size:22px;
-    transition:.2s;
-}
-
-.sidebar a:hover{
-    background:#ff0000;
-    color:white;
-}
-
-.page{
-    width:100vw;
-    height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-}
-
-#logo{
-    font-size:90px;
-    color:#ff0000;
-    text-shadow:
-        0 0 10px red,
-        0 0 20px red,
-        0 0 40px red,
-        0 0 80px red;
-    cursor:pointer;
-}
-
-#logo:hover{
-    transform:scale(1.05);
-}
-
-.info{
-    color:#00fff7;
-    margin-top:20px;
-    font-size:22px;
-    text-shadow:0 0 10px cyan;
-}
-
-#about,#social{
-    display:none;
-    padding:40px;
-}
-
-h1{
-    color:#ff0000;
-    margin-bottom:30px;
-    text-shadow:0 0 15px red;
-}
-
-p{
-    font-size:24px;
-    max-width:900px;
-    line-height:1.7;
-}
-
-.yt{
-    display:inline-block;
-    margin-top:30px;
-    padding:18px 35px;
-    background:red;
-    color:white;
-    text-decoration:none;
-    border-radius:10px;
-    font-size:22px;
-    box-shadow:0 0 20px red;
-}
-
-.yt:hover{
-    transform:scale(1.05);
-}
+:root{--green:#65a914;--green-dark:#244d16;--ice:#b7e2ff;--ink:#172016;--paper:#f8faf5;--muted:#61705d}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Arial,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6}
+a{color:inherit}
+header{position:sticky;top:0;z-index:20;background:rgba(248,250,245,.94);backdrop-filter:blur(12px);border-bottom:1px solid #e1e8db}
+.nav{max-width:1120px;margin:auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:900;letter-spacing:-.04em}
+.brand-icon{width:42px;height:42px;border-radius:14px;background:var(--green);display:grid;place-items:center;font-size:24px}
+.nav-links{display:flex;align-items:center;gap:24px}
+.nav-links a{text-decoration:none;font-weight:700;font-size:14px}
+.nav-links a:hover{color:var(--green)}
+.cta{display:inline-flex;justify-content:center;align-items:center;background:var(--green-dark);color:white;text-decoration:none;padding:13px 20px;border-radius:999px;font-weight:800;transition:transform .2s,background .2s}
+.cta:hover{transform:translateY(-2px);background:#386c20}
+.hero{max-width:1120px;margin:auto;padding:78px 22px 72px;display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:48px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--green-dark);font-size:13px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--green)}
+h1{font-size:clamp(42px,6vw,76px);line-height:.99;letter-spacing:-.065em;margin-bottom:24px}
+h1 span{color:var(--green)}
+.hero p{font-size:18px;color:var(--muted);max-width:550px;margin-bottom:28px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+.secondary{display:inline-flex;align-items:center;justify-content:center;padding:12px 19px;border:1px solid #cbd7c3;border-radius:999px;text-decoration:none;font-weight:800;background:white}
+.art{position:relative;min-height:370px;border-radius:34px;background:linear-gradient(145deg,#edf6e5,#fff 62%,#e7f5ff);display:grid;place-items:center;overflow:hidden;border:1px solid #e0e9d8}
+.sun{position:absolute;width:180px;height:180px;border-radius:50%;background:#d9edb9;right:22px;top:18px}
+.lawn{position:absolute;bottom:-42px;left:-5%;width:110%;height:150px;background:var(--green);border-radius:50% 50% 0 0}
+.lawn:before{content:"";position:absolute;left:0;right:0;top:-32px;height:60px;background:repeating-linear-gradient(105deg,transparent 0 13px,#70b825 13px 19px,transparent 19px 28px)}
+.logo-center{z-index:2;text-align:center;padding:24px}
+.vs{font-size:clamp(76px,10vw,118px);font-weight:1000;line-height:1;letter-spacing:-.08em;color:#101410;text-shadow:0 5px 0 #fff}
+.logo-name{font-weight:1000;font-size:clamp(20px,3vw,30px);line-height:1.1;margin-top:12px}
+.icon-row{display:flex;justify-content:center;gap:28px;font-size:44px;margin-top:22px}
+.snow{color:#7bbdff}
+.section{padding:76px 22px}
+.section-inner{max-width:1120px;margin:auto}
+.section-head{max-width:700px;margin-bottom:32px}
+.kicker{color:var(--green-dark);font-size:12px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+h2{font-size:clamp(30px,4vw,48px);line-height:1.08;letter-spacing:-.045em;margin:10px 0 14px}
+.section-head p{color:var(--muted);font-size:17px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:white;border:1px solid #e2e9dd;border-radius:24px;padding:26px;min-height:220px;box-shadow:0 10px 30px rgba(33,61,22,.04)}
+.card-icon{width:52px;height:52px;display:grid;place-items:center;border-radius:16px;background:#eef6e6;font-size:27px;margin-bottom:20px}
+.card:nth-child(3) .card-icon{background:#e8f5ff}
+.card h3{font-size:21px;margin-bottom:8px}
+.card p{color:var(--muted);font-size:15px}
+.vs-section{background:#172116;color:white}
+.vs-section .kicker{color:#a6d875}
+.vs-section .section-head p{color:#d0d8cb}
+.duel{display:grid;grid-template-columns:1fr auto 1fr;align-items:stretch;gap:18px}
+.team{border:1px solid #3a4a35;background:#202d1e;border-radius:24px;padding:28px}
+.team h3{font-size:23px;margin-bottom:10px}
+.team p{color:#d0d8cb}
+.vs-badge{align-self:center;font-size:34px;font-weight:1000;color:#b5df85}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.pill{background:#33462b;color:#e5f5d8;padding:7px 11px;border-radius:999px;font-size:12px;font-weight:800}
+.note{margin-top:22px;color:#d0d8cb;font-size:13px}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+.contact-panel{background:white;border:1px solid #e2e9dd;border-radius:24px;padding:28px}
+.contact-panel p{color:var(--muted);margin:8px 0 18px}
+.contact-links{display:flex;flex-wrap:wrap;gap:10px}
+footer{padding:25px 22px;border-top:1px solid #e1e8db;color:var(--muted);font-size:13px}
+.footer-inner{max-width:1120px;margin:auto;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media(max-width:760px){.nav{padding:12px 16px}.nav-links{gap:12px}.nav-links a:not(.cta){display:none}.hero{grid-template-columns:1fr;padding-top:52px;gap:30px}.art{min-height:300px}.cards{grid-template-columns:1fr}.duel{grid-template-columns:1fr}.vs-badge{text-align:center}.contact-grid{grid-template-columns:1fr}.section{padding:58px 18px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
 </style>
 </head>
 <body>
-
-<div class="menu-btn" onclick="menu()">☰</div>
-
-<div class="sidebar" id="sidebar">
-    <a href="#" onclick="etusivu()">🏠 Etusivu</a>
-    <a href="#" onclick="tietoa()">👤 Tietoa</a>
-    <a href="#" onclick="some()">📺 Some</a>
-</div>
-
-<div class="page" id="home">
-    <div id="logo" onclick="tietoa()">
-        VEIKKIZ
+<header>
+  <nav class="nav" aria-label="Päävalikko">
+    <a class="brand" href="#alku"><span class="brand-icon">🌿</span><span>PIHANHOITO <span style="color:var(--green)">VS</span></span></a>
+    <div class="nav-links">
+      <a href="#palvelut">Palvelut</a><a href="#vs">Meidän VS</a><a href="#yhteys" class="cta">Ota yhteyttä</a>
     </div>
-
-    <div class="info">
-        Paina tekstiä niin pääset lisätietoihin
+  </nav>
+</header>
+<main>
+<section class="hero" id="alku">
+  <div>
+    <div class="eyebrow"><span class="dot"></span> Piha kuntoon kaikkina vuodenaikoina</div>
+    <h1>Siisti piha.<br><span>Hyvä fiilis.</span></h1>
+    <p>Nurmikonleikkuusta pihan siistimiseen ja talven lumitöihin – tavoitteena on pitää pihat siisteinä, turvallisina ja viihtyisinä.</p>
+    <div class="hero-actions"><a class="cta" href="#yhteys">Kysy lisää ↗</a><a class="secondary" href="#palvelut">Katso palvelut</a></div>
+  </div>
+  <div class="art" role="img" aria-label="Vihreä nurmikko ja talven lumihiutale kuvaavat pihanhoitoa ympäri vuoden">
+    <div class="sun"></div>
+    <div class="logo-center"><div class="vs">VS</div><div class="logo-name">PIHOJEN<br>KUNNOSSAPITO OY</div><div class="icon-row"><span>🚜</span><span class="snow">❄</span></div></div>
+    <div class="lawn"></div>
+  </div>
+</section>
+<section class="section" id="palvelut">
+  <div class="section-inner">
+    <div class="section-head"><div class="kicker">Mitä teemme?</div><h2>Apua pihan jokaiseen vuodenaikaan</h2><p>Valitse pihallesi sopiva apu. Sovitaan työ ja aikataulu aina erikseen.</p></div>
+    <div class="cards">
+      <article class="card"><div class="card-icon">🌱</div><h3>Nurmikonleikkuu</h3><p>Nurmikko siistiksi ja piha viihtyisäksi kasvukauden aikana.</p></article>
+      <article class="card"><div class="card-icon">🧹</div><h3>Pihan siistiminen</h3><p>Lehtien keräystä ja yleistä pihan siistimistä sovitun tarpeen mukaan.</p></article>
+      <article class="card"><div class="card-icon">❄️</div><h3>Talvikauden työt</h3><p>Lumenluontia ja kulkuväylien siistimistä talven tarpeisiin.</p></article>
     </div>
-</div>
-
-<div class="page" id="about">
-    <h1>VEIKKIZ</h1>
-
-    <p>
-        Moi! Oon Veikka, paremmin YouTubessa nimellä <b>Veikkiz</b>.<br><br>
-
-        Teen tänne pelivideoita mm. Minecraftia, FS22:ta ja monia muita pelejä.<br><br>
-
-        Teen myös joskus musiikkia.
-    </p>
-</div>
-
-<div class="page" id="social">
-    <h1>Some</h1>
-     <a class="social youtube"
-       href="https://www.youtube.com/@veikkizyt_official"
-       target="_blank">
-       📺 YouTube
-    </a>
-
-    <a class="social instagram"
-       href="https://www.instagram.com/official.veikkizyt"
-       target="_blank">
-       📷 Instagram
-    </a>
-
-    <a class="social tiktok"
-       href="https://www.tiktok.com/@official_veikkiz"
-       target="_blank">
-       🎵 TikTok
-    </a>
-
-    <a class="social twitch"
-       href="https://www.twitch.tv/veikkalehtone"
-       target="_blank">
-       🎮 Twitch
-    </a>
-
-    <a class="social discord"
-       href="https://discord.gg/y6tcd3Nh"
-       target="_blank">
-       💬 Discord
-    </a>
-</div>
-
-<script>
-let open=false;
-
-function menu(){
-    if(open){
-        document.getElementById("sidebar").style.left="-260px";
-        open=false;
-    }else{
-        document.getElementById("sidebar").style.left="0";
-        open=true;
-    }
-}
-
-function hidePages(){
-    document.getElementById("home").style.display="none";
-    document.getElementById("about").style.display="none";
-    document.getElementById("social").style.display="none";
-    document.getElementById("sidebar").style.left="-260px";
-    open=false;
-}
-
-function etusivu(){
-    hidePages();
-    document.getElementById("home").style.display="flex";
-}
-
-function tietoa(){
-    hidePages();
-    document.getElementById("about").style.display="flex";
-}
-
-function some(){
-    hidePages();
-    document.getElementById("social").style.display="flex";
-}
-</script>
-
+  </div>
+</section>
+<section class="section vs-section" id="vs">
+  <div class="section-inner">
+    <div class="section-head"><div class="kicker">Kaksintaistelu</div><h2>Meidän tiimi VS Pihojenkunnossapito Oy</h2><p>Leikkimielinen vertailu – pihatöissä ratkaisee työn jälki, asenne ja hyvä palvelu.</p></div>
+    <div class="duel">
+      <article class="team"><h3>🌿 Meidän tiimi</h3><p>Kaksi innokasta tekijää valmiina oppimaan, tekemään ja pitämään pihat siisteinä.</p><div class="pills"><span class="pill">Reipas asenne</span><span class="pill">Tiimityö</span><span class="pill">Pihat kuntoon</span></div></article>
+      <div class="vs-badge">VS</div>
+      <article class="team"><h3>🚜 Pihojenkunnossapito Oy</h3><p>Vertailun toinen osapuoli. Tähän voi lisätä yrityksen omat palvelut ja tiedot, kun ne on vahvistettu.</p><div class="pills"><span class="pill">Pihanhoito</span><span class="pill">Nurmikko</span><span class="pill">Talvityöt</span></div></article>
+    </div>
+    <p class="note">Huom: sivu on luonnos eikä väitä tietoja toisen yrityksen todellisista palveluista tai tuloksista.</p>
+  </div>
+</section>
+<section class="section" id="yhteys">
+  <div class="section-inner contact-grid">
+    <div class="section-head"><div class="kicker">Ota yhteyttä</div><h2>Suunnitellaan pihallesi sopiva apu</h2><p>Lisää tähän omat yhteystietonne ennen sivuston julkaisemista. Älä jätä asiakkaalle epäselväksi, kuka työn tekee ja millä alueella.</p></div>
+    <div class="contact-panel"><h3>Yhteystiedot</h3><p>Puhelin, sähköposti ja toiminta-alue lisätään tähän.</p><div class="contact-links"><a class="cta" href="mailto:">Lähetä sähköpostia</a><a class="secondary" href="#alku">Takaisin alkuun ↑</a></div></div>
+  </div>
+</section>
+</main>
+<footer><div class="footer-inner"><span>© <span id="year"></span> Pihanhoito VS</span><span>Siisti piha, hyvä fiilis 🌱</span></div></footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
 </body>
 </html>
