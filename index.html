@@ -45,6 +45,12 @@ h1 span{color:var(--green)}
 h2{font-size:clamp(30px,4vw,48px);line-height:1.08;letter-spacing:-.045em;margin:10px 0 14px}
 .section-head p{color:var(--muted);font-size:17px}
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.price-card{background:white;border:1px solid #dfe8d8;border-radius:22px;padding:23px 18px;text-align:center;box-shadow:0 10px 30px rgba(33,61,22,.04)}
+.price-time{font-weight:800;color:var(--muted);font-size:15px}
+.price-value{font-size:clamp(28px,4vw,40px);font-weight:1000;letter-spacing:-.05em;color:var(--green-dark);margin-top:6px}
+.price-note{color:var(--muted);font-size:14px;margin-top:20px}
+@media(max-width:760px){.price-grid{grid-template-columns:repeat(2,1fr)}}
 .card{background:white;border:1px solid #e2e9dd;border-radius:24px;padding:26px;min-height:220px;box-shadow:0 10px 30px rgba(33,61,22,.04)}
 .card-icon{width:52px;height:52px;display:grid;place-items:center;border-radius:16px;background:#eef6e6;font-size:27px;margin-bottom:20px}
 .card:nth-child(3) .card-icon{background:#e8f5ff}
@@ -76,7 +82,7 @@ footer{padding:25px 22px;border-top:1px solid #e1e8db;color:var(--muted);font-si
   <nav class="nav" aria-label="Päävalikko">
     <a class="brand" href="#alku"><span class="brand-icon">🌿</span><span>PIHANHOITO <span style="color:var(--green)">VS</span></span></a>
     <div class="nav-links">
-      <a href="#palvelut">Palvelut</a><a href="#vs">Meidän VS</a><a href="#yhteys" class="cta">Ota yhteyttä</a>
+      <a href="#palvelut">Palvelut</a><a href="#hinnasto">Hinnasto</a><a href="#vs">Meidän VS</a><a href="#yhteys" class="cta">Ota yhteyttä</a>
     </div>
   </nav>
 </header>
@@ -102,6 +108,18 @@ footer{padding:25px 22px;border-top:1px solid #e1e8db;color:var(--muted);font-si
       <article class="card"><div class="card-icon">🧹</div><h3>Pihan siistiminen</h3><p>Lehtien keräystä ja yleistä pihan siistimistä sovitun tarpeen mukaan.</p></article>
       <article class="card"><div class="card-icon">❄️</div><h3>Talvikauden työt</h3><p>Lumenluontia ja kulkuväylien siistimistä talven tarpeisiin.</p></article>
     </div>
+  </div>
+</section>
+<section class="section" id="hinnasto">
+  <div class="section-inner">
+    <div class="section-head"><div class="kicker">Selkeät hinnat</div><h2>Hinnasto</h2><p>Valitse sopiva työaika pihasi tarpeen mukaan.</p></div>
+    <div class="price-grid">
+      <article class="price-card"><div class="price-time">15 minuuttia</div><div class="price-value">5 €</div></article>
+      <article class="price-card"><div class="price-time">30 minuuttia</div><div class="price-value">7 €</div></article>
+      <article class="price-card"><div class="price-time">1 tunti</div><div class="price-value">20 €</div></article>
+      <article class="price-card"><div class="price-time">2 tuntia</div><div class="price-value">40 €</div></article>
+    </div>
+    <p class="price-note">Sovi työn sisältö ja ajankohta etukäteen ottamalla yhteyttä.</p>
   </div>
 </section>
 <section class="section vs-section" id="vs">
