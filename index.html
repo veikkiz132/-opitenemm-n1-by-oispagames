@@ -515,59 +515,106 @@ function setDifficulty(d,el){difficulty=d;document.querySelectorAll('.filter').f
 function save(){const today=new Date().toLocaleDateString('en-CA');if(stats.day!==today){stats.day=today;stats.daily=0}if(!Array.isArray(stats.history))stats.history=[];try{localStorage.setItem('villeutu2-progress',JSON.stringify(stats))}catch(e){}updateStats();renderDashboardStats()}
 
 const musicQuizSongs=[
- {title:"KRUUNU (feat. ibe)",artist:"MELO, ibe",youtubeId:"sQnbxLHJlio"},
- {title:"SKYLINE",artist:"ibe",youtubeId:"zgDztY_qcrA"},
- {title:"KOITIT SOITTAA",artist:"ibe",youtubeId:"iEuIiYyv1_E"},
- {title:"Stadi On Kylmä",artist:"ibe",youtubeId:"hq1DWuE9xEI"},
- {title:"Kärsimystentie",artist:"ihan just imus",youtubeId:"2bQqsS3og3c"},
- {title:"y*****",artist:"ibe",youtubeId:"YgGnttQs9wc"},
- {title:"Tarpeeks",artist:"ibe",youtubeId:"OTe-CAvizXM"},
- {title:"Frisbee",artist:"JVG",youtubeId:"vV1dJaup3So"},
- {title:"Golden Brown X Love Story (slowed) Remix",artist:"Remix",youtubeId:"Fvt9hEAP6oQ"},
- {title:"Pojatki itkee (feat. Lauri Haav)",artist:"JVG",youtubeId:"byNnfsjF-hM"},
- {title:"Kesärenkaat",artist:"Robin",youtubeId:"8lmxQajVT_I"},
- {title:"Elämää ei voi speedrunnaa",artist:"Stumblerx",youtubeId:"n4Yi-pc8XM4"},
- {title:"Ikuinen vappu",artist:"JVG",youtubeId:"hUnd1E2-un8"},
- {title:"Kipua",artist:"Mikael Gabriel",youtubeId:"emTCc4BkJOM"},
- {title:"Ei riidellä enää",artist:"Cledos",youtubeId:"tMOrmZAr_gU"},
- {title:"Blondina",artist:"ibe",youtubeId:"EYw5IaktBsE"},
- {title:"Päätä Päätä Päätä",artist:"Herba-X & Lakko",youtubeId:"4EtmO0d9i1U"},
- {title:"Superstar",artist:"ibe",youtubeId:"cdbOIsDNfEQ"},
- {title:"Tesla",artist:"Fixupboy",youtubeId:"vCnE1wMEmgM"},
- {title:"911 (feat. Paperi T)",artist:"Lauri Haav",youtubeId:"nGIfNNSNLkg"},
- {title:"Radioactive",artist:"Imagine Dragons",youtubeId:"ktvTqknDobU"},
- {title:"Demons",artist:"Imagine Dragons",youtubeId:"mWRsgZuwf_8"},
- {title:"Believer",artist:"Imagine Dragons",youtubeId:"7wtfhZwyrcc"},
- {title:"Thunder",artist:"Imagine Dragons",youtubeId:"fKopy74weus"},
- {title:"Whatever It Takes",artist:"Imagine Dragons",youtubeId:"gOsM-DYAEhY"},
- {title:"Natural",artist:"Imagine Dragons",youtubeId:"0I647GU3Jsc"},
- {title:"Bad Liar",artist:"Imagine Dragons",youtubeId:"I-QfPUz1es8"},
- {title:"It's Time",artist:"Imagine Dragons",youtubeId:"sENM2wA_FTg"},
- {title:"On Top of the World",artist:"Imagine Dragons",youtubeId:"w5tWYmIOWGk"},
- {title:"Shots",artist:"Imagine Dragons",youtubeId:"qQrgto184Tk"},
- {title:"I Bet My Life",artist:"Imagine Dragons",youtubeId:"4ht80uzIhNs"},
- {title:"Zero",artist:"Imagine Dragons",youtubeId:"j60ClcNYWu4"},
- {title:"Roots",artist:"Imagine Dragons",youtubeId:"PscXGpsF3dY"},
- {title:"Next to Me",artist:"Imagine Dragons",youtubeId:"Txlk7PiHaGk"},
- {title:"Bleeding Out",artist:"Imagine Dragons",youtubeId:"QFKHScAStsU"},
- {title:"Wrecked",artist:"Imagine Dragons",youtubeId:"Y2NkuFIlLEo"},
- {title:"Follow You",artist:"Imagine Dragons",youtubeId:"k3zimSRKqNw"},
- {title:"Children of the Sky (a Starfield song)",artist:"Imagine Dragons",youtubeId:"baYqOdpsqbg"},
- {title:"Born To Be Yours",artist:"Kygo, Imagine Dragons",youtubeId:"_G-k6TQYUek"},
- {title:"Fire in These Hills",artist:"Imagine Dragons",youtubeId:"baYqOdpsqbg"}
+ {title:"KRUUNU (feat. ibe)",artist:"MELO, ibe",youtubeId:"sQnbxLHJlio",section:"soniq"},
+ {title:"SKYLINE",artist:"ibe",youtubeId:"zgDztY_qcrA",section:"soniq"},
+ {title:"KOITIT SOITTAA",artist:"ibe",youtubeId:"iEuIiYyv1_E",section:"soniq"},
+ {title:"Stadi On Kylmä",artist:"ibe",youtubeId:"hq1DWuE9xEI",section:"soniq"},
+ {title:"Kärsimystentie",artist:"ihan just imus",youtubeId:"2bQqsS3og3c",section:"soniq"},
+ {title:"y*****",artist:"ibe",youtubeId:"YgGnttQs9wc",section:"soniq"},
+ {title:"Tarpeeks",artist:"ibe",youtubeId:"OTe-CAvizXM",section:"soniq"},
+ {title:"Frisbee",artist:"JVG",youtubeId:"vV1dJaup3So",section:"soniq"},
+ {title:"Golden Brown X Love Story (slowed) Remix",artist:"Remix",youtubeId:"Fvt9hEAP6oQ",section:"soniq"},
+ {title:"Pojatki itkee (feat. Lauri Haav)",artist:"JVG",youtubeId:"byNnfsjF-hM",section:"soniq"},
+ {title:"Kesärenkaat",artist:"Robin",youtubeId:"8lmxQajVT_I",section:"soniq"},
+ {title:"Elämää ei voi speedrunnaa",artist:"Stumblerx",youtubeId:"n4Yi-pc8XM4",section:"soniq"},
+ {title:"Ikuinen vappu",artist:"JVG",youtubeId:"hUnd1E2-un8",section:"soniq"},
+ {title:"Kipua",artist:"Mikael Gabriel",youtubeId:"emTCc4BkJOM",section:"soniq"},
+ {title:"Ei riidellä enää",artist:"Cledos",youtubeId:"tMOrmZAr_gU",section:"soniq"},
+ {title:"Blondina",artist:"ibe",youtubeId:"EYw5IaktBsE",section:"soniq"},
+ {title:"Päätä Päätä Päätä",artist:"Herba-X & Lakko",youtubeId:"4EtmO0d9i1U",section:"soniq"},
+ {title:"Superstar",artist:"ibe",youtubeId:"cdbOIsDNfEQ",section:"soniq"},
+ {title:"Tesla",artist:"Fixupboy",youtubeId:"vCnE1wMEmgM",section:"soniq"},
+ {title:"911 (feat. Paperi T)",artist:"Lauri Haav",youtubeId:"nGIfNNSNLkg",section:"soniq"},
+ {title:"Radioactive",artist:"Imagine Dragons",youtubeId:"ktvTqknDobU",section:"soniq"},
+ {title:"Demons",artist:"Imagine Dragons",youtubeId:"mWRsgZuwf_8",section:"soniq"},
+ {title:"Believer",artist:"Imagine Dragons",youtubeId:"7wtfhZwyrcc",section:"soniq"},
+ {title:"Thunder",artist:"Imagine Dragons",youtubeId:"fKopy74weus",section:"soniq"},
+ {title:"Whatever It Takes",artist:"Imagine Dragons",youtubeId:"gOsM-DYAEhY",section:"soniq"},
+ {title:"Natural",artist:"Imagine Dragons",youtubeId:"0I647GU3Jsc",section:"soniq"},
+ {title:"Bad Liar",artist:"Imagine Dragons",youtubeId:"I-QfPUz1es8",section:"soniq"},
+ {title:"It's Time",artist:"Imagine Dragons",youtubeId:"sENM2wA_FTg",section:"soniq"},
+ {title:"On Top of the World",artist:"Imagine Dragons",youtubeId:"w5tWYmIOWGk",section:"soniq"},
+ {title:"Shots",artist:"Imagine Dragons",youtubeId:"qQrgto184Tk",section:"soniq"},
+ {title:"I Bet My Life",artist:"Imagine Dragons",youtubeId:"4ht80uzIhNs",section:"soniq"},
+ {title:"Zero",artist:"Imagine Dragons",youtubeId:"j60ClcNYWu4",section:"soniq"},
+ {title:"Roots",artist:"Imagine Dragons",youtubeId:"PscXGpsF3dY",section:"soniq"},
+ {title:"Next to Me",artist:"Imagine Dragons",youtubeId:"Txlk7PiHaGk",section:"soniq"},
+ {title:"Bleeding Out",artist:"Imagine Dragons",youtubeId:"QFKHScAStsU",section:"soniq"},
+ {title:"Wrecked",artist:"Imagine Dragons",youtubeId:"Y2NkuFIlLEo",section:"soniq"},
+ {title:"Follow You",artist:"Imagine Dragons",youtubeId:"k3zimSRKqNw",section:"soniq"},
+ {title:"Children of the Sky (a Starfield song)",artist:"Imagine Dragons",youtubeId:"baYqOdpsqbg",section:"soniq"},
+ {title:"Born To Be Yours",artist:"Kygo, Imagine Dragons",youtubeId:"_G-k6TQYUek",section:"soniq"},
+ {title:"Fire in These Hills",artist:"Imagine Dragons",youtubeId:"baYqOdpsqbg",section:"soniq"},
+ {title:"Shots (Broiler Remix)",artist:"Imagine Dragons, Broiler",youtubeId:"iRzk9W-RngE",section:"soniq"},
+ {title:"трансгендер (Transgender)",artist:"Чcстьгерq",youtubeId:"ciBWw4JSWUs",section:"soniq"},
+ {title:"KRUUNU (feat. ibe)",artist:"MELO, ibe",youtubeId:"sQnbxLHJlio",section:"nesu"},
+ {title:"SKYLINE",artist:"ibe",youtubeId:"zgDztY_qcrA",section:"nesu"},
+ {title:"KOITIT SOITTAA",artist:"ibe",youtubeId:"iEuIiYyv1_E",section:"nesu"},
+ {title:"Stadi On Kylmä",artist:"ibe",youtubeId:"hq1DWuE9xEI",section:"nesu"},
+ {title:"Kärsimystentie",artist:"ihan just imus",youtubeId:"2bQqsS3og3c",section:"nesu"},
+ {title:"y*****",artist:"ibe",youtubeId:"YgGnttQs9wc",section:"nesu"},
+ {title:"Tarpeeks",artist:"ibe",youtubeId:"OTe-CAvizXM",section:"nesu"},
+ {title:"Frisbee",artist:"JVG",youtubeId:"vV1dJaup3So",section:"nesu"},
+ {title:"Golden Brown X Love Story (slowed) Remix",artist:"Remix",youtubeId:"Fvt9hEAP6oQ",section:"nesu"},
+ {title:"Pojatki itkee (feat. Lauri Haav)",artist:"JVG",youtubeId:"byNnfsjF-hM",section:"nesu"},
+ {title:"Kesärenkaat",artist:"Robin",youtubeId:"8lmxQajVT_I",section:"nesu"},
+ {title:"Elämää ei voi speedrunnaa",artist:"Stumblerx",youtubeId:"n4Yi-pc8XM4",section:"nesu"},
+ {title:"Ikuinen vappu",artist:"JVG",youtubeId:"hUnd1E2-un8",section:"nesu"},
+ {title:"Kipua",artist:"Mikael Gabriel",youtubeId:"emTCc4BkJOM",section:"nesu"},
+ {title:"Ei riidellä enää",artist:"Cledos",youtubeId:"tMOrmZAr_gU",section:"nesu"},
+ {title:"Blondina",artist:"ibe",youtubeId:"EYw5IaktBsE",section:"nesu"},
+ {title:"Päätä Päätä Päätä",artist:"Herba-X & Lakko",youtubeId:"4EtmO0d9i1U",section:"nesu"},
+ {title:"Superstar",artist:"ibe",youtubeId:"cdbOIsDNfEQ",section:"nesu"},
+ {title:"Tesla",artist:"Fixupboy",youtubeId:"vCnE1wMEmgM",section:"nesu"},
+ {title:"911 (feat. Paperi T)",artist:"Lauri Haav",youtubeId:"nGIfNNSNLkg",section:"nesu"},
+ {title:"Radioactive",artist:"Imagine Dragons",youtubeId:"ktvTqknDobU",section:"nesu"},
+ {title:"Demons",artist:"Imagine Dragons",youtubeId:"mWRsgZuwf_8",section:"nesu"},
+ {title:"Believer",artist:"Imagine Dragons",youtubeId:"7wtfhZwyrcc",section:"nesu"},
+ {title:"Thunder",artist:"Imagine Dragons",youtubeId:"fKopy74weus",section:"nesu"},
+ {title:"Whatever It Takes",artist:"Imagine Dragons",youtubeId:"gOsM-DYAEhY",section:"nesu"},
+ {title:"Natural",artist:"Imagine Dragons",youtubeId:"0I647GU3Jsc",section:"nesu"},
+ {title:"Bad Liar",artist:"Imagine Dragons",youtubeId:"I-QfPUz1es8",section:"nesu"},
+ {title:"It's Time",artist:"Imagine Dragons",youtubeId:"sENM2wA_FTg",section:"nesu"},
+ {title:"On Top of the World",artist:"Imagine Dragons",youtubeId:"w5tWYmIOWGk",section:"nesu"},
+ {title:"Shots",artist:"Imagine Dragons",youtubeId:"qQrgto184Tk",section:"nesu"},
+ {title:"I Bet My Life",artist:"Imagine Dragons",youtubeId:"4ht80uzIhNs",section:"nesu"},
+ {title:"Zero",artist:"Imagine Dragons",youtubeId:"j60ClcNYWu4",section:"nesu"},
+ {title:"Roots",artist:"Imagine Dragons",youtubeId:"PscXGpsF3dY",section:"nesu"},
+ {title:"Next to Me",artist:"Imagine Dragons",youtubeId:"Txlk7PiHaGk",section:"nesu"},
+ {title:"Bleeding Out",artist:"Imagine Dragons",youtubeId:"QFKHScAStsU",section:"nesu"},
+ {title:"Wrecked",artist:"Imagine Dragons",youtubeId:"Y2NkuFIlLEo",section:"nesu"},
+ {title:"Follow You",artist:"Imagine Dragons",youtubeId:"k3zimSRKqNw",section:"nesu"},
+ {title:"Children of the Sky (a Starfield song)",artist:"Imagine Dragons",youtubeId:"baYqOdpsqbg",section:"nesu"},
+ {title:"Born To Be Yours",artist:"Kygo, Imagine Dragons",youtubeId:"_G-k6TQYUek",section:"nesu"},
+ {title:"Fire in These Hills",artist:"Imagine Dragons",youtubeId:"baYqOdpsqbg",section:"nesu"}
 ];
 function shuffleMusicQuizSongs(){
- for(let i=musicQuizSongs.length-1;i>0;i--){
-  const j=Math.floor(Math.random()*(i+1));
-  [musicQuizSongs[i],musicQuizSongs[j]]=[musicQuizSongs[j],musicQuizSongs[i]];
- }
- // Vältä mahdollisuuksien mukaan saman esittäjän kappaleita peräkkäin.
- for(let i=1;i<musicQuizSongs.length;i++){
-  if(musicQuizSongs[i].artist===musicQuizSongs[i-1].artist){
-   const j=musicQuizSongs.findIndex((song,k)=>k>i&&song.artist!==musicQuizSongs[i-1].artist);
-   if(j!==-1)[musicQuizSongs[i],musicQuizSongs[j]]=[musicQuizSongs[j],musicQuizSongs[i]];
+ const shuffleGroup=(group)=>{
+  for(let i=group.length-1;i>0;i--){
+   const j=Math.floor(Math.random()*(i+1));
+   [group[i],group[j]]=[group[j],group[i]];
   }
- }
+  for(let i=1;i<group.length;i++){
+   if(group[i].artist===group[i-1].artist){
+    const j=group.findIndex((song,k)=>k>i&&song.artist!==group[i-1].artist);
+    if(j!==-1)[group[i],group[j]]=[group[j],group[i]];
+   }
+  }
+  return group;
+ };
+ const soniqSongs=shuffleGroup(musicQuizSongs.filter(song=>song.section==="soniq"));
+ const nesuSongs=shuffleGroup(musicQuizSongs.filter(song=>song.section==="nesu"));
+ musicQuizSongs.splice(0,musicQuizSongs.length,...soniqSongs,...nesuSongs);
 }
 shuffleMusicQuizSongs();
 let musicQuizCurrent=0,musicQuizAnswered=false,musicQuizIsPlaying=false;
