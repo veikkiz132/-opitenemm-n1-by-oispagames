@@ -556,6 +556,20 @@ const musicQuizSongs=[
  {title:"Born To Be Yours",artist:"Kygo, Imagine Dragons",youtubeId:"_G-k6TQYUek"},
  {title:"Fire in These Hills",artist:"Imagine Dragons",youtubeId:"baYqOdpsqbg"}
 ];
+function shuffleMusicQuizSongs(){
+ for(let i=musicQuizSongs.length-1;i>0;i--){
+  const j=Math.floor(Math.random()*(i+1));
+  [musicQuizSongs[i],musicQuizSongs[j]]=[musicQuizSongs[j],musicQuizSongs[i]];
+ }
+ // Vältä mahdollisuuksien mukaan saman esittäjän kappaleita peräkkäin.
+ for(let i=1;i<musicQuizSongs.length;i++){
+  if(musicQuizSongs[i].artist===musicQuizSongs[i-1].artist){
+   const j=musicQuizSongs.findIndex((song,k)=>k>i&&song.artist!==musicQuizSongs[i-1].artist);
+   if(j!==-1)[musicQuizSongs[i],musicQuizSongs[j]]=[musicQuizSongs[j],musicQuizSongs[i]];
+  }
+ }
+}
+shuffleMusicQuizSongs();
 let musicQuizCurrent=0,musicQuizAnswered=false,musicQuizIsPlaying=false;
 function stopMusicQuizAudio(){
  const frame=document.getElementById('musicQuizFrame');
