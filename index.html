@@ -1,146 +1,80 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#f8faf5">
-<meta name="description" content="Pihojen kunnossapito ympäri vuoden – nurmikonleikkuu, pihan siistiminen ja talvikauden lumityöt.">
-<title>VS Pihojen kunnossapito</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101827">
+<meta name="description" content="ViLLE.UTU2 – oma, ViLLE-tyylinen oppimispelien harjoitteluympäristö.">
+<title>ViLLE.UTU2 — Opi pelaamalla</title>
 <style>
-:root{--green:#65a914;--green-dark:#244d16;--ice:#b7e2ff;--ink:#172016;--paper:#f8faf5;--muted:#61705d}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Inter,Arial,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6}
-a{color:inherit}
-header{position:sticky;top:0;z-index:20;background:rgba(248,250,245,.94);backdrop-filter:blur(12px);border-bottom:1px solid #e1e8db}
-.nav{max-width:1120px;margin:auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:900;letter-spacing:-.04em}
-.brand-icon{width:42px;height:42px;border-radius:14px;background:var(--green);display:grid;place-items:center;font-size:24px}
-.nav-links{display:flex;align-items:center;gap:24px}
-.nav-links a{text-decoration:none;font-weight:700;font-size:14px}
-.nav-links a:hover{color:var(--green)}
-.cta{display:inline-flex;justify-content:center;align-items:center;background:var(--green-dark);color:white;text-decoration:none;padding:13px 20px;border-radius:999px;font-weight:800;transition:transform .2s,background .2s}
-.cta:hover{transform:translateY(-2px);background:#386c20}
-.hero{max-width:1120px;margin:auto;padding:78px 22px 72px;display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:48px}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--green-dark);font-size:13px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px}
-.dot{width:8px;height:8px;border-radius:50%;background:var(--green)}
-h1{font-size:clamp(42px,6vw,76px);line-height:.99;letter-spacing:-.065em;margin-bottom:24px}
-h1 span{color:var(--green)}
-.hero p{font-size:18px;color:var(--muted);max-width:550px;margin-bottom:28px}
-.hero-actions{display:flex;flex-wrap:wrap;gap:12px}
-.secondary{display:inline-flex;align-items:center;justify-content:center;padding:12px 19px;border:1px solid #cbd7c3;border-radius:999px;text-decoration:none;font-weight:800;background:white}
-.art{position:relative;min-height:370px;border-radius:34px;background:linear-gradient(145deg,#edf6e5,#fff 62%,#e7f5ff);display:grid;place-items:center;overflow:hidden;border:1px solid #e0e9d8}
-.sun{position:absolute;width:180px;height:180px;border-radius:50%;background:#d9edb9;right:22px;top:18px}
-.lawn{position:absolute;bottom:-42px;left:-5%;width:110%;height:150px;background:var(--green);border-radius:50% 50% 0 0}
-.lawn:before{content:"";position:absolute;left:0;right:0;top:-32px;height:60px;background:repeating-linear-gradient(105deg,transparent 0 13px,#70b825 13px 19px,transparent 19px 28px)}
-.logo-center{z-index:2;text-align:center;padding:24px}
-.vs{font-size:clamp(76px,10vw,118px);font-weight:1000;line-height:1;letter-spacing:-.08em;color:#101410;text-shadow:0 5px 0 #fff}
-.logo-name{font-weight:1000;font-size:clamp(20px,3vw,30px);line-height:1.1;margin-top:12px}
-.icon-row{display:flex;justify-content:center;gap:28px;font-size:44px;margin-top:22px}
-.snow{color:#7bbdff}
-.section{padding:76px 22px}
-.section-inner{max-width:1120px;margin:auto}
-.section-head{max-width:700px;margin-bottom:32px}
-.kicker{color:var(--green-dark);font-size:12px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
-h2{font-size:clamp(30px,4vw,48px);line-height:1.08;letter-spacing:-.045em;margin:10px 0 14px}
-.section-head p{color:var(--muted);font-size:17px}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.price-card{background:white;border:1px solid #dfe8d8;border-radius:22px;padding:23px 18px;text-align:center;box-shadow:0 10px 30px rgba(33,61,22,.04)}
-.price-time{font-weight:800;color:var(--muted);font-size:15px}
-.price-value{font-size:clamp(28px,4vw,40px);font-weight:1000;letter-spacing:-.05em;color:var(--green-dark);margin-top:6px}
-.price-note{color:var(--muted);font-size:14px;margin-top:20px}
-@media(max-width:760px){.price-grid{grid-template-columns:repeat(2,1fr)}}
-.card{background:white;border:1px solid #e2e9dd;border-radius:24px;padding:26px;min-height:220px;box-shadow:0 10px 30px rgba(33,61,22,.04)}
-.card-icon{width:52px;height:52px;display:grid;place-items:center;border-radius:16px;background:#eef6e6;font-size:27px;margin-bottom:20px}
-.card:nth-child(3) .card-icon{background:#e8f5ff}
-.card h3{font-size:21px;margin-bottom:8px}
-.card p{color:var(--muted);font-size:15px}
-.vs-section{background:#172116;color:white}
-.vs-section .kicker{color:#a6d875}
-.vs-section .section-head p{color:#d0d8cb}
-.duel{display:grid;grid-template-columns:1fr auto 1fr;align-items:stretch;gap:18px}
-.team{border:1px solid #3a4a35;background:#202d1e;border-radius:24px;padding:28px}
-.team h3{font-size:23px;margin-bottom:10px}
-.team p{color:#d0d8cb}
-.vs-badge{align-self:center;font-size:34px;font-weight:1000;color:#b5df85}
-.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
-.pill{background:#33462b;color:#e5f5d8;padding:7px 11px;border-radius:999px;font-size:12px;font-weight:800}
-.note{margin-top:22px;color:#d0d8cb;font-size:13px}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
-.contact-panel{background:white;border:1px solid #e2e9dd;border-radius:24px;padding:28px}
-.contact-panel p{color:var(--muted);margin:8px 0 18px}
-.contact-links{display:flex;flex-wrap:wrap;gap:10px}
-footer{padding:25px 22px;border-top:1px solid #e1e8db;color:var(--muted);font-size:13px}
-.footer-inner{max-width:1120px;margin:auto;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-@media(max-width:760px){.nav{padding:12px 16px}.nav-links{gap:12px}.nav-links a:not(.cta){display:none}.hero{grid-template-columns:1fr;padding-top:52px;gap:30px}.art{min-height:300px}.cards{grid-template-columns:1fr}.duel{grid-template-columns:1fr}.vs-badge{text-align:center}.contact-grid{grid-template-columns:1fr}.section{padding:58px 18px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+:root{--bg:#101827;--panel:#182438;--panel2:#202f47;--line:#30415d;--text:#f4f7ff;--muted:#a9b7cc;--mint:#5ee0b5;--blue:#83b7ff;--yellow:#ffd36e;--pink:#ff8fb3;--shadow:0 18px 55px #07101e80}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#243b60 0,transparent 38%),radial-gradient(ellipse at 95% 25%,#26365a 0,transparent 30%),var(--bg);color:var(--text);font:16px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh}button,input{font:inherit}button{cursor:pointer}.wrap{max-width:1120px;margin:auto;padding:22px}.top{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:28px}.brand{display:flex;align-items:center;gap:12px}.logo{width:48px;height:48px;border-radius:16px;background:linear-gradient(135deg,var(--mint),var(--blue));display:grid;place-items:center;color:#102033;font-weight:1000;font-size:21px;box-shadow:0 8px 25px #5ee0b533}.brand h1{font-size:19px;letter-spacing:-.04em;margin:0}.brand small{display:block;color:var(--muted);font-size:12px;letter-spacing:.08em;text-transform:uppercase}.top-right{display:flex;align-items:center;gap:10px}.chip{background:#1d2b40;border:1px solid var(--line);border-radius:999px;padding:9px 13px;color:var(--muted);font-size:13px}.chip b{color:var(--yellow)}.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;margin-bottom:20px}.hero-main,.hero-side,.panel,.subject{background:linear-gradient(145deg,#1d2b41,#172338);border:1px solid var(--line);border-radius:25px;box-shadow:var(--shadow)}.hero-main{padding:34px;position:relative;overflow:hidden}.eyebrow{color:var(--mint);font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase}.hero h2{font-size:clamp(32px,5vw,55px);line-height:1.02;letter-spacing:-.06em;margin:13px 0}.hero h2 span{color:var(--mint)}.hero p{color:var(--muted);max-width:520px;margin:0 0 22px}.primary,.secondary,.answer-btn{border:0;border-radius:14px;padding:12px 18px;font-weight:850;transition:.18s transform,.18s filter}.primary{background:var(--mint);color:#102033}.primary:hover,.secondary:hover,.answer-btn:hover{transform:translateY(-2px);filter:brightness(1.07)}.secondary{background:#293a55;color:var(--text);border:1px solid #405574}.hero-side{padding:25px;display:flex;flex-direction:column;justify-content:space-between;min-height:245px}.side-title{color:var(--muted);font-size:13px}.level{font-size:43px;font-weight:950;letter-spacing:-.06em}.progress{height:10px;background:#0d1727;border-radius:99px;overflow:hidden;margin:9px 0 7px}.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--mint),var(--blue));border-radius:99px;transition:width .3s}.muted{color:var(--muted);font-size:13px}.section-title{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:28px 2px 14px}.section-title h3{margin:0;font-size:22px;letter-spacing:-.04em}.section-title p{margin:0;color:var(--muted);font-size:13px}.subjects{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.subject{padding:22px;text-align:left;color:var(--text);width:100%;min-height:190px;transition:.2s transform,.2s border-color;position:relative;overflow:hidden}.subject:hover{transform:translateY(-4px);border-color:#6b91c3}.subject .emoji{font-size:32px;display:block;margin-bottom:14px}.subject h4{font-size:19px;margin:0 0 5px}.subject p{font-size:13px;color:var(--muted);margin:0}.subject .arrow{position:absolute;right:19px;bottom:17px;color:var(--mint);font-size:22px}.subject.math{background:linear-gradient(145deg,#1e3950,#17263b)}.subject.lang{background:linear-gradient(145deg,#3a2b4b,#20253e)}.subject.logic{background:linear-gradient(145deg,#3b3a2c,#202b3e)}.bottom-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}.panel{padding:20px}.panel h4{margin:0 0 12px}.stat-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #2c3b52;color:var(--muted);font-size:14px}.stat-row:last-child{border:0}.stat-row b{color:var(--text)}.screen{display:none}.screen.active{display:block}.back{background:none;border:0;color:var(--muted);padding:8px 0;margin-bottom:12px}.back:hover{color:var(--text)}.game{max-width:760px;margin:0 auto}.game-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:15px}.game-card{background:linear-gradient(145deg,#1d2c43,#172338);border:1px solid var(--line);border-radius:25px;padding:clamp(20px,4vw,34px);box-shadow:var(--shadow)}.game-meta{display:flex;justify-content:space-between;color:var(--muted);font-size:13px;margin-bottom:17px}.question{font-size:clamp(23px,4vw,34px);line-height:1.2;letter-spacing:-.04em;margin:10px 0 22px}.answers{display:grid;grid-template-columns:1fr 1fr;gap:11px}.answer-btn{text-align:left;background:#293a55;color:var(--text);border:1px solid #405574;padding:16px}.answer-btn.correct{background:#164b42;border-color:var(--mint)}.answer-btn.wrong{background:#542c40;border-color:var(--pink)}.feedback{min-height:28px;margin:15px 0 5px;font-weight:800}.feedback.good{color:var(--mint)}.feedback.bad{color:var(--pink)}.game-footer{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:17px}.hidden{display:none!important}.input-row{display:flex;gap:10px}.input-row input{min-width:0;flex:1;background:#0f1a2b;border:1px solid var(--line);border-radius:13px;padding:13px;color:var(--text)}.input-row input:focus{outline:2px solid var(--blue)}.notice{color:var(--muted);font-size:12px;text-align:center;margin:26px 0 10px}.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#e9fff7;color:#102c27;padding:11px 17px;border-radius:99px;font-weight:850;box-shadow:var(--shadow);display:none}.toast.show{display:block}@media(max-width:760px){.wrap{padding:15px}.hero{grid-template-columns:1fr}.hero-main{padding:25px}.hero-side{min-height:190px}.subjects{grid-template-columns:1fr}.subject{min-height:145px}.bottom-grid{grid-template-columns:1fr}.top{align-items:flex-start}.top-right .chip:first-child{display:none}}@media(max-width:430px){.brand h1{font-size:16px}.logo{width:42px;height:42px}.chip{padding:7px 9px}.answers{grid-template-columns:1fr}.game-footer{align-items:stretch;flex-direction:column}.game-footer button{width:100%}}
 </style>
 </head>
 <body>
-<header>
-  <nav class="nav" aria-label="Päävalikko">
-    <a class="brand" href="#alku"><span class="brand-icon">🌿</span><span>PIHANHOITO <span style="color:var(--green)">VS</span></span></a>
-    <div class="nav-links">
-      <a href="#palvelut">Palvelut</a><a href="#hinnasto">Hinnasto</a><a href="#vs">Meidän VS</a><a href="#yhteys" class="cta">Ota yhteyttä</a>
-    </div>
-  </nav>
-</header>
-<main>
-<section class="hero" id="alku">
-  <div>
-    <div class="eyebrow"><span class="dot"></span> Piha kuntoon kaikkina vuodenaikoina</div>
-    <h1>Siisti piha.<br><span>Hyvä fiilis.</span></h1>
-    <p>Nurmikonleikkuusta pihan siistimiseen ja talven lumitöihin – tavoitteena on pitää pihat siisteinä, turvallisina ja viihtyisinä.</p>
-    <div class="hero-actions"><a class="cta" href="#yhteys">Kysy lisää ↗</a><a class="secondary" href="#palvelut">Katso palvelut</a></div>
-  </div>
-  <div class="art" role="img" aria-label="Vihreä nurmikko ja talven lumihiutale kuvaavat pihanhoitoa ympäri vuoden">
-    <div class="sun"></div>
-    <div class="logo-center"><div class="vs">VS</div><div class="logo-name">PIHOJEN<br>KUNNOSSAPITO OY</div><div class="icon-row"><span>🚜</span><span class="snow">❄</span></div></div>
-    <div class="lawn"></div>
-  </div>
+<div class="wrap">
+<header class="top"><div class="brand"><div class="logo">V2</div><div><h1>ViLLE.UTU2</h1><small>Oppimista pelien kautta</small></div></div><div class="top-right"><div class="chip">⭐ Pisteet: <b id="topPoints">0</b></div><div class="chip">🔥 Putki: <b id="topStreak">0</b></div></div></header>
+<main id="home" class="screen active">
+<section class="hero"><div class="hero-main"><div class="eyebrow">Tervetuloa harjoittelemaan</div><h2>Opitaan vähän.<br><span>Pelataan paljon.</span></h2><p>Valitse aihe, ratkaise tehtäviä ja kerää pisteitä. Jokainen kierros on uusi mahdollisuus oppia jotain!</p><button class="primary" onclick="startSubject('math')">Aloita harjoittelu →</button></div><aside class="hero-side"><div><div class="side-title">OMA OPPIMISPOLKU</div><div class="level">Taso <span id="level">1</span></div><div class="progress"><span id="levelBar"></span></div><div class="muted"><span id="levelPoints">0</span> / 100 pistettä seuraavaan tasoon</div></div><div class="muted">💡 Vinkki: kokeile kaikkia kolmea aihealuetta!</div></aside></section>
+<div class="section-title"><div><h3>Valitse harjoitus</h3><p>Kolme aihealuetta — valitse mistä aloitat.</p></div></div>
+<section class="subjects">
+<button class="subject math" onclick="startSubject('math')"><span class="emoji">➗</span><h4>Matematiikka</h4><p>Laskut, päättely ja numerot.</p><span class="arrow">↗</span></button>
+<button class="subject lang" onclick="startSubject('english')"><span class="emoji">🌍</span><h4>Englanti</h4><p>Sanastoa ja käännöksiä.</p><span class="arrow">↗</span></button>
+<button class="subject logic" onclick="startSubject('logic')"><span class="emoji">🧩</span><h4>Looginen päättely</h4><p>Kuviot, sarjat ja oivallukset.</p><span class="arrow">↗</span></button>
 </section>
-<section class="section" id="palvelut">
-  <div class="section-inner">
-    <div class="section-head"><div class="kicker">Mitä teemme?</div><h2>Apua pihan jokaiseen vuodenaikaan</h2><p>Valitse pihallesi sopiva apu. Sovitaan työ ja aikataulu aina erikseen.</p></div>
-    <div class="cards">
-      <article class="card"><div class="card-icon">🌱</div><h3>Nurmikonleikkuu</h3><p>Nurmikko siistiksi ja piha viihtyisäksi kasvukauden aikana.</p></article>
-      <article class="card"><div class="card-icon">🧹</div><h3>Pihan siistiminen</h3><p>Lehtien keräystä ja yleistä pihan siistimistä sovitun tarpeen mukaan.</p></article>
-      <article class="card"><div class="card-icon">❄️</div><h3>Talvikauden työt</h3><p>Lumenluontia ja kulkuväylien siistimistä talven tarpeisiin.</p></article>
-    </div>
-  </div>
-</section>
-<section class="section" id="hinnasto">
-  <div class="section-inner">
-    <div class="section-head"><div class="kicker">Selkeät hinnat</div><h2>Hinnasto</h2><p>Valitse sopiva työaika pihasi tarpeen mukaan.</p></div>
-    <div class="price-grid">
-      <article class="price-card"><div class="price-time">15 minuuttia</div><div class="price-value">5 €</div></article>
-      <article class="price-card"><div class="price-time">30 minuuttia</div><div class="price-value">7 €</div></article>
-      <article class="price-card"><div class="price-time">1 tunti</div><div class="price-value">20 €</div></article>
-      <article class="price-card"><div class="price-time">2 tuntia</div><div class="price-value">40 €</div></article>
-    </div>
-    <p class="price-note">Sovi työn sisältö ja ajankohta etukäteen ottamalla yhteyttä.</p>
-  </div>
-</section>
-<section class="section vs-section" id="vs">
-  <div class="section-inner">
-    <div class="section-head"><div class="kicker">Kaksintaistelu</div><h2>Meidän tiimi VS Pihojenkunnossapito Oy</h2><p>Leikkimielinen vertailu – pihatöissä ratkaisee työn jälki, asenne ja hyvä palvelu.</p></div>
-    <div class="duel">
-      <article class="team"><h3>🌿 Meidän tiimi</h3><p>Kaksi innokasta tekijää valmiina oppimaan, tekemään ja pitämään pihat siisteinä.</p><div class="pills"><span class="pill">Reipas asenne</span><span class="pill">Tiimityö</span><span class="pill">Pihat kuntoon</span></div></article>
-      <div class="vs-badge">VS</div>
-      <article class="team"><h3>🚜 Pihojenkunnossapito Oy</h3><p>Vertailun toinen osapuoli. Tähän voi lisätä yrityksen omat palvelut ja tiedot, kun ne on vahvistettu.</p><div class="pills"><span class="pill">Pihanhoito</span><span class="pill">Nurmikko</span><span class="pill">Talvityöt</span></div></article>
-    </div>
-    <p class="note">Huom: sivu on luonnos eikä väitä tietoja toisen yrityksen todellisista palveluista tai tuloksista.</p>
-  </div>
-</section>
-<section class="section" id="yhteys">
-  <div class="section-inner contact-grid">
-    <div class="section-head"><div class="kicker">Ota yhteyttä</div><h2>Suunnitellaan pihallesi sopiva apu</h2><p>Lisää tähän omat yhteystietonne ennen sivuston julkaisemista. Älä jätä asiakkaalle epäselväksi, kuka työn tekee ja millä alueella.</p></div>
-    <div class="contact-panel"><h3>Yhteystiedot</h3><p>Puhelin, sähköposti ja toiminta-alue lisätään tähän.</p><div class="contact-links"><a class="cta" href="mailto:">Lähetä sähköpostia</a><a class="secondary" href="#alku">Takaisin alkuun ↑</a></div></div>
-  </div>
-</section>
+<section class="bottom-grid"><div class="panel"><h4>📊 Oma edistyminen</h4><div class="stat-row"><span>Ratkaistut tehtävät</span><b id="solved">0</b></div><div class="stat-row"><span>Oikeat vastaukset</span><b id="correct">0</b></div><div class="stat-row"><span>Kerätyt pisteet</span><b id="points">0</b></div></div><div class="panel"><h4>🎯 Päivän tavoite</h4><div class="stat-row"><span>Ratkaise 10 tehtävää</span><b id="daily">0 / 10</b></div><div class="progress"><span id="dailyBar"></span></div><p class="muted">Edistyminen tallentuu tällä laitteella automaattisesti.</p></div></section>
 </main>
-<footer><div class="footer-inner"><span>© <span id="year"></span> Pihanhoito VS</span><span>Siisti piha, hyvä fiilis 🌱</span></div></footer>
-<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
-</body>
-</html>
+<section id="gameScreen" class="screen">
+<div class="game"><button class="back" onclick="goHome()">← Takaisin etusivulle</button><div class="game-head"><div><div class="eyebrow" id="subjectLabel">MATEMATIIKKA</div><h2 style="margin:4px 0 0;font-size:25px" id="roundTitle">Harjoituskierros</h2></div><div class="chip">⭐ <b id="gamePoints">0</b></div></div>
+<div class="game-card"><div class="game-meta"><span id="questionCount">Tehtävä 1</span><span id="gameStreak">🔥 Putki 0</span></div><div class="progress"><span id="roundBar"></span></div><div class="question" id="question">Valmis aloittamaan?</div><div id="answers" class="answers"></div><div id="textAnswer" class="input-row hidden"><input id="answerInput" type="text" placeholder="Kirjoita vastauksesi..." autocomplete="off"><button class="primary" onclick="checkTextAnswer()">Tarkista</button></div><div id="feedback" class="feedback" aria-live="polite"></div><div class="game-footer"><span class="muted" id="hint">Valitse oikea vastaus.</span><button id="nextBtn" class="primary hidden" onclick="nextQuestion()">Seuraava tehtävä →</button></div></div></div>
+</section>
+<p class="notice">ViLLE.UTU2 on oma harjoitteluprojekti, ei Turun yliopiston virallinen ViLLE-palvelu.</p>
+</div><div id="toast" class="toast">+10 pistettä! ⭐</div>
+<script>
+const banks={
+ math:[
+ {q:"Paljonko on 7 × 8?",a:["54","56","64","48"],c:1,h:"Kertotaulu: 7 kertaa 8."},
+ {q:"Laske: 120 ÷ 6",a:["12","18","20","24"],c:2,h:"Kuinka monta kuutosta mahtuu 120:een?"},
+ {q:"Mikä on 25 % luvusta 80?",a:["10","15","20","25"],c:2,h:"25 % tarkoittaa yhtä neljäsosaa."},
+ {q:"Paljonko on 3,5 + 2,75?",a:["5,25","6,25","6,15","7,25"],c:1,h:"Aseta pilkut allekkain."},
+ {q:"Ratkaise: x + 9 = 17",a:["6","7","8","9"],c:2,h:"Vähennä molemmilta puolilta 9."},
+ {q:"Kuinka monta metriä on 2,4 kilometriä?",a:["240 m","2 040 m","2 400 m","24 000 m"],c:2,h:"Yksi kilometri on 1 000 metriä."},
+ {q:"Kolmion kulmien summa on…",a:["90°","180°","270°","360°"],c:1,h:"Mieti kolmion sisäkulmia."},
+ {q:"Mikä on 15²?",a:["125","200","225","250"],c:2,h:"15 × 15."}
+ ],
+ english:[
+ {q:"Mitä tarkoittaa englannin sana 'apple'?",a:["Appelsiini","Omena","Aprikoosi","Päärynä"],c:1,h:"Se on yleinen hedelmä."},
+ {q:"Valitse oikea käännös: 'Minä olen väsynyt.'",a:["I am hungry.","I am tired.","I am happy.","I am late."],c:1,h:"Tired = väsynyt."},
+ {q:"Mikä on sanan 'beautiful' suomenkielinen merkitys?",a:["Nopea","Kaunis","Älykäs","Hauska"],c:1,h:"Beautiful kuvailee jotakin upeaa."},
+ {q:"Täydennä: She ___ to school every day.",a:["go","going","goes","gone"],c:2,h:"He/she/it-muodossa verbi saa usein -s-päätteen."},
+ {q:"Mitä 'yesterday' tarkoittaa?",a:["Huomenna","Tänään","Eilen","Viikonloppuna"],c:2,h:"Se on menneisyyteen viittaava sana."},
+ {q:"Mikä on sanan 'difficult' vastakohta?",a:["Easy","Hard","Strong","Long"],c:0,h:"Easy = helppo."},
+ {q:"Valitse oikea: 'They ___ playing football.'",a:["is","am","are","be"],c:2,h:"They-pronominin kanssa käytetään are."},
+ {q:"Mitä tarkoittaa 'usually'?",a:["Harvoin","Yleensä","Koskaan","Heti"],c:1,h:"Se kertoo tavallisesta tai usein tapahtuvasta asiasta."}
+ ],
+ logic:[
+ {q:"Mikä luku jatkaa sarjaa? 2, 4, 8, 16, …",a:["18","24","30","32"],c:3,h:"Jokainen luku kerrotaan kahdella."},
+ {q:"Mikä ei kuulu joukkoon?",a:["Kolmio","Neliö","Ympyrä","Banaani"],c:3,h:"Kolme vaihtoehtoa ovat geometrisia kuvioita."},
+ {q:"Mikä kirjain tulee seuraavaksi? A, C, E, G, …",a:["H","I","J","K"],c:1,h:"Sarjassa hypätään aina yhden kirjaimen yli."},
+ {q:"Jos kaikki bloopit ovat sinisiä ja tämä on bloop, minkä värinen se on?",a:["Punainen","Sininen","Vihreä","Ei voi tietää"],c:1,h:"Käytä tehtävässä annettua sääntöä."},
+ {q:"Mikä luku puuttuu? 5, 10, 15, __, 25",a:["18","19","20","21"],c:2,h:"Sarja kasvaa aina viidellä."},
+ {q:"Liisalla on 3 veljeä. Jokaisella veljellä on yksi sisko. Montako lasta perheessä on?",a:["3","4","5","6"],c:1,h:"Kaikilla veljillä on sama sisko."},
+ {q:"Mikä tulee seuraavaksi? maanantai, keskiviikko, perjantai, …",a:["Lauantai","Sunnuntai","Tiistai","Torstai"],c:1,h:"Hypätään joka toinen viikonpäivä."},
+ {q:"Kello on 14.45. Paljonko on aikaa 15.00 asti?",a:["5 min","10 min","15 min","20 min"],c:2,h:"Laske minuuttien erotus."}
+ ]};
+const names={math:"MATEMATIIKKA",english:"ENGLANTI",logic:"LOOGINEN PÄÄTTELY"};
+let stats={points:0,solved:0,correct:0,streak:0,daily:0};
+try{const saved=JSON.parse(localStorage.getItem("villeutu2-stats")||"null");if(saved)stats={...stats,...saved}}catch(e){}
+let subject="math",questions=[],index=0,locked=false,roundCorrect=0;
+function save(){try{localStorage.setItem("villeutu2-stats",JSON.stringify(stats))}catch(e){}updateStats()}
+function updateStats(){document.getElementById("topPoints").textContent=stats.points;document.getElementById("topStreak").textContent=stats.streak;document.getElementById("points").textContent=stats.points;document.getElementById("solved").textContent=stats.solved;document.getElementById("correct").textContent=stats.correct;document.getElementById("daily").textContent=Math.min(stats.daily,10)+" / 10";document.getElementById("dailyBar").style.width=Math.min(stats.daily/10*100,100)+"%";document.getElementById("level").textContent=Math.floor(stats.points/100)+1;document.getElementById("levelPoints").textContent=stats.points%100;document.getElementById("levelBar").style.width=(stats.points%100)+"%"}
+function startSubject(s){subject=s;questions=[...banks[s]].sort(()=>Math.random()-.5).slice(0,5);index=0;locked=false;roundCorrect=0;document.getElementById("home").classList.remove("active");document.getElementById("gameScreen").classList.add("active");document.getElementById("subjectLabel").textContent=names[s];document.getElementById("roundTitle").textContent="Harjoituskierros";renderQuestion();window.scrollTo({top:0,behavior:"smooth"})}
+function renderQuestion(){locked=false;const q=questions[index];document.getElementById("questionCount").textContent="Tehtävä "+(index+1)+" / "+questions.length;document.getElementById("roundBar").style.width=(index/questions.length*100)+"%";document.getElementById("gamePoints").textContent=stats.points;document.getElementById("gameStreak").textContent="🔥 Putki "+stats.streak;document.getElementById("question").textContent=q.q;document.getElementById("feedback").textContent="";document.getElementById("feedback").className="feedback";document.getElementById("hint").textContent="Valitse oikea vastaus.";document.getElementById("nextBtn").classList.add("hidden");document.getElementById("textAnswer").classList.add("hidden");const box=document.getElementById("answers");box.classList.remove("hidden");box.innerHTML="";q.a.forEach((a,i)=>{const b=document.createElement("button");b.className="answer-btn";b.textContent=String.fromCharCode(65+i)+". "+a;b.onclick=()=>checkChoice(i,b);box.appendChild(b)})}
+function checkChoice(choice,button){if(locked)return;locked=true;const q=questions[index];const buttons=[...document.querySelectorAll(".answer-btn")];buttons.forEach((b,i)=>{b.disabled=true;if(i===q.c)b.classList.add("correct")});const fb=document.getElementById("feedback");stats.solved++;stats.daily++;if(choice===q.c){stats.correct++;stats.points+=10;stats.streak++;roundCorrect++;fb.textContent="Oikein! Hienosti tehty. +10 pistettä ⭐";fb.classList.add("good");showToast("+10 pistettä! ⭐")}else{stats.streak=0;button.classList.add("wrong");fb.textContent="Ei ihan. "+q.h;fb.classList.add("bad")}document.getElementById("hint").textContent="";document.getElementById("nextBtn").classList.remove("hidden");document.getElementById("gamePoints").textContent=stats.points;document.getElementById("gameStreak").textContent="🔥 Putki "+stats.streak;save()}
+function nextQuestion(){index++;if(index>=questions.length){finishRound();return}renderQuestion()}
+function finishRound(){document.getElementById("question").textContent="Kierros valmis! 🎉";document.getElementById("answers").classList.add("hidden");document.getElementById("feedback").textContent="Sait "+roundCorrect+" / "+questions.length+" oikein. Keräsit "+(roundCorrect*10)+" pistettä.";document.getElementById("feedback").className="feedback good";document.getElementById("hint").textContent="Haluatko harjoitella lisää?";document.getElementById("nextBtn").textContent="Pelaa uudestaan ↻";document.getElementById("nextBtn").classList.remove("hidden");document.getElementById("nextBtn").onclick=()=>startSubject(subject);document.getElementById("roundBar").style.width="100%"}
+function goHome(){document.getElementById("gameScreen").classList.remove("active");document.getElementById("home").classList.add("active");document.getElementById("nextBtn").onclick=nextQuestion;document.getElementById("nextBtn").textContent="Seuraava tehtävä →";updateStats();window.scrollTo({top:0,behavior:"smooth"})}
+function showToast(t){const el=document.getElementById("toast");el.textContent=t;el.classList.add("show");setTimeout(()=>el.classList.remove("show"),1100)}
+updateStats();
+</script>
+</body></html>
