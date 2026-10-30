@@ -148,6 +148,35 @@ body{background:radial-gradient(ellipse at 12% 0%,#30205a 0,transparent 38%),rad
  </div>
 </div>
 <div style="display:flex;justify-content:flex-end;margin-top:14px"><button class="btn primary" onclick="openStudy()">Avaa kaikki oppiaineet →</button></div>
+
+<section class="dash-panel" id="musicQuiz" style="margin-top:22px">
+ <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:space-between">
+  <div><div class="eyebrow">OISPAGAMES • LISÄOSA</div><h2 style="margin:3px 0">🎧 Musiikkivisa</h2><p class="muted" style="margin:0">Kuuntele näyte ja arvaa esittäjä. Kappaleen nimeä tai esittäjää ei näytetä ennen vastausta.</p></div>
+  <span class="pill">1 min näyte</span>
+ </div>
+ <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,.8fr);gap:18px;align-items:center;margin-top:16px">
+  <div>
+   <div style="font-weight:800;margin-bottom:8px">Kierros 1 / 1</div>
+   <div style="font-size:14px;color:var(--muted);margin-bottom:10px">Paina soittimen ▶-painiketta. Soitin näkyy pienikokoisena YouTube-upotuksena.</div>
+   <div style="position:relative;width:100%;aspect-ratio:16/9;max-width:440px;background:#101b31;border-radius:14px;overflow:hidden">
+    <iframe id="musicQuizPlayer" width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/QFKHScAStsU?enablejsapi=1&end=60&rel=0" title="Musiikkivisan ääninäyte" style="position:absolute;inset:0;border:0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+   </div>
+  </div>
+  <div>
+   <div style="font-weight:800;margin-bottom:10px">Kuka esittää kappaleen?</div>
+   <div id="musicQuizAnswers" style="display:grid;gap:8px">
+    <button class="btn secondary" onclick="answerMusicQuiz(this,false)">OneRepublic</button>
+    <button class="btn secondary" onclick="answerMusicQuiz(this,true)">Imagine Dragons</button>
+    <button class="btn secondary" onclick="answerMusicQuiz(this,false)">Coldplay</button>
+    <button class="btn secondary" onclick="answerMusicQuiz(this,false)">The Script</button>
+   </div>
+   <p id="musicQuizFeedback" class="muted" aria-live="polite" style="margin-top:12px">Vastaus paljastuu vasta, kun valitset vaihtoehdon.</p>
+   <button class="btn primary" style="margin-top:8px" onclick="resetMusicQuiz()">↻ Aloita näyte alusta</button>
+  </div>
+ </div>
+ <p class="muted" style="font-size:12px;margin:14px 0 0">Huom: YouTube-soitinta ei voi piilottaa kokonaan. Tämä näyte on Imagine Dragonsin “Bleeding Out” -lyriikkavideo, ei virallinen musiikkivideo.</p>
+</section>
+
 </section>
 <div id="courseModal" class="course-modal" role="dialog" aria-modal="true" aria-label="Kurssit">
  <div class="modal-head"><span>Valitse oppiaine</span><button class="modal-close" onclick="toggleCourses(false)">×</button></div>
@@ -488,6 +517,26 @@ const labels={easy:'Helppo',medium:'Keskitaso',hard:'Vaikea'};let difficulty='ea
 function renderSubjects(){document.getElementById('subjects').innerHTML=subjects.map(s=>'<button class="subject" onclick="openSubject(\''+s.id+'\')"><span class="emoji">'+s.emoji+'</span><h4>'+s.name+'</h4><p>'+s.desc+'</p><small>Avaa harjoitukset →</small></button>').join('')}
 function setDifficulty(d,el){difficulty=d;document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));el.classList.add('active');renderSubjects()}
 function save(){const today=new Date().toLocaleDateString('en-CA');if(stats.day!==today){stats.day=today;stats.daily=0}if(!Array.isArray(stats.history))stats.history=[];try{localStorage.setItem('villeutu2-progress',JSON.stringify(stats))}catch(e){}updateStats();renderDashboardStats()}
+
+function answerMusicQuiz(button,correct){
+ const area=document.getElementById('musicQuizAnswers');
+ if(area.dataset.answered==='1')return;
+ area.dataset.answered='1';
+ [...area.querySelectorAll('button')].forEach(b=>{b.disabled=true;if(b.textContent.trim()==='Imagine Dragons'){b.style.borderColor='#16a36a';b.style.background='#e8f8ef';b.style.color='#12633f'}});
+ const feedback=document.getElementById('musicQuizFeedback');
+ if(correct){feedback.textContent='Oikein! 🎉 Esittäjä on Imagine Dragons. Kappale: Bleeding Out.';feedback.style.color='#16834c'}
+ else{button.style.borderColor='#d95d70';button.style.background='#fff0f1';button.style.color='#a52c42';feedback.textContent='Ei aivan! Oikea vastaus on Imagine Dragons – Bleeding Out.';feedback.style.color='#a52c42'}
+}
+function resetMusicQuiz(){
+ const area=document.getElementById('musicQuizAnswers');
+ area.dataset.answered='0';
+ [...area.querySelectorAll('button')].forEach(b=>{b.disabled=false;b.style.borderColor='';b.style.background='';b.style.color=''});
+ document.getElementById('musicQuizFeedback').textContent='Vastaus paljastuu vasta, kun valitset vaihtoehdon.';
+ document.getElementById('musicQuizFeedback').style.color='';
+ const player=document.getElementById('musicQuizPlayer');
+ player.src='https://www.youtube-nocookie.com/embed/QFKHScAStsU?enablejsapi=1&end=60&rel=0';
+}
+
 function renderDashboardStats(){
  const days=Array.from({length:7},(_,i)=>{const d=new Date();d.setDate(d.getDate()-(6-i));const key=d.toLocaleDateString('en-CA');return {key,label:['Su','Ma','Ti','Ke','To','Pe','La'][d.getDay()],points:0,tasks:0}});
  const map=new Map((stats.history||[]).map(x=>[x.date,x]));days.forEach(d=>{const h=map.get(d.key);if(h){d.points=h.points||0;d.tasks=h.tasks||0}});
