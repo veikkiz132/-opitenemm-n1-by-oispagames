@@ -157,8 +157,8 @@ body{background:radial-gradient(ellipse at 12% 0%,#30205a 0,transparent 38%),rad
  <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,.8fr);gap:18px;align-items:start;margin-top:16px">
   <div style="background:linear-gradient(130deg,#241a43,#123c48);border:1px solid #59417c;border-radius:16px;padding:18px">
    <div class="muted" id="musicQuizCount">Kappale 1 / 40</div>
-   <div id="musicQuizPlayer" style="margin-top:12px;padding:20px;display:flex;align-items:center;justify-content:center;background:#100d1c;border-radius:12px;min-height:110px">
-    <button id="musicQuizPlay" class="btn primary" type="button" onclick="toggleMusicQuizAudio()">▶ SOITA KAPPALE</button>
+   <div id="musicQuizPlayer" style="margin-top:12px;padding:20px;display:flex;align-items:center;justify-content:center;background:#100d1c;border-radius:12px;min-height:110px;position:relative">
+    <button id="musicQuizPlay" class="btn primary" type="button" onclick="toggleMusicQuizAudio()" style="display:inline-flex!important;visibility:visible!important;opacity:1!important;position:relative;z-index:2;min-width:190px;min-height:48px;align-items:center;justify-content:center;cursor:pointer">▶ SOITA KAPPALE</button>
     <iframe id="musicQuizFrame" width="1" height="1" title="Musiikkitietäjän äänisoitin" allow="autoplay; encrypted-media" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;left:-9999px;border:0"></iframe>
    </div>
    <p id="musicQuizPlayerNote" class="muted" style="font-size:12px;margin:10px 0 0">Paina Soita kappale -painiketta. Kappaleen nimeä tai videota ei näytetä.</p>
@@ -515,48 +515,80 @@ function setDifficulty(d,el){difficulty=d;document.querySelectorAll('.filter').f
 function save(){const today=new Date().toLocaleDateString('en-CA');if(stats.day!==today){stats.day=today;stats.daily=0}if(!Array.isArray(stats.history))stats.history=[];try{localStorage.setItem('villeutu2-progress',JSON.stringify(stats))}catch(e){}updateStats();renderDashboardStats()}
 
 const musicQuizSongs=[
- {title:'Believer',artist:'Imagine Dragons'},{title:'Demons',artist:'Imagine Dragons'},{title:'Radioactive',artist:'Imagine Dragons'},{title:'Thunder',artist:'Imagine Dragons'},{title:'Bones',artist:'Imagine Dragons'},{title:'Enemy',artist:'Imagine Dragons'},{title:'Natural',artist:'Imagine Dragons'},{title:'Bleeding Out',artist:'Imagine Dragons'},
- {title:'Without Me',artist:'Eminem'},{title:'Lose Yourself',artist:'Eminem'},{title:'Mockingbird',artist:'Eminem'},{title:'The Real Slim Shady',artist:'Eminem'},{title:'Godzilla',artist:'Eminem'},{title:'Not Afraid',artist:'Eminem'},{title:'Rap God',artist:'Eminem'},
- {title:'Shake It Off',artist:'Taylor Swift'},{title:'Blank Space',artist:'Taylor Swift'},{title:'Cruel Summer',artist:'Taylor Swift'},{title:'Anti-Hero',artist:'Taylor Swift'},{title:'Love Story',artist:'Taylor Swift'},{title:'You Belong With Me',artist:'Taylor Swift'},{title:'Wildest Dreams',artist:'Taylor Swift'},
- {title:'Blinding Lights',artist:'The Weeknd'},{title:'Starboy',artist:'The Weeknd'},{title:'Save Your Tears',artist:'The Weeknd'},{title:'The Hills',artist:'The Weeknd'},{title:"Can't Feel My Face",artist:'The Weeknd'},{title:'Die For You',artist:'The Weeknd'},{title:'After Hours',artist:'The Weeknd'},
- {title:'Tarkenee',artist:'JVG'},{title:'Häissä',artist:'JVG'},{title:'Ikuinen vappu',artist:'JVG'},{title:'Amatimies',artist:'JVG'},{title:'Frisbee',artist:'JVG'},
- {title:'Frontside Ollie',artist:'Robin'},{title:'Puuttuva palanen',artist:'Robin'},{title:'Boom Kah',artist:'Robin'},{title:'Onnellinen',artist:'Robin'},{title:'Kesärenkaat',artist:'Robin'},{title:'Paperilennokki',artist:'Robin'}
+ {title:"KRUUNU (feat. ibe)",artist:"MELO, ibe",youtubeId:"sQnbxLHJlio"},
+ {title:"SKYLINE",artist:"ibe",youtubeId:"zgDztY_qcrA"},
+ {title:"KOITIT SOITTAA",artist:"ibe",youtubeId:"iEuIiYyv1_E"},
+ {title:"Stadi On Kylmä",artist:"ibe",youtubeId:"hq1DWuE9xEI"},
+ {title:"Kärsimystentie",artist:"ihan just imus",youtubeId:"2bQqsS3og3c"},
+ {title:"y*****",artist:"ibe",youtubeId:"YgGnttQs9wc"},
+ {title:"Tarpeeks",artist:"ibe",youtubeId:"OTe-CAvizXM"},
+ {title:"Frisbee",artist:"JVG",youtubeId:"vV1dJaup3So"},
+ {title:"Golden Brown X Love Story (slowed) Remix",artist:"Remix",youtubeId:"Fvt9hEAP6oQ"},
+ {title:"Pojatki itkee (feat. Lauri Haav)",artist:"JVG",youtubeId:"byNnfsjF-hM"},
+ {title:"Kesärenkaat",artist:"Robin",youtubeId:"8lmxQajVT_I"},
+ {title:"Elämää ei voi speedrunnaa",artist:"Stumblerx",youtubeId:"n4Yi-pc8XM4"},
+ {title:"Ikuinen vappu",artist:"JVG",youtubeId:"hUnd1E2-un8"},
+ {title:"Kipua",artist:"Mikael Gabriel",youtubeId:"emTCc4BkJOM"},
+ {title:"Ei riidellä enää",artist:"Cledos",youtubeId:"tMOrmZAr_gU"},
+ {title:"Blondina",artist:"ibe",youtubeId:"EYw5IaktBsE"},
+ {title:"Päätä Päätä Päätä",artist:"Herba-X & Lakko",youtubeId:"4EtmO0d9i1U"},
+ {title:"Superstar",artist:"ibe",youtubeId:"cdbOIsDNfEQ"},
+ {title:"Tesla",artist:"Fixupboy",youtubeId:"vCnE1wMEmgM"},
+ {title:"911 (feat. Paperi T)",artist:"Lauri Haav",youtubeId:"nGIfNNSNLkg"},
+ {title:"Radioactive",artist:"Imagine Dragons",youtubeId:"ktvTqknDobU"},
+ {title:"Demons",artist:"Imagine Dragons",youtubeId:"mWRsgZuwf_8"},
+ {title:"Believer",artist:"Imagine Dragons",youtubeId:"7wtfhZwyrcc"},
+ {title:"Thunder",artist:"Imagine Dragons",youtubeId:"fKopy74weus"},
+ {title:"Whatever It Takes",artist:"Imagine Dragons",youtubeId:"gOsM-DYAEhY"},
+ {title:"Natural",artist:"Imagine Dragons",youtubeId:"0I647GU3Jsc"},
+ {title:"Bad Liar",artist:"Imagine Dragons",youtubeId:"I-QfPUz1es8"},
+ {title:"It's Time",artist:"Imagine Dragons",youtubeId:"sENM2wA_FTg"},
+ {title:"On Top of the World",artist:"Imagine Dragons",youtubeId:"w5tWYmIOWGk"},
+ {title:"Shots",artist:"Imagine Dragons",youtubeId:"qQrgto184Tk"},
+ {title:"I Bet My Life",artist:"Imagine Dragons",youtubeId:"4ht80uzIhNs"},
+ {title:"Zero",artist:"Imagine Dragons",youtubeId:"j60ClcNYWu4"},
+ {title:"Roots",artist:"Imagine Dragons",youtubeId:"PscXGpsF3dY"},
+ {title:"Next to Me",artist:"Imagine Dragons",youtubeId:"Txlk7PiHaGk"},
+ {title:"Bleeding Out",artist:"Imagine Dragons",youtubeId:"QFKHScAStsU"},
+ {title:"Wrecked",artist:"Imagine Dragons",youtubeId:"Y2NkuFIlLEo"},
+ {title:"Follow You",artist:"Imagine Dragons",youtubeId:"k3zimSRKqNw"},
+ {title:"Children of the Sky (a Starfield song)",artist:"Imagine Dragons",youtubeId:"baYqOdpsqbg"},
+ {title:"Born To Be Yours",artist:"Kygo, Imagine Dragons",youtubeId:"_G-k6TQYUek"},
+ {title:"Fire in These Hills",artist:"Imagine Dragons",youtubeId:"baYqOdpsqbg"}
 ];
 let musicQuizCurrent=0,musicQuizAnswered=false,musicQuizIsPlaying=false;
-const musicQuizVideoIds={
- 'Believer':'7wtfhZwyrcc','Demons':'mWRsgZuwf_8','Radioactive':'ktvTqknDobU','Thunder':'fKopy74weus','Natural':'0I647GU3Jsc','Bleeding Out':'QFKHScAStsU',
- 'Ikuinen vappu':'hUnd1E2-un8','Frisbee':'vV1dJaup3So','Kesärenkaat':'8lmxQajVT_I'
-};
 function stopMusicQuizAudio(){
  const frame=document.getElementById('musicQuizFrame');
  if(frame)frame.src='about:blank';
  musicQuizIsPlaying=false;
  const play=document.getElementById('musicQuizPlay');
- if(play)play.textContent='▶ SOITA KAPPALE';
+ if(play){play.textContent='▶ SOITA KAPPALE';play.disabled=false;}
 }
 function toggleMusicQuizAudio(){
  if(musicQuizAnswered)return;
- const song=musicQuizSongs[musicQuizCurrent],videoId=musicQuizVideoIds[song.title];
- if(!videoId)return;
- if(musicQuizIsPlaying){stopMusicQuizAudio();document.getElementById('musicQuizPlayerNote').textContent='Toisto pysäytetty. Voit kuunnella uudelleen.';return;}
+ const song=musicQuizSongs[musicQuizCurrent];
+ if(musicQuizIsPlaying){
+  stopMusicQuizAudio();
+  document.getElementById('musicQuizPlayerNote').textContent='Toisto pysäytetty. Voit kuunnella uudelleen.';
+  return;
+ }
  const frame=document.getElementById('musicQuizFrame');
- frame.src='https://www.youtube.com/embed/'+videoId+'?autoplay=1&playsinline=1&controls=0&enablejsapi=1&origin='+encodeURIComponent(window.location.origin);
+ frame.src='https://www.youtube.com/embed/'+song.youtubeId+'?autoplay=1&playsinline=1&controls=0&enablejsapi=1&origin='+encodeURIComponent(window.location.origin);
  musicQuizIsPlaying=true;
  document.getElementById('musicQuizPlay').textContent='Ⅱ PYSÄYTÄ';
- document.getElementById('musicQuizPlayerNote').textContent='Kappale soi pelin sisällä. Nimi ja artisti paljastuvat vasta vastauksen jälkeen.';
+ document.getElementById('musicQuizPlayerNote').textContent='Kappale soi pelin sisällä. Nimi ja esittäjä paljastuvat vasta vastauksen jälkeen.';
 }
 function renderMusicQuiz(){
  const song=musicQuizSongs[musicQuizCurrent];musicQuizAnswered=false;stopMusicQuizAudio();
  document.getElementById('musicQuizCount').textContent='Kappale '+(musicQuizCurrent+1)+' / '+musicQuizSongs.length;
- const videoId=musicQuizVideoIds[song.title],play=document.getElementById('musicQuizPlay');
- play.disabled=!videoId;
- play.textContent='▶ SOITA KAPPALE';
- document.getElementById('musicQuizPlayerNote').textContent=videoId?'Paina Soita kappale -painiketta. Kappaleen nimeä tai videota ei näytetä.':'Tälle kappaleelle ei ole vielä lisätty toimivaa soitinlinkkiä.';
- const artists=['Imagine Dragons','Eminem','Taylor Swift','The Weeknd','JVG','Robin'];
+ const play=document.getElementById('musicQuizPlay');
+ play.disabled=false;play.textContent='▶ SOITA KAPPALE';
+ document.getElementById('musicQuizPlayerNote').textContent='Paina Soita kappale -painiketta. Kappaleen nimi ja esittäjä eivät näy ennen vastausta.';
+ const artists=[...new Set(musicQuizSongs.map(s=>s.artist))];
  const wrong=artists.filter(a=>a!==song.artist).sort(()=>Math.random()-.5).slice(0,3);
  const choices=[...wrong,song.artist].sort(()=>Math.random()-.5);
  const answers=document.getElementById('musicQuizAnswers');
- answers.innerHTML=choices.map(a=>'<button class="btn secondary" data-artist="'+a+'">'+a+'</button>').join('');
+ answers.innerHTML=choices.map(a=>'<button class="btn secondary" data-artist="'+a.replace(/"/g,'&quot;')+'">'+a+'</button>').join('');
  answers.querySelectorAll('button').forEach(button=>button.addEventListener('click',()=>answerMusicQuiz(button,button.dataset.artist)));
  document.getElementById('musicQuizFeedback').textContent='Valitse oikea vastaus.';
  document.getElementById('musicQuizNext').disabled=true;
