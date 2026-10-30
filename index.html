@@ -1,80 +1,213 @@
 <!doctype html>
 <html lang="fi">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#101827">
-<meta name="description" content="ViLLE.UTU2 – oma, ViLLE-tyylinen oppimispelien harjoitteluympäristö.">
-<title>ViLLE.UTU2 — Opi pelaamalla</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101b31">
+<meta name="description" content="ViLLE.UTU2 – itsenäinen oppimispeli matematiikan, fysiikan ja muiden aineiden harjoitteluun.">
+<title>ViLLE.UTU2 – Oppimispeli</title>
 <style>
-:root{--bg:#101827;--panel:#182438;--panel2:#202f47;--line:#30415d;--text:#f4f7ff;--muted:#a9b7cc;--mint:#5ee0b5;--blue:#83b7ff;--yellow:#ffd36e;--pink:#ff8fb3;--shadow:0 18px 55px #07101e80}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#243b60 0,transparent 38%),radial-gradient(ellipse at 95% 25%,#26365a 0,transparent 30%),var(--bg);color:var(--text);font:16px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh}button,input{font:inherit}button{cursor:pointer}.wrap{max-width:1120px;margin:auto;padding:22px}.top{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:28px}.brand{display:flex;align-items:center;gap:12px}.logo{width:48px;height:48px;border-radius:16px;background:linear-gradient(135deg,var(--mint),var(--blue));display:grid;place-items:center;color:#102033;font-weight:1000;font-size:21px;box-shadow:0 8px 25px #5ee0b533}.brand h1{font-size:19px;letter-spacing:-.04em;margin:0}.brand small{display:block;color:var(--muted);font-size:12px;letter-spacing:.08em;text-transform:uppercase}.top-right{display:flex;align-items:center;gap:10px}.chip{background:#1d2b40;border:1px solid var(--line);border-radius:999px;padding:9px 13px;color:var(--muted);font-size:13px}.chip b{color:var(--yellow)}.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;margin-bottom:20px}.hero-main,.hero-side,.panel,.subject{background:linear-gradient(145deg,#1d2b41,#172338);border:1px solid var(--line);border-radius:25px;box-shadow:var(--shadow)}.hero-main{padding:34px;position:relative;overflow:hidden}.eyebrow{color:var(--mint);font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase}.hero h2{font-size:clamp(32px,5vw,55px);line-height:1.02;letter-spacing:-.06em;margin:13px 0}.hero h2 span{color:var(--mint)}.hero p{color:var(--muted);max-width:520px;margin:0 0 22px}.primary,.secondary,.answer-btn{border:0;border-radius:14px;padding:12px 18px;font-weight:850;transition:.18s transform,.18s filter}.primary{background:var(--mint);color:#102033}.primary:hover,.secondary:hover,.answer-btn:hover{transform:translateY(-2px);filter:brightness(1.07)}.secondary{background:#293a55;color:var(--text);border:1px solid #405574}.hero-side{padding:25px;display:flex;flex-direction:column;justify-content:space-between;min-height:245px}.side-title{color:var(--muted);font-size:13px}.level{font-size:43px;font-weight:950;letter-spacing:-.06em}.progress{height:10px;background:#0d1727;border-radius:99px;overflow:hidden;margin:9px 0 7px}.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--mint),var(--blue));border-radius:99px;transition:width .3s}.muted{color:var(--muted);font-size:13px}.section-title{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:28px 2px 14px}.section-title h3{margin:0;font-size:22px;letter-spacing:-.04em}.section-title p{margin:0;color:var(--muted);font-size:13px}.subjects{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.subject{padding:22px;text-align:left;color:var(--text);width:100%;min-height:190px;transition:.2s transform,.2s border-color;position:relative;overflow:hidden}.subject:hover{transform:translateY(-4px);border-color:#6b91c3}.subject .emoji{font-size:32px;display:block;margin-bottom:14px}.subject h4{font-size:19px;margin:0 0 5px}.subject p{font-size:13px;color:var(--muted);margin:0}.subject .arrow{position:absolute;right:19px;bottom:17px;color:var(--mint);font-size:22px}.subject.math{background:linear-gradient(145deg,#1e3950,#17263b)}.subject.lang{background:linear-gradient(145deg,#3a2b4b,#20253e)}.subject.logic{background:linear-gradient(145deg,#3b3a2c,#202b3e)}.bottom-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}.panel{padding:20px}.panel h4{margin:0 0 12px}.stat-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #2c3b52;color:var(--muted);font-size:14px}.stat-row:last-child{border:0}.stat-row b{color:var(--text)}.screen{display:none}.screen.active{display:block}.back{background:none;border:0;color:var(--muted);padding:8px 0;margin-bottom:12px}.back:hover{color:var(--text)}.game{max-width:760px;margin:0 auto}.game-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:15px}.game-card{background:linear-gradient(145deg,#1d2c43,#172338);border:1px solid var(--line);border-radius:25px;padding:clamp(20px,4vw,34px);box-shadow:var(--shadow)}.game-meta{display:flex;justify-content:space-between;color:var(--muted);font-size:13px;margin-bottom:17px}.question{font-size:clamp(23px,4vw,34px);line-height:1.2;letter-spacing:-.04em;margin:10px 0 22px}.answers{display:grid;grid-template-columns:1fr 1fr;gap:11px}.answer-btn{text-align:left;background:#293a55;color:var(--text);border:1px solid #405574;padding:16px}.answer-btn.correct{background:#164b42;border-color:var(--mint)}.answer-btn.wrong{background:#542c40;border-color:var(--pink)}.feedback{min-height:28px;margin:15px 0 5px;font-weight:800}.feedback.good{color:var(--mint)}.feedback.bad{color:var(--pink)}.game-footer{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:17px}.hidden{display:none!important}.input-row{display:flex;gap:10px}.input-row input{min-width:0;flex:1;background:#0f1a2b;border:1px solid var(--line);border-radius:13px;padding:13px;color:var(--text)}.input-row input:focus{outline:2px solid var(--blue)}.notice{color:var(--muted);font-size:12px;text-align:center;margin:26px 0 10px}.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#e9fff7;color:#102c27;padding:11px 17px;border-radius:99px;font-weight:850;box-shadow:var(--shadow);display:none}.toast.show{display:block}@media(max-width:760px){.wrap{padding:15px}.hero{grid-template-columns:1fr}.hero-main{padding:25px}.hero-side{min-height:190px}.subjects{grid-template-columns:1fr}.subject{min-height:145px}.bottom-grid{grid-template-columns:1fr}.top{align-items:flex-start}.top-right .chip:first-child{display:none}}@media(max-width:430px){.brand h1{font-size:16px}.logo{width:42px;height:42px}.chip{padding:7px 9px}.answers{grid-template-columns:1fr}.game-footer{align-items:stretch;flex-direction:column}.game-footer button{width:100%}}
-</style>
-</head>
-<body>
-<div class="wrap">
-<header class="top"><div class="brand"><div class="logo">V2</div><div><h1>ViLLE.UTU2</h1><small>Oppimista pelien kautta</small></div></div><div class="top-right"><div class="chip">⭐ Pisteet: <b id="topPoints">0</b></div><div class="chip">🔥 Putki: <b id="topStreak">0</b></div></div></header>
+:root{color-scheme:dark;--bg:#0b1426;--panel:#14233b;--panel2:#1b2d49;--line:#304562;--text:#f4f7ff;--muted:#a9b9d0;--mint:#63e6bd;--blue:#83b8ff;--pink:#ff91ad;--gold:#ffd477}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 15% 0%,#203b61 0,transparent 40%),radial-gradient(ellipse at 95% 20%,#282b55 0,transparent 34%),var(--bg);color:var(--text);font:16px/1.5 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}button,select{font:inherit}button{cursor:pointer}.wrap{max-width:1180px;margin:auto;padding:22px}.top{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:24px}.brand{display:flex;align-items:center;gap:12px}.logo{width:48px;height:48px;border-radius:15px;background:linear-gradient(135deg,var(--mint),var(--blue));display:grid;place-items:center;color:#10233a;font-weight:1000;font-size:20px}.brand h1{font-size:19px;margin:0;letter-spacing:-.04em}.brand small{color:var(--muted);font-size:11px;letter-spacing:.12em;text-transform:uppercase}.pills{display:flex;gap:8px;flex-wrap:wrap}.pill{border:1px solid var(--line);background:#172842;border-radius:99px;padding:8px 12px;color:var(--muted);font-size:13px}.pill b{color:var(--gold)}.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}.hero-main,.hero-side,.subject,.panel,.game-card{border:1px solid var(--line);border-radius:24px;background:linear-gradient(145deg,#1a2b46,#132139);box-shadow:0 18px 55px #050c1880}.hero-main{padding:32px}.eyebrow{color:var(--mint);font-size:11px;font-weight:900;letter-spacing:.15em;text-transform:uppercase}.hero h2{font-size:clamp(32px,5vw,54px);line-height:1.04;letter-spacing:-.06em;margin:12px 0}.hero h2 span{color:var(--mint)}p{color:var(--muted)}.hero-main p{max-width:600px}.hero-side{padding:25px;display:flex;flex-direction:column;justify-content:space-between}.big{font-size:42px;font-weight:950;letter-spacing:-.05em}.progress{height:9px;background:#0a1425;border-radius:99px;overflow:hidden;margin:10px 0}.progress span{height:100%;display:block;width:0;background:linear-gradient(90deg,var(--mint),var(--blue));transition:width .25s}.btn{border:0;border-radius:13px;padding:12px 17px;font-weight:850}.primary{background:var(--mint);color:#102338}.secondary{background:#293d5b;color:var(--text);border:1px solid #425a7b}.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:27px 2px 13px}.section-head h3{margin:0;font-size:22px}.section-head p{margin:3px 0 0;font-size:13px}.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.filter{border:1px solid var(--line);background:#172842;color:var(--muted);padding:8px 13px;border-radius:99px}.filter.active{background:#d5fff2;color:#102b27;border-color:var(--mint);font-weight:850}.subjects{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.subject{padding:18px;text-align:left;color:var(--text);min-height:150px;transition:.18s transform,.18s border-color}.subject:hover{transform:translateY(-3px);border-color:var(--mint)}.subject .emoji{font-size:28px}.subject h4{font-size:17px;margin:8px 0 3px}.subject p{font-size:12px;margin:0}.subject small{display:block;color:var(--mint);margin-top:10px}.stats{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:15px}.panel{padding:18px}.panel h4{margin:0 0 9px}.stat{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #2a3d59;color:var(--muted);font-size:14px}.stat:last-child{border:0}.screen{display:none}.screen.active{display:block}.game{max-width:800px;margin:auto}.back{border:0;background:none;color:var(--muted);padding:8px 0;margin-bottom:12px}.game-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px}.game-card{padding:clamp(20px,4vw,34px)}.meta{display:flex;justify-content:space-between;color:var(--muted);font-size:13px}.question{font-size:clamp(23px,4vw,34px);line-height:1.25;letter-spacing:-.04em;margin:18px 0}.answers{display:grid;grid-template-columns:1fr 1fr;gap:10px}.answer{border:1px solid #425a7b;background:#263b59;color:var(--text);border-radius:13px;padding:15px;text-align:left;font-weight:700}.answer:hover{border-color:var(--blue)}.answer:disabled{cursor:default;opacity:.9}.answer.correct{background:#17483f;border-color:var(--mint)}.answer.wrong{background:#532d41;border-color:var(--pink)}.feedback{min-height:30px;margin:15px 0 3px;font-weight:850}.good{color:var(--mint)}.bad{color:var(--pink)}.game-bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:13px}.muted{color:var(--muted);font-size:13px}.hidden{display:none!important}.notice{text-align:center;color:var(--muted);font-size:11px;margin:25px 0 8px}.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#d9fff2;color:#102b27;border-radius:99px;padding:10px 17px;font-weight:900;display:none}.toast.show{display:block}
+@media(max-width:850px){.subjects{grid-template-columns:repeat(2,1fr)}.hero{grid-template-columns:1fr}}@media(max-width:520px){.wrap{padding:14px}.top{align-items:flex-start}.pills .pill:first-child{display:none}.hero-main{padding:23px}.subjects,.stats{grid-template-columns:1fr}.answers{grid-template-columns:1fr}.game-bottom{align-items:stretch;flex-direction:column}.game-bottom button{width:100%}}
+</style></head>
+<body><div class="wrap">
+<header class="top"><div class="brand"><div class="logo">V2</div><div><h1>ViLLE.UTU2</h1><small>OPI • HARJOITTELE • KEHITY</small></div></div><div class="pills"><div class="pill">⭐ Pisteet <b id="topPoints">0</b></div><div class="pill">🔥 Putki <b id="topStreak">0</b></div><div class="pill">🏅 Taso <b id="topLevel">1</b></div></div></header>
 <main id="home" class="screen active">
-<section class="hero"><div class="hero-main"><div class="eyebrow">Tervetuloa harjoittelemaan</div><h2>Opitaan vähän.<br><span>Pelataan paljon.</span></h2><p>Valitse aihe, ratkaise tehtäviä ja kerää pisteitä. Jokainen kierros on uusi mahdollisuus oppia jotain!</p><button class="primary" onclick="startSubject('math')">Aloita harjoittelu →</button></div><aside class="hero-side"><div><div class="side-title">OMA OPPIMISPOLKU</div><div class="level">Taso <span id="level">1</span></div><div class="progress"><span id="levelBar"></span></div><div class="muted"><span id="levelPoints">0</span> / 100 pistettä seuraavaan tasoon</div></div><div class="muted">💡 Vinkki: kokeile kaikkia kolmea aihealuetta!</div></aside></section>
-<div class="section-title"><div><h3>Valitse harjoitus</h3><p>Kolme aihealuetta — valitse mistä aloitat.</p></div></div>
-<section class="subjects">
-<button class="subject math" onclick="startSubject('math')"><span class="emoji">➗</span><h4>Matematiikka</h4><p>Laskut, päättely ja numerot.</p><span class="arrow">↗</span></button>
-<button class="subject lang" onclick="startSubject('english')"><span class="emoji">🌍</span><h4>Englanti</h4><p>Sanastoa ja käännöksiä.</p><span class="arrow">↗</span></button>
-<button class="subject logic" onclick="startSubject('logic')"><span class="emoji">🧩</span><h4>Looginen päättely</h4><p>Kuviot, sarjat ja oivallukset.</p><span class="arrow">↗</span></button>
-</section>
-<section class="bottom-grid"><div class="panel"><h4>📊 Oma edistyminen</h4><div class="stat-row"><span>Ratkaistut tehtävät</span><b id="solved">0</b></div><div class="stat-row"><span>Oikeat vastaukset</span><b id="correct">0</b></div><div class="stat-row"><span>Kerätyt pisteet</span><b id="points">0</b></div></div><div class="panel"><h4>🎯 Päivän tavoite</h4><div class="stat-row"><span>Ratkaise 10 tehtävää</span><b id="daily">0 / 10</b></div><div class="progress"><span id="dailyBar"></span></div><p class="muted">Edistyminen tallentuu tällä laitteella automaattisesti.</p></div></section>
+<section class="hero"><div class="hero-main"><div class="eyebrow">Oma oppimisympäristösi</div><h2>Opitaan uutta.<br><span>Yksi tehtävä kerrallaan.</span></h2><p>Valitse kouluaine ja vaikeustaso. Harjoittele perusteista haastaviin tehtäviin, kerää pisteitä ja seuraa omaa edistymistäsi.</p><button class="btn primary" onclick="start('math')">Aloita harjoittelu →</button></div><aside class="hero-side"><div><div class="muted">SEURAAVA TASO</div><div class="big">Taso <span id="level">1</span></div><div class="progress"><span id="levelBar"></span></div><div class="muted"><span id="levelProgress">0</span> / 100 pistettä</div></div><p class="muted">💡 Vinkki: jos vastaus menee väärin, lue vihje ja kokeile oppia virheestä.</p></aside></section>
+<div class="section-head"><div><h3>Valitse oppiaine</h3><p>Tehtäviä eri aiheista ja eri vaikeustasoilla.</p></div></div>
+<div class="filters" id="difficultyFilters"><button class="filter active" data-level="easy" onclick="setDifficulty('easy',this)">🟢 Helppo</button><button class="filter" data-level="medium" onclick="setDifficulty('medium',this)">🟡 Keskitaso</button><button class="filter" data-level="hard" onclick="setDifficulty('hard',this)">🔴 Vaikea</button></div>
+<section class="subjects" id="subjects"></section>
+<section class="stats"><div class="panel"><h4>📊 Oppimistilastot</h4><div class="stat"><span>Ratkaistut tehtävät</span><b id="solved">0</b></div><div class="stat"><span>Oikein vastattu</span><b id="correct">0</b></div><div class="stat"><span>Oikeiden osuus</span><b id="accuracy">0 %</b></div></div><div class="panel"><h4>🎯 Päivän tavoite</h4><div class="stat"><span>10 tehtävää päivässä</span><b id="daily">0 / 10</b></div><div class="progress"><span id="dailyBar"></span></div><p class="muted">Edistyminen tallentuu automaattisesti tähän selaimeen.</p></div></section>
 </main>
-<section id="gameScreen" class="screen">
-<div class="game"><button class="back" onclick="goHome()">← Takaisin etusivulle</button><div class="game-head"><div><div class="eyebrow" id="subjectLabel">MATEMATIIKKA</div><h2 style="margin:4px 0 0;font-size:25px" id="roundTitle">Harjoituskierros</h2></div><div class="chip">⭐ <b id="gamePoints">0</b></div></div>
-<div class="game-card"><div class="game-meta"><span id="questionCount">Tehtävä 1</span><span id="gameStreak">🔥 Putki 0</span></div><div class="progress"><span id="roundBar"></span></div><div class="question" id="question">Valmis aloittamaan?</div><div id="answers" class="answers"></div><div id="textAnswer" class="input-row hidden"><input id="answerInput" type="text" placeholder="Kirjoita vastauksesi..." autocomplete="off"><button class="primary" onclick="checkTextAnswer()">Tarkista</button></div><div id="feedback" class="feedback" aria-live="polite"></div><div class="game-footer"><span class="muted" id="hint">Valitse oikea vastaus.</span><button id="nextBtn" class="primary hidden" onclick="nextQuestion()">Seuraava tehtävä →</button></div></div></div>
-</section>
-<p class="notice">ViLLE.UTU2 on oma harjoitteluprojekti, ei Turun yliopiston virallinen ViLLE-palvelu.</p>
-</div><div id="toast" class="toast">+10 pistettä! ⭐</div>
+<section id="gameScreen" class="screen"><div class="game"><button class="back" onclick="home()">← Takaisin oppiaineisiin</button><div class="game-head"><div><div class="eyebrow" id="subjectName">MATEMATIIKKA</div><h2 id="roundName" style="margin:4px 0;font-size:25px">Harjoituskierros</h2></div><div class="pill">⭐ <b id="gamePoints">0</b></div></div><div class="game-card"><div class="meta"><span id="count">Tehtävä 1 / 10</span><span id="streak">🔥 Putki 0</span></div><div class="progress"><span id="roundBar"></span></div><div id="question" class="question"></div><div id="answers" class="answers"></div><div id="feedback" class="feedback" aria-live="polite"></div><div class="game-bottom"><span id="hint" class="muted">Valitse oikea vastaus.</span><button id="next" class="btn primary hidden" onclick="next()">Seuraava tehtävä →</button></div></div></div></section>
+<p class="notice">ViLLE.UTU2 on itsenäinen harrastusprojekti eikä Turun yliopiston virallinen ViLLE-palvelu.</p></div><div id="toast" class="toast">+10 pistettä ⭐</div>
 <script>
-const banks={
- math:[
- {q:"Paljonko on 7 × 8?",a:["54","56","64","48"],c:1,h:"Kertotaulu: 7 kertaa 8."},
- {q:"Laske: 120 ÷ 6",a:["12","18","20","24"],c:2,h:"Kuinka monta kuutosta mahtuu 120:een?"},
- {q:"Mikä on 25 % luvusta 80?",a:["10","15","20","25"],c:2,h:"25 % tarkoittaa yhtä neljäsosaa."},
- {q:"Paljonko on 3,5 + 2,75?",a:["5,25","6,25","6,15","7,25"],c:1,h:"Aseta pilkut allekkain."},
- {q:"Ratkaise: x + 9 = 17",a:["6","7","8","9"],c:2,h:"Vähennä molemmilta puolilta 9."},
- {q:"Kuinka monta metriä on 2,4 kilometriä?",a:["240 m","2 040 m","2 400 m","24 000 m"],c:2,h:"Yksi kilometri on 1 000 metriä."},
- {q:"Kolmion kulmien summa on…",a:["90°","180°","270°","360°"],c:1,h:"Mieti kolmion sisäkulmia."},
- {q:"Mikä on 15²?",a:["125","200","225","250"],c:2,h:"15 × 15."}
- ],
- english:[
- {q:"Mitä tarkoittaa englannin sana 'apple'?",a:["Appelsiini","Omena","Aprikoosi","Päärynä"],c:1,h:"Se on yleinen hedelmä."},
- {q:"Valitse oikea käännös: 'Minä olen väsynyt.'",a:["I am hungry.","I am tired.","I am happy.","I am late."],c:1,h:"Tired = väsynyt."},
- {q:"Mikä on sanan 'beautiful' suomenkielinen merkitys?",a:["Nopea","Kaunis","Älykäs","Hauska"],c:1,h:"Beautiful kuvailee jotakin upeaa."},
- {q:"Täydennä: She ___ to school every day.",a:["go","going","goes","gone"],c:2,h:"He/she/it-muodossa verbi saa usein -s-päätteen."},
- {q:"Mitä 'yesterday' tarkoittaa?",a:["Huomenna","Tänään","Eilen","Viikonloppuna"],c:2,h:"Se on menneisyyteen viittaava sana."},
- {q:"Mikä on sanan 'difficult' vastakohta?",a:["Easy","Hard","Strong","Long"],c:0,h:"Easy = helppo."},
- {q:"Valitse oikea: 'They ___ playing football.'",a:["is","am","are","be"],c:2,h:"They-pronominin kanssa käytetään are."},
- {q:"Mitä tarkoittaa 'usually'?",a:["Harvoin","Yleensä","Koskaan","Heti"],c:1,h:"Se kertoo tavallisesta tai usein tapahtuvasta asiasta."}
- ],
- logic:[
- {q:"Mikä luku jatkaa sarjaa? 2, 4, 8, 16, …",a:["18","24","30","32"],c:3,h:"Jokainen luku kerrotaan kahdella."},
- {q:"Mikä ei kuulu joukkoon?",a:["Kolmio","Neliö","Ympyrä","Banaani"],c:3,h:"Kolme vaihtoehtoa ovat geometrisia kuvioita."},
- {q:"Mikä kirjain tulee seuraavaksi? A, C, E, G, …",a:["H","I","J","K"],c:1,h:"Sarjassa hypätään aina yhden kirjaimen yli."},
- {q:"Jos kaikki bloopit ovat sinisiä ja tämä on bloop, minkä värinen se on?",a:["Punainen","Sininen","Vihreä","Ei voi tietää"],c:1,h:"Käytä tehtävässä annettua sääntöä."},
- {q:"Mikä luku puuttuu? 5, 10, 15, __, 25",a:["18","19","20","21"],c:2,h:"Sarja kasvaa aina viidellä."},
- {q:"Liisalla on 3 veljeä. Jokaisella veljellä on yksi sisko. Montako lasta perheessä on?",a:["3","4","5","6"],c:1,h:"Kaikilla veljillä on sama sisko."},
- {q:"Mikä tulee seuraavaksi? maanantai, keskiviikko, perjantai, …",a:["Lauantai","Sunnuntai","Tiistai","Torstai"],c:1,h:"Hypätään joka toinen viikonpäivä."},
- {q:"Kello on 14.45. Paljonko on aikaa 15.00 asti?",a:["5 min","10 min","15 min","20 min"],c:2,h:"Laske minuuttien erotus."}
- ]};
-const names={math:"MATEMATIIKKA",english:"ENGLANTI",logic:"LOOGINEN PÄÄTTELY"};
-let stats={points:0,solved:0,correct:0,streak:0,daily:0};
-try{const saved=JSON.parse(localStorage.getItem("villeutu2-stats")||"null");if(saved)stats={...stats,...saved}}catch(e){}
-let subject="math",questions=[],index=0,locked=false,roundCorrect=0;
-function save(){try{localStorage.setItem("villeutu2-stats",JSON.stringify(stats))}catch(e){}updateStats()}
-function updateStats(){document.getElementById("topPoints").textContent=stats.points;document.getElementById("topStreak").textContent=stats.streak;document.getElementById("points").textContent=stats.points;document.getElementById("solved").textContent=stats.solved;document.getElementById("correct").textContent=stats.correct;document.getElementById("daily").textContent=Math.min(stats.daily,10)+" / 10";document.getElementById("dailyBar").style.width=Math.min(stats.daily/10*100,100)+"%";document.getElementById("level").textContent=Math.floor(stats.points/100)+1;document.getElementById("levelPoints").textContent=stats.points%100;document.getElementById("levelBar").style.width=(stats.points%100)+"%"}
-function startSubject(s){subject=s;questions=[...banks[s]].sort(()=>Math.random()-.5).slice(0,5);index=0;locked=false;roundCorrect=0;document.getElementById("home").classList.remove("active");document.getElementById("gameScreen").classList.add("active");document.getElementById("subjectLabel").textContent=names[s];document.getElementById("roundTitle").textContent="Harjoituskierros";renderQuestion();window.scrollTo({top:0,behavior:"smooth"})}
-function renderQuestion(){locked=false;const q=questions[index];document.getElementById("questionCount").textContent="Tehtävä "+(index+1)+" / "+questions.length;document.getElementById("roundBar").style.width=(index/questions.length*100)+"%";document.getElementById("gamePoints").textContent=stats.points;document.getElementById("gameStreak").textContent="🔥 Putki "+stats.streak;document.getElementById("question").textContent=q.q;document.getElementById("feedback").textContent="";document.getElementById("feedback").className="feedback";document.getElementById("hint").textContent="Valitse oikea vastaus.";document.getElementById("nextBtn").classList.add("hidden");document.getElementById("textAnswer").classList.add("hidden");const box=document.getElementById("answers");box.classList.remove("hidden");box.innerHTML="";q.a.forEach((a,i)=>{const b=document.createElement("button");b.className="answer-btn";b.textContent=String.fromCharCode(65+i)+". "+a;b.onclick=()=>checkChoice(i,b);box.appendChild(b)})}
-function checkChoice(choice,button){if(locked)return;locked=true;const q=questions[index];const buttons=[...document.querySelectorAll(".answer-btn")];buttons.forEach((b,i)=>{b.disabled=true;if(i===q.c)b.classList.add("correct")});const fb=document.getElementById("feedback");stats.solved++;stats.daily++;if(choice===q.c){stats.correct++;stats.points+=10;stats.streak++;roundCorrect++;fb.textContent="Oikein! Hienosti tehty. +10 pistettä ⭐";fb.classList.add("good");showToast("+10 pistettä! ⭐")}else{stats.streak=0;button.classList.add("wrong");fb.textContent="Ei ihan. "+q.h;fb.classList.add("bad")}document.getElementById("hint").textContent="";document.getElementById("nextBtn").classList.remove("hidden");document.getElementById("gamePoints").textContent=stats.points;document.getElementById("gameStreak").textContent="🔥 Putki "+stats.streak;save()}
-function nextQuestion(){index++;if(index>=questions.length){finishRound();return}renderQuestion()}
-function finishRound(){document.getElementById("question").textContent="Kierros valmis! 🎉";document.getElementById("answers").classList.add("hidden");document.getElementById("feedback").textContent="Sait "+roundCorrect+" / "+questions.length+" oikein. Keräsit "+(roundCorrect*10)+" pistettä.";document.getElementById("feedback").className="feedback good";document.getElementById("hint").textContent="Haluatko harjoitella lisää?";document.getElementById("nextBtn").textContent="Pelaa uudestaan ↻";document.getElementById("nextBtn").classList.remove("hidden");document.getElementById("nextBtn").onclick=()=>startSubject(subject);document.getElementById("roundBar").style.width="100%"}
-function goHome(){document.getElementById("gameScreen").classList.remove("active");document.getElementById("home").classList.add("active");document.getElementById("nextBtn").onclick=nextQuestion;document.getElementById("nextBtn").textContent="Seuraava tehtävä →";updateStats();window.scrollTo({top:0,behavior:"smooth"})}
-function showToast(t){const el=document.getElementById("toast");el.textContent=t;el.classList.add("show");setTimeout(()=>el.classList.remove("show"),1100)}
-updateStats();
-</script>
-</body></html>
+const subjects=[
+{id:'math',name:'Matematiikka',emoji:'➗',desc:'Peruslaskut, prosentit, yhtälöt ja geometria.'},
+{id:'physics',name:'Fysiikka',emoji:'⚡',desc:'Nopeus, kiihtyvyys, voimat ja energia.'},
+{id:'chemistry',name:'Kemia',emoji:'🧪',desc:'Alkuaineet, atomit, seokset ja reaktiot.'},
+{id:'biology',name:'Biologia',emoji:'🌱',desc:'Solut, ihmiskeho, luonto ja eliöt.'},
+{id:'geography',name:'Maantieto',emoji:'🌍',desc:'Maapallo, kartat, ilmasto ja luonnonvarat.'},
+{id:'history',name:'Historia',emoji:'🏛️',desc:'Aikakaudet, tapahtumat ja historian ilmiöt.'},
+{id:'english',name:'Englanti',emoji:'🇬🇧',desc:'Sanasto, kielioppi ja lauseet.'},
+{id:'logic',name:'Looginen päättely',emoji:'🧩',desc:'Lukusarjat, ongelmat ja oivallukset.'}
+];
+const bank={
+math:{
+easy:[
+['Paljonko on 48 + 27?',['65','75','85','74'],1,'Laske ensin kymmenet ja sitten ykköset.'],
+['Laske 9 × 7.',['56','63','72','69'],1,'Kertotaulun avulla: 7 × 9.'],
+['Paljonko on 144 ÷ 12?',['10','11','12','14'],2,'Mikä luku kertaa 12 on 144?'],
+['Mikä on puolet luvusta 86?',['42','43','44','46'],1,'Jaa 86 kahdella.'],
+['Kuinka monta senttimetriä on 2,5 metrissä?',['25','250','2500','205'],1,'Yksi metri on 100 senttimetriä.']],
+medium:[
+['Paljonko on 15 % luvusta 240?',['24','30','36','40'],2,'10 % on 24 ja 5 % on puolet siitä.'],
+['Ratkaise yhtälö: 3x + 5 = 26.',['5','6','7','8'],2,'Vähennä ensin 5 ja jaa sitten kolmella.'],
+['Suorakulmion sivut ovat 8 cm ja 5 cm. Mikä on pinta-ala?',['13 cm²','26 cm²','40 cm²','80 cm²'],2,'Pinta-ala = pituus × leveys.'],
+['Muunna 72 km/h metreiksi sekunnissa.',['10 m/s','15 m/s','20 m/s','25 m/s'],2,'Jaa nopeus luvulla 3,6.'],
+['Mikä on lukujen 6, 8, 10 ja 16 keskiarvo?',['8','9','10','12'],2,'Laske luvut yhteen ja jaa neljällä.']],
+hard:[
+['Ratkaise: 2(x − 3) + 5 = 17.',['8','9','10','11'],2,'Avaa sulut: 2x − 6 + 5 = 17.'],
+['Suorakulmaisen kolmion kateetit ovat 6 cm ja 8 cm. Hypotenuusa on…',['9 cm','10 cm','12 cm','14 cm'],1,'Käytä Pythagoraan lausetta.'],
+['Funktio f(x)=3x²−2. Mikä on f(−2)?',['8','10','12','14'],1,'Korvaa x luvulla −2 ja muista neliö.'],
+['Tuotteen hinta nousee 80 eurosta 100 euroon. Kuinka monta prosenttia nousu on?',['20 %','25 %','30 %','40 %'],1,'Nousu on 20 euroa. Vertaa sitä alkuperäiseen 80 euroon.'],
+['Ratkaise yhtälöpari: x+y=11 ja x−y=3. Mikä on x?',['4','6','7','8'],2,'Laske yhtälöt yhteen, jolloin y poistuu.']]
+},
+physics:{
+easy:[
+['Mikä on nopeuden perusyksikkö SI-järjestelmässä?',['km/h','m/s','km','m²'],1,'Nopeus kertoo matkan ajassa.'],
+['Auto kulkee 100 metriä 10 sekunnissa. Mikä on keskinopeus?',['5 m/s','10 m/s','20 m/s','100 m/s'],1,'Nopeus = matka / aika.'],
+['Mikä voima vetää kappaleita kohti Maata?',['Kitka','Sähkövoima','Painovoima','Jousivoima'],2,'Se pitää meidät maan pinnalla.'],
+['Millä laitteella mitataan lämpötilaa?',['Vaaka','Lämpömittari','Sekuntikello','Virtamittari'],1,'Lämpötilan mittaamiseen käytetään lämpömittaria.'],
+['Mikä on voiman yksikkö?',['Joule','Watti','Newton','Pascal'],2,'Yksikkö on nimetty Isaac Newtonin mukaan.']],
+medium:[
+['Pyöräilijä kulkee 600 m 2 minuutissa. Mikä on keskinopeus?',['3 m/s','5 m/s','10 m/s','12 m/s'],0,'Muunna 2 minuuttia 120 sekunniksi ja jaa matka ajalla.'],
+['Nopeus kasvaa 4 m/s:stä 16 m/s:iin 6 sekunnissa. Kiihtyvyys on…',['1 m/s²','2 m/s²','3 m/s²','4 m/s²'],1,'Kiihtyvyys = nopeuden muutos / aika.'],
+['Mikä on 2 kg kappaleen paino, kun g ≈ 10 N/kg?',['2 N','5 N','20 N','200 N'],2,'Paino = massa × putoamiskiihtyvyys.'],
+['Sähkölaitteen jännite on 12 V ja virta 2 A. Teho on…',['6 W','10 W','14 W','24 W'],3,'P = U × I.'],
+['Mikä energian muoto liittyy liikkuvaan kappaleeseen?',['Liike-energia','Kemiallinen energia','Ydinenergia','Säteilyenergia'],0,'Liikkeellä olevalla kappaleella on tätä energiaa.']],
+hard:[
+['Auto kiihtyy levosta nopeuteen 25 m/s 5 sekunnissa. Kiihtyvyys on…',['2 m/s²','4 m/s²','5 m/s²','10 m/s²'],2,'a = (25 − 0) / 5.'],
+['10 kg kappaleeseen vaikuttaa 30 N kokonaisvoima. Kiihtyvyys on…',['0,3 m/s²','3 m/s²','20 m/s²','300 m/s²'],1,'Newtonin II laki: F = ma.'],
+['Vastus on 6 Ω ja jännite 24 V. Sähkövirta on…',['2 A','4 A','6 A','8 A'],1,'Ohmin laki: I = U / R.'],
+['Kappaletta nostetaan 3 m korkeuteen. Massa on 4 kg ja g=10 N/kg. Potentiaalienergia kasvaa…',['12 J','40 J','120 J','240 J'],2,'E = mgh.'],
+['Aalto etenee nopeudella 340 m/s ja taajuudella 170 Hz. Aallonpituus on…',['0,5 m','1 m','2 m','4 m'],2,'Aallonpituus = nopeus / taajuus.']]
+},
+chemistry:{
+easy:[
+['Mikä on veden kemiallinen kaava?',['CO₂','H₂O','O₂','NaCl'],1,'Vesimolekyylissä on kaksi vetyä ja yksi happi.'],
+['Mikä on hapen kemiallinen merkki?',['H','He','O','N'],2,'Happi alkaa englanniksi O-kirjaimella.'],
+['Mikä näistä on jalokaasu?',['Happi','Helium','Rauta','Hiili'],1,'Sitä käytetään esimerkiksi ilmapalloissa.'],
+['Mikä on ruokasuolan kaava?',['NaCl','H₂O','CO₂','CH₄'],0,'Se koostuu natriumista ja kloorista.'],
+['Mikä on aineen pienin kemialliset ominaisuudet säilyttävä rakenneyksikkö?',['Solu','Atomi','Kudos','Planeetta'],1,'Se muodostaa alkuaineet.']],
+medium:[
+['Mikä on hiilidioksidin kaava?',['CO','CO₂','C₂O','O₂C₂'],1,'Yksi hiiliatomi ja kaksi happiatomia.'],
+['Liuoksen pH on 3. Onko se hapan vai emäksinen?',['Hapan','Neutraali','Emäksinen','Ei kumpikaan'],0,'Alle 7 tarkoittaa hapanta.'],
+['Mikä hiukkasista on negatiivisesti varautunut?',['Protoni','Neutroni','Elektroni','Ydin'],2,'Se kiertää atomin ydintä.'],
+['Mitä tapahtuu kemiallisessa reaktiossa?',['Atomit katoavat','Atomit järjestäytyvät uudelleen','Ainetta syntyy tyhjästä','Kaikki massat häviävät'],1,'Atomit säilyvät, mutta sidokset muuttuvat.'],
+['Mikä on raudan kemiallinen merkki?',['Ir','Fe','Ra','R'],1,'Merkki tulee latinankielisestä nimestä ferrum.']],
+hard:[
+['Kuinka monta moolia on 36 grammassa vettä (M=18 g/mol)?',['1 mol','2 mol','18 mol','36 mol'],1,'n = m / M.'],
+['Mikä on tasapainotettu reaktio vedyn palamiselle?',['H₂ + O₂ → H₂O','2H₂ + O₂ → 2H₂O','H₂ + 2O₂ → H₂O','2H₂ + 2O₂ → H₂O'],1,'Atomien lukumäärän pitää olla sama molemmilla puolilla.'],
+['Liuoksessa on 0,5 mol ainetta 2 litrassa. Konsentraatio on…',['0,1 mol/l','0,25 mol/l','1 mol/l','2,5 mol/l'],1,'c = n / V.'],
+['Mikä sidos muodostuu yleensä metallin ja epämetallin välille elektronin siirtyessä?',['Metallisidos','Ionisidos','Kovalenttinen sidos','Vetysidos'],1,'Vastakkaismerkkiset ionit vetävät toisiaan puoleensa.'],
+['Happoliuoksen pH muuttuu arvosta 2 arvoon 3. Vetyionipitoisuus…',['Kasvaa 10-kertaiseksi','Pienenee 10-kertaiseksi','Ei muutu','Pienenee 2-kertaiseksi'],1,'Yksi pH-yksikkö vastaa kymmenkertaista muutosta.']]
+},
+biology:{
+easy:[
+['Mikä on eliön perusyksikkö?',['Solu','Elin','Luu','Molekyyli'],0,'Kaikki eliöt koostuvat näistä.'],
+['Mikä elin pumppaa verta?',['Keuhkot','Maksa','Sydän','Munuaiset'],2,'Se toimii verenkierron moottorina.'],
+['Mitä kasvit tarvitsevat yhteyttämiseen?',['Valoa, vettä ja hiilidioksidia','Hiekkaa ja suolaa','Vain happea','Vain pimeyttä'],0,'Yhteyttäminen tapahtuu valon avulla.'],
+['Mikä näistä on nisäkäs?',['Sammakko','Lohi','Lepakko','Perhonen'],2,'Nisäkkäät ruokkivat poikasiaan maidolla.'],
+['Mikä veren osa kuljettaa happea?',['Punasolut','Verihiutaleet','Plasma yksin','Valkosolut'],0,'Niissä on hemoglobiinia.']],
+medium:[
+['Missä soluelimessä tapahtuu soluhengitys?',['Tumassa','Mitokondriossa','Ribosomissa','Solukalvolla'],1,'Sitä kutsutaan usein solun voimalaitokseksi.'],
+['Mikä on DNA:n tärkein tehtävä?',['Varastoida perinnöllistä tietoa','Kuljettaa happea','Hajottaa ravintoa suolistossa','Tuottaa ääntä'],0,'Se sisältää eliön perintöohjeet.'],
+['Mikä eliöryhmä hajottaa kuollutta eloperäistä ainesta?',['Tuottajat','Hajottajat','Kasvinsyöjät','Pölyttäjät'],1,'Esimerkiksi monet sienet ja bakteerit.'],
+['Mikä on ravintoketjun tuottaja?',['Susi','Sieni','Vihreä kasvi','Jänis'],2,'Se valmistaa itse orgaanista ainetta yhteyttämällä.'],
+['Mitä rokote auttaa immuunijärjestelmää tekemään?',['Tunnistamaan taudinaiheuttajan','Poistamaan kaikki bakteerit','Lopettamaan verenkierron','Kasvattamaan luita'],0,'Rokote harjoittaa elimistön puolustusjärjestelmää.']],
+hard:[
+['Mikä on meioosin lopputulos yhdestä diploidisesta kantasolusta?',['2 diploidista solua','4 haploidista solua','4 diploidista solua','8 haploidista solua'],1,'Meioosissa kromosomiluku puolittuu.'],
+['Mikä prosessi tuottaa ATP:tä hapen avulla mitokondrioissa?',['Fotosynteesi','Soluhengitys','Translaatio','Mitoosi'],1,'Glukoosia hajotetaan energian vapauttamiseksi.'],
+['Mikä kuvaa luonnonvalintaa parhaiten?',['Kaikki yksilöt muuttuvat tarkoituksella','Periytyvät hyödylliset ominaisuudet voivat yleistyä','Yksilö päättää geeneistään','Lajit eivät koskaan muutu'],1,'Ympäristö vaikuttaa siihen, mitkä ominaisuudet auttavat lisääntymään.'],
+['Mitä heterotsygoottinen tarkoittaa?',['Kaksi samaa alleelia','Kaksi erilaista alleelia','Ei geenejä','Vain yksi kromosomi'],1,'Yksilöllä on kyseisestä geenistä kaksi erilaista versiota.'],
+['Mikä on ekosysteemin biodiversiteetti?',['Vain eläinten määrä','Elämän monimuotoisuus','Ilman lämpötila','Maaperän happamuus'],1,'Se sisältää lajien, geenien ja elinympäristöjen monimuotoisuuden.']]
+},
+geography:{
+easy:[
+['Mikä on Suomen pääkaupunki?',['Turku','Tampere','Helsinki','Oulu'],2,'Se sijaitsee Suomen etelärannikolla.'],
+['Mikä on maailman suurin valtameri?',['Atlantti','Tyynimeri','Intian valtameri','Jäämeri'],1,'Se sijaitsee Aasian ja Amerikan välissä.'],
+['Mikä ilmansuunta on vastapäätä pohjoista?',['Itä','Länsi','Etelä','Koillinen'],2,'Kompassissa se on alhaalla.'],
+['Millä mantereella Suomi sijaitsee?',['Aasia','Eurooppa','Afrikka','Pohjois-Amerikka'],1,'Suomi kuuluu Pohjois-Eurooppaan.'],
+['Mikä on kartan mittakaavan tarkoitus?',['Kertoa kartan värit','Kuvata etäisyyksien suhdetta todellisuuteen','Näyttää sää','Kertoa väestö'],1,'Se kertoo, kuinka paljon todellisuutta on pienennetty.']],
+medium:[
+['Mikä ilmastovyöhyke kattaa suuren osan Suomesta?',['Trooppinen','Subarktinen ja lauhkea','Aavikko','Päiväntasaajan'],1,'Suomessa on pitkä talvi ja viileähkö kesä.'],
+['Mikä on vuorovesien tärkein aiheuttaja?',['Tuuli','Kuun vetovoima','Maanjäristykset','Pilvet'],1,'Myös Aurinko vaikuttaa vuorovesiin.'],
+['Mikä seuraavista on uusiutuva energianlähde?',['Kivihiili','Öljy','Tuulivoima','Maakaasu'],2,'Tuuli uusiutuu luonnollisesti.'],
+['Mikä on väestötiheys?',['Syntyneiden määrä','Asukkaiden määrä pinta-alaa kohti','Maan korkeus','Kaupungin pinta-ala'],1,'Se ilmoitetaan usein asukkaina neliökilometrillä.'],
+['Mitä eroosio tarkoittaa?',['Kallion ja maan kulumista','Veden jäätymistä','Kasvien yhteyttämistä','Ilman lämpenemistä'],0,'Vesi, tuuli ja jää voivat kuluttaa maanpintaa.']],
+hard:[
+['Mikä on Coriolis-ilmiön vaikutus?',['Se ohjaa liikkuvia ilmamassoja ja virtauksia','Se pysäyttää tuulet','Se aiheuttaa vuorovedet','Se muuttaa vuoret tasaisiksi'],0,'Maan pyöriminen vaikuttaa liikkeen suuntaan.'],
+['Mitä tarkoittaa demografinen huoltosuhde?',['Työllisten suhdetta työttömiin','Lasten ja eläkeikäisten suhdetta työikäisiin','Kaupunkien määrää','Syntyvyyttä yksin'],1,'Se kuvaa väestön ikärakenteen vaikutusta.'],
+['Mikä on subduktio?',['Laattojen erkaneminen','Yhden litosfäärilaatan painuminen toisen alle','Jäätikön sulaminen','Joen tulviminen'],1,'Se tapahtuu laattojen törmäysvyöhykkeellä.'],
+['Mitä bruttokansantuote asukasta kohti kuvaa?',['Valtion pinta-alaa','Tuotannon arvoa asukasta kohti','Väkilukua','Vientituotteiden määrää yksin'],1,'Se on yksi talouden keskimääräisen koon mittari.'],
+['Mikä on monsuuni?',['Vuorokauden tuuli','Vuodenaikojen mukaan vaihtuva tuulijärjestelmä','Merivirta','Hiekkamyrsky'],1,'Se liittyy mantereiden ja merien erilaiseen lämpenemiseen.']]
+},
+history:{
+easy:[
+['Minä vuonna Suomi itsenäistyi?',['1905','1917','1939','1945'],1,'Itsenäisyysjulistus annettiin joulukuussa.'],
+['Missä muinaisessa maassa rakennettiin pyramideja?',['Antiikin Kreikassa','Muinaisessa Egyptissä','Roomassa','Viikinkien mailla'],1,'Niitä rakennettiin faaraoiden hautapaikoiksi.'],
+['Mikä oli keskiajan tunnettu kauppareitti Aasian ja Euroopan välillä?',['Silkkitie','Panaman kanava','Lentoreitti','Rooman moottoritie'],0,'Sen kautta kulki silkkiä ja muita arvotavaroita.'],
+['Mikä oli Suomen rahayksikkö ennen euroa?',['Kruunu','Markka','Rupla','Punta'],1,'Euro otettiin käyttöön 2002 käteisrahana.'],
+['Ketkä olivat viikingit?',['Pohjoismaisia merenkulkijoita','Roomalaisia sotilaita','Egyptin pappeja','Kiinan keisareita'],0,'He liikkuivat ja kävivät kauppaa meritse.']],
+medium:[
+['Mikä tapahtuma alkoi vuonna 1789?',['Ranskan vallankumous','Ensimmäinen maailmansota','Teollinen vallankumous Suomessa','Suomen sisällissota'],0,'Tapahtuma muutti Ranskan yhteiskuntaa ja politiikkaa.'],
+['Milloin toinen maailmansota päättyi Euroopassa?',['1918','1939','1945','1952'],2,'Saksan antautuminen tapahtui toukokuussa.'],
+['Mikä oli Suomen talvisodan ajankohta?',['1918–1919','1939–1940','1941–1944','1950–1951'],1,'Sota alkoi marraskuussa 1939.'],
+['Mikä keksintö vauhditti teollistumista 1700-luvulla?',['Höyrykone','Älypuhelin','Radio','Internet'],0,'Se mahdollisti koneiden ja tehtaiden uudenlaisen käytön.'],
+['Mikä oli antiikin Rooman hallintomuoto ennen keisariaikaa?',['Tasavalta','Feodalismi','Demokratia nykyisessä muodossa','Sääty-yhteiskunta'],0,'Valtaa käyttivät muun muassa senaatti ja kansankokoukset.']],
+hard:[
+['Mikä rauhansopimus päätti Suomen ja Neuvostoliiton välisen jatkosodan?',['Tarton rauha','Moskovan välirauhansopimus','Versailles’n rauha','Pariisin rauha 1919'],1,'Se solmittiin syyskuussa 1944.'],
+['Mikä oli valistuksen keskeinen aate?',['Järjen ja tiedon korostaminen','Perinnöllisen kuninkuuden vahvistaminen','Tieteellisen tutkimuksen kieltäminen','Kaupan lopettaminen'],0,'Valistus korosti järkeä, koulutusta ja kriittistä ajattelua.'],
+['Mikä oli Bretton Woods -järjestelmän tavoite?',['Sopia sodan rajoista','Luoda kansainvälisen talouden rahajärjestelmän pelisääntöjä','Perustaa YK','Yhdistää Euroopan armeijat'],1,'Järjestelmä luotiin toisen maailmansodan loppuvaiheessa.'],
+['Mitä tarkoittaa kylmä sota?',['Suoraa sotaa arktisella alueella','Suurvaltojen poliittista ja ideologista vastakkainasettelua','Yksittäistä taistelua','Maailmansotaa 1800-luvulla'],1,'Yhdysvallat ja Neuvostoliitto kilpailivat ilman suoraa suursotaa toisiaan vastaan.'],
+['Mikä asiakirja rajoitti kuninkaan valtaa Englannissa vuonna 1215?',['Magna Carta','Bill of Rights 1689','Napoleonin laki','Yhdysvaltain perustuslaki'],0,'Se on merkittävä keskiaikainen asiakirja vallan rajoittamisesta.']]
+},
+english:{
+easy:[
+['Mitä tarkoittaa “apple”?',['Omena','Appelsiini','Päärynä','Banaani'],0,'Se on hedelmä.'],
+['Valitse käännös: “Minä olen iloinen.”',['I am tired.','I am happy.','I am hungry.','I am late.'],1,'Happy tarkoittaa iloista.'],
+['Mikä on sanan “book” monikko?',['Bookes','Books','Bookies','Book'],1,'Tavallinen monikko muodostetaan lisäämällä -s.'],
+['Mitä “yesterday” tarkoittaa?',['Huomenna','Tänään','Eilen','Nyt'],2,'Se viittaa edelliseen päivään.'],
+['Täydennä: They ___ friends.',['is','am','are','be'],2,'They-pronominin kanssa käytetään are.']],
+medium:[
+['Täydennä: She ___ to school every day.',['go','goes','going','gone'],1,'He/she/it-muodossa preesensverbi saa usein -s.'],
+['Mikä on “although” suomeksi?',['Koska','Vaikka','Siksi','Ennen'],1,'Sana ilmaisee vastakohtaa tai myönnytystä.'],
+['Valitse mennyt aikamuoto: “I ___ a film yesterday.”',['watch','watched','watching','watches'],1,'Yesterday kertoo menneestä ajasta.'],
+['Mikä on sanan “generous” merkitys?',['Itsekäs','Antelias','Vihainen','Väsynyt'],1,'Generous ihminen antaa mielellään muille.'],
+['Valitse oikein: “There ___ many people here.”',['is','are','am','be'],1,'Many people on monikko.']],
+hard:[
+['Valitse oikein: “If I ___ more time, I would learn Japanese.”',['have','had','will have','having'],1,'Kyseessä on second conditional.'],
+['Mitä “nevertheless” tarkoittaa?',['Siitä huolimatta','Sen vuoksi','Esimerkiksi','Samaan aikaan'],0,'Se aloittaa usein vastakkaisen huomion.'],
+['Valitse passiivi: “The letter ___ yesterday.”',['sent','was sent','is sending','has send'],1,'Mennyt passiivi: was/were + past participle.'],
+['Mikä on “to underestimate” suomeksi?',['Yliarvioida','Aliarvioida','Vertailla','Ennustaa'],1,'Arvioida jokin todellista pienemmäksi.'],
+['Täydennä: “By the time we arrived, the train ___.”',['leaves','has left','had left','is leaving'],2,'Aiempi mennyt tapahtuma: past perfect.']]
+},
+logic:{
+easy:[
+['Mikä luku jatkaa sarjaa? 2, 4, 6, 8, …',['9','10','11','12'],1,'Lisää aina kaksi.'],
+['Mikä ei kuulu joukkoon?',['Kolmio','Neliö','Ympyrä','Omena'],3,'Kolme vaihtoehtoa ovat geometrisia kuvioita.'],
+['A, C, E, G, … Mikä tulee seuraavaksi?',['H','I','J','K'],1,'Kirjainten välistä hypätään yksi.'],
+['Mikä luku puuttuu? 5, 10, 15, __, 25',['18','19','20','21'],2,'Sarja kasvaa viidellä.'],
+['Jos kaikki zubit ovat vihreitä ja tämä on zubi, minkä värinen se on?',['Sininen','Vihreä','Punainen','Ei voi päätellä'],1,'Käytä tehtävässä annettua sääntöä.']],
+medium:[
+['Mikä luku jatkaa sarjaa? 1, 1, 2, 3, 5, 8, …',['11','12','13','15'],2,'Seuraava luku on kahden edellisen summa.'],
+['Kolme konetta tekee kolme esinettä kolmessa minuutissa. Kuinka kauan 6 konetta tekee 6 esinettä?',['1,5 min','3 min','6 min','9 min'],1,'Jokainen kone tekee yhden esineen kolmessa minuutissa.'],
+['Mikä kirjain tulee? Z, X, V, T, …',['S','R','Q','P'],1,'Aakkosissa siirrytään kaksi askelta taaksepäin.'],
+['A on pidempi kuin B. B on pidempi kuin C. Kuka on lyhin?',['A','B','C','Ei voi tietää'],2,'Järjestä pituudet annettujen ehtojen mukaan.'],
+['Kello on 14.45. Kuinka pitkä aika on 15.20 asti?',['25 min','30 min','35 min','45 min'],2,'Laske ensin 15.00 asti ja sitten 20 minuuttia.']],
+hard:[
+['Viisi ihmistä kättelee jokaisen muun kanssa kerran. Montako kättelyä tulee?',['5','10','15','20'],1,'Laske parit: 5 × 4 / 2.'],
+['Sarja: 2, 6, 12, 20, 30, …',['36','40','42','44'],2,'Erot ovat 4, 6, 8 ja 10. Seuraava erotus on 12.'],
+['Jos eilen oli kaksi päivää ennen torstaita, mikä päivä on tänään?',['Tiistai','Keskiviikko','Torstai','Perjantai'],1,'Kaksi päivää ennen torstaita on tiistai, eli eilen oli tiistai.'],
+['Neljä laatikkoa: yksi sisältää palkinnon. Vihje: palkinto ei ole laatikossa 1 tai 4, ja se on parittomassa laatikossa. Mikä laatikko?',['1','2','3','4'],2,'Ainoa pariton vaihtoehto jäljelle jäävistä on 3.'],
+['Jos kaikki A:t ovat B:itä ja yksikään B ei ole C, voiko A olla C?',['Kyllä aina','Ei','Vain joskus','Tietoa ei ole tarpeeksi'],1,'A kuuluu B-ryhmään, jolla ei ole yhteisiä jäseniä C:n kanssa.']]
+}
+};
+let stats={points:0,solved:0,correct:0,streak:0,daily:0,day:new Date().toLocaleDateString('en-CA')};
+try{const old=JSON.parse(localStorage.getItem('villeutu2-progress')||'null');if(old)stats={...stats,...old}}catch(e){}
+const labels={easy:'Helppo',medium:'Keskitaso',hard:'Vaikea'};let difficulty='easy',subject='math',questions=[],index=0,locked=false,roundCorrect=0;
+function renderSubjects(){document.getElementById('subjects').innerHTML=subjects.map(s=>'<button class="subject" onclick="start(\''+s.id+'\')"><span class="emoji">'+s.emoji+'</span><h4>'+s.name+'</h4><p>'+s.desc+'</p><small>10 tehtävää · '+labels[difficulty]+' →</small></button>').join('')}
+function setDifficulty(d,el){difficulty=d;document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));el.classList.add('active');renderSubjects()}
+function save(){const today=new Date().toLocaleDateString('en-CA');if(stats.day!==today){stats.day=today;stats.daily=0}try{localStorage.setItem('villeutu2-progress',JSON.stringify(stats))}catch(e){}updateStats()}
+function updateStats(){const level=Math.floor(stats.points/100)+1;document.getElementById('topPoints').textContent=stats.points;document.getElementById('topStreak').textContent=stats.streak;document.getElementById('topLevel').textContent=level;document.getElementById('level').textContent=level;document.getElementById('levelProgress').textContent=stats.points%100;document.getElementById('levelBar').style.width=(stats.points%100)+'%';document.getElementById('solved').textContent=stats.solved;document.getElementById('correct').textContent=stats.correct;document.getElementById('accuracy').textContent=(stats.solved?Math.round(stats.correct/stats.solved*100):0)+' %';document.getElementById('daily').textContent=Math.min(stats.daily,10)+' / 10';document.getElementById('dailyBar').style.width=Math.min(stats.daily*10,100)+'%'}
+function shuffle(a){return [...a].sort(()=>Math.random()-.5)}
+function start(id){subject=id;questions=shuffle(bank[id][difficulty]).slice(0,5);index=0;roundCorrect=0;document.getElementById('home').classList.remove('active');document.getElementById('gameScreen').classList.add('active');const s=subjects.find(x=>x.id===id);document.getElementById('subjectName').textContent=s.name.toUpperCase()+' · '+labels[difficulty].toUpperCase();document.getElementById('roundName').textContent='Harjoituskierros';document.getElementById('next').textContent='Seuraava tehtävä →';document.getElementById('next').onclick=next;renderQuestion();window.scrollTo({top:0,behavior:'smooth'})}
+function renderQuestion(){locked=false;const q=questions[index];document.getElementById('count').textContent='Tehtävä '+(index+1)+' / '+questions.length;document.getElementById('roundBar').style.width=(index/questions.length*100)+'%';document.getElementById('question').textContent=q[0];document.getElementById('feedback').textContent='';document.getElementById('feedback').className='feedback';document.getElementById('hint').textContent='Valitse oikea vastaus.';document.getElementById('next').classList.add('hidden');document.getElementById('answers').innerHTML=q[1].map((a,i)=>'<button class="answer" onclick="check('+i+',this)">'+String.fromCharCode(65+i)+'. '+a+'</button>').join('');document.getElementById('gamePoints').textContent=stats.points;document.getElementById('streak').textContent='🔥 Putki '+stats.streak}
+function check(choice,button){if(locked)return;locked=true;const q=questions[index],correct=choice===q[2],buttons=[...document.querySelectorAll('.answer')];buttons.forEach((b,i)=>{b.disabled=true;if(i===q[2])b.classList.add('correct')});const fb=document.getElementById('feedback');stats.solved++;stats.daily++;if(correct){stats.correct++;stats.points+=difficulty==='easy'?10:difficulty==='medium'?15:20;stats.streak++;roundCorrect++;fb.textContent='Oikein! Hyvin tehty. +'+(difficulty==='easy'?10:difficulty==='medium'?15:20)+' pistettä ⭐';fb.classList.add('good');toast('Oikein! ⭐')}else{stats.streak=0;button.classList.add('wrong');fb.textContent='Väärin. Ei haittaa – opitaan tästä!';fb.classList.add('bad');document.getElementById('hint').textContent='💡 Vihje: '+q[3]}document.getElementById('next').classList.remove('hidden');document.getElementById('gamePoints').textContent=stats.points;document.getElementById('streak').textContent='🔥 Putki '+stats.streak;save()}
+function next(){index++;if(index>=questions.length){finish();return}renderQuestion()}
+function finish(){document.getElementById('question').textContent='Kierros suoritettu! 🎉';document.getElementById('answers').innerHTML='';document.getElementById('feedback').textContent='Sait '+roundCorrect+' / '+questions.length+' oikein. Hienoa harjoittelua!';document.getElementById('feedback').className='feedback good';document.getElementById('hint').textContent='Voit pelata saman aiheen uudelleen tai valita uuden oppiaineen.';document.getElementById('next').textContent='Pelaa uudelleen ↻';document.getElementById('next').onclick=()=>start(subject);document.getElementById('next').classList.remove('hidden');document.getElementById('roundBar').style.width='100%'}
+function home(){document.getElementById('gameScreen').classList.remove('active');document.getElementById('home').classList.add('active');document.getElementById('next').onclick=next;document.getElementById('next').textContent='Seuraava tehtävä →';updateStats();window.scrollTo({top:0,behavior:'smooth'})}
+function toast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),1100)}
+renderSubjects();save();
+</script></body></html>
