@@ -68,6 +68,73 @@
 @media(max-width:520px){
  #home.active #subjects.subjects{height:55vh !important;max-height:55vh !important;min-height:240px !important}
 }
+
+/* Neon-uudistus: yhtenäinen tumma, violetti oppimisympäristö */
+:root{color-scheme:dark;--bg:#090817;--panel:#15132a;--line:#343052;--text:#f3efff;--muted:#aaa4c5;--blue:#9b6cff;--blue2:#7544d8;--pale:#211b3d;--mint:#38e6d0;--pink:#ff65b7;--gold:#ffd36e}
+body{background:radial-gradient(ellipse at 12% 0%,#30205a 0,transparent 38%),radial-gradient(ellipse at 90% 20%,#172b52 0,transparent 32%),#090817;color:var(--text)}
+.wrap{max-width:1500px}
+.dash-top{background:#100e20;border:1px solid #30284d;border-radius:0 0 18px 18px;box-shadow:0 8px 35px #0008}
+.mini-logo{background:linear-gradient(135deg,#a46cff,#38e6d0);box-shadow:0 0 24px #9865ff66}
+.course-select{background:linear-gradient(110deg,#7444d5,#a45cff);border-radius:12px;box-shadow:0 0 22px #8d5cff44}
+.dashboard{gap:18px}
+.dash-panel,.panel,.hero-side,.subject,.game-card{background:linear-gradient(145deg,#19162f,#111023);border:1px solid #373052;border-radius:18px;box-shadow:0 12px 36px #0005}
+.dash-panel h2{color:#c6aaff;border-color:#332b4b}
+.lesson-row,.course-option{background:#151329;color:#eee9ff;border-color:#302a48}
+.lesson-row:hover,.course-option:hover{background:#25203e}
+.lesson-row.done{background:linear-gradient(90deg,#17463f 72%,#151329 72%)}
+.course-intro{background:linear-gradient(120deg,#251a43,#152c3d);border:1px solid #4a3970;border-radius:16px}
+.course-intro h3,.course-unit .unit-info b{color:#f5efff}
+.course-intro p,.course-unit .unit-info small{color:#b9b0d2}
+.course-progress,.course-unit{background:#141228;border-color:#373052;border-radius:14px}
+.unit-number{background:#30224e;color:#d6bcff}
+.unit-start{background:#332151;color:#e5d4ff;border:1px solid #654c91;border-radius:10px}
+.achievement{color:#8d86a8;border-color:#302a48}
+.achievement.unlocked{color:#e7dcff}
+.achievement-icon{background:#27213d}
+.achievement.unlocked .achievement-icon{background:#16433f}
+.activity-summary strong{color:#c4a4ff}
+.course-modal{background:#151329;border-color:#51416f;border-radius:16px}
+.modal-head{background:linear-gradient(100deg,#6e42c6,#9a5ce2)}
+.modal-tabs{border-color:#61458d}.modal-tabs button{background:#17142b;color:#cfc5e8}.modal-tabs button.active{background:#8655d8}
+.hero{gap:18px}
+.hero-main{background:linear-gradient(120deg,#49258a,#7539bc 55%,#174c68);border:1px solid #9568d4;border-radius:22px;box-shadow:0 15px 50px #6e39b944;position:relative;overflow:hidden}
+.hero-main:after{content:"✦  ✧  ✦";position:absolute;right:25px;bottom:12px;font-size:50px;color:#ffffff18;letter-spacing:12px}
+.hero-side{border-color:#42375f}
+.hero h2 span{color:#69f1df}
+.hero-main p{color:#e7dcff}
+.eyebrow{color:#c9aaff}.hero-main .eyebrow{color:#a6fff0}
+.btn{border-radius:12px;transition:transform .18s,filter .18s}
+.btn:hover,.unit-start:hover{transform:translateY(-2px);filter:brightness(1.12)}
+.primary{background:linear-gradient(110deg,#8c54ec,#b15bdf);color:white;box-shadow:0 5px 20px #8b4be955}
+.hero-main .primary{background:#f5edff;color:#522b8e}
+.secondary{background:#211b38;color:#e7dcff;border:1px solid #51416f}
+.filters .filter{background:#17142a;color:#c9c1df;border-color:#393251;border-radius:999px}
+.filters .filter.active{background:linear-gradient(100deg,#7545d1,#a75bda);border-color:#a979ef;color:white}
+.subject{color:#f2edff;min-height:155px;position:relative;overflow:hidden}
+.subject:after{content:"";position:absolute;inset:auto -35px -55px auto;width:120px;height:120px;border-radius:50%;background:#9c63ff16;filter:blur(4px)}
+.subject:hover{border-color:#a16bff;box-shadow:0 0 28px #8954e633;transform:translateY(-4px)}
+.subject p,.muted{color:#aaa4c5}
+.subject small{color:#65e8d8}
+.subject .emoji{filter:drop-shadow(0 0 9px #a56dff88)}
+.section-head h3{color:#f4efff}
+.section-head p{color:#aaa4c5}
+.stat{color:#b9b2d0;border-color:#302a48}
+.progress{background:#302a48}.progress span{background:linear-gradient(90deg,#46e6d1,#9d6bff,#f36fc0);box-shadow:0 0 12px #9c6cff77}
+.game-head{background:linear-gradient(110deg,#5a2c9e,#8a4bc7);border:1px solid #a16ce0;border-radius:16px;box-shadow:0 8px 30px #7c45c944}
+.game-card{border-radius:20px}
+.question{color:#f4efff}
+.answer{background:#1a1730;color:#eee9ff;border-color:#3d355b;border-radius:13px}
+.answer:hover{background:#282044;border-color:#a174f3}
+.answer.correct{background:#123d37;border-color:#35c9a8;color:#a6ffe8}
+.answer.wrong{background:#481e39;border-color:#d75a9a;color:#ffd1e8}
+.back{color:#c4a2ff}
+.notice{color:#81799e}
+.toast{background:#17463f;color:#b5ffea;border:1px solid #36c6a5}
+#subjects.subjects{scrollbar-color:#8c62d2 #1a1730}
+#subjects.subjects::-webkit-scrollbar-track{background:#1a1730}
+#subjects.subjects::-webkit-scrollbar-thumb{background:#8055c7;border-color:#1a1730}
+@media(max-width:850px){.dashboard{grid-template-columns:1fr}.right-stack{grid-template-rows:auto auto}}
+
 </style></head>
 <body><div class="wrap">
 <header class="dash-top"><div class="mini-logo">🌲</div><button class="course-select" onclick="toggleCourses()"><span id="courseTitle">Valitse oppiaine</span><span>⌄</span></button></header>
@@ -113,7 +180,7 @@ const subjects=[
 ,{id:'ethics',name:'Elämänkatsomustieto',emoji:'🤝',desc:'Etiikka, arvot ja yhteinen elämä.'}
 ,{id:'social',name:'Yhteiskuntaoppi',emoji:'🏛️',desc:'Demokratia, talous ja kansalaisen oikeudet.'}
 ,{id:'art',name:'Kuvataide',emoji:'🎨',desc:'Värit, sommittelu ja visuaalinen ilmaisu.'}
-,{id:'music',name:'Musiikki',emoji:'🎵',desc:'Rytmi, soittimet ja musiikin perusteet.'}
+,{id:'music',name:'Musiikki',emoji:'🎵',desc:'Tunnista 40 tunnettua kappaletta niiden nimien ja esittäjien perusteella.'}
 ,{id:'pe',name:'Liikunta',emoji:'🏃',desc:'Liikkuminen, pelit ja kehon toimintakyky.'}
 ,{id:'crafts',name:'Käsityö',emoji:'🧵',desc:'Materiaalit, työvälineet ja suunnittelu.'}
 ,{id:'home',name:'Kotitalous',emoji:'🍎',desc:'Ruoanvalmistus, ravitsemus ja arjen taidot.'}
@@ -354,19 +421,7 @@ hard:[
 ['Mikä on chiaroscuro?',['Valon ja varjon voimakas vastakkainasettelu','Pistekirjoitus','Värien haalistaminen','Perspektiivin mittaaminen'],0,'Tekniikalla korostetaan muotoa ja tilan tuntua.'],
 ['Mitä abstrakti taide usein tekee?',['Kuvaa aina tarkasti todellisuutta','Käyttää muotoja ja värejä ilman esittävää aihetta','Sisältää vain tekstiä','Jäljittelee valokuvaa'],1,'Abstrakti teos ei välttämättä esitä tunnistettavia kohteita.'],
 ['Mikä on typografia?',['Kirjainten ja tekstin visuaalista suunnittelua','Veistoksen valmistusta','Valokuvan valotusta','Värien kemiaa'],0,'Typografia vaikuttaa tekstin luettavuuteen ja ilmeeseen.']]},
-music:{easy:[
-['Kuinka monta iskua on tavallisessa 4/4-tahtilajissa tahdissa?',['2','3','4','8'],2,'Yläosan nelonen kertoo neljästä iskusta.'],
-['Mikä soitin kuuluu jousisoittimiin?',['Huilu','Viulu','Rumpu','Trumpetti'],1,'Sitä soitetaan jousella.'],
-['Mikä on tempo?',['Musiikin nopeus','Sävelkorkeus','Soittimen koko','Äänen väri'],0,'Tempo kertoo, kuinka nopeasti musiikki etenee.']],
-medium:[
-['Mitä tarkoittaa forte (f) nuoteissa?',['Hiljaa','Voimakkaasti','Nopeasti','Hitaasti'],1,'Forte on dynamiikkamerkintä.'],
-['Mikä on melodia?',['Sävelten muodostama tunnistettava sävelkulku','Vain rumpukomppi','Äänen voimakkuus','Tauko musiikissa'],0,'Melodia on usein kappaleen laulettava tai soitettava päälinja.'],
-['Mikä soitin on puupuhallin?',['Saksofoni','Pasuuna','Käyrätorvi','Tuuba'],0,'Saksofoni luokitellaan puupuhaltimiin.']],
-hard:[
-['Mikä intervalli on kahden peräkkäisen sävelen välinen etäisyys?',['Oktaavi','Intervalli','Tahtilaji','Dynamiikka'],1,'Intervalli kuvaa sävelten korkeuseroa.'],
-['Mitä synkooppi tarkoittaa?',['Painon siirtymistä tahdin heikolle iskulle','Sävelen pitkittämistä aina','Musiikin hidastamista','Tauon poistamista'],0,'Synkoopissa rytminen painotus poikkeaa tavallisesta.'],
-['Mikä on duurikolmisoinnun rakenne?',['Pieni terssi + suuri terssi','Suuri terssi + pieni terssi','Kaksi kvinttiä','Kolme samaa säveltä'],1,'Duurikolmisoinnussa alhaalta lukien on suuri ja pieni terssi.']]},
-pe:{easy:[
+music:{easy:[['Kuka esittää kappaleen “Blinding Lights”?',["The Weeknd","Imagine Dragons","Ed Sheeran","Coldplay"],0,'Tunnista kappaleen esittäjä.'],['Kuka esittää kappaleen “Shape of You”?',["Billie Eilish","Tones and I","Ed Sheeran","Miley Cyrus"],2,'Tunnista kappaleen esittäjä.'],['Kuka esittää kappaleen “Believer”?',["The White Stripes","Harry Styles","Nirvana","Imagine Dragons"],3,'Tunnista kappaleen esittäjä.'],['Kuka esittää kappaleen “Viva La Vida”?',["Lewis Capaldi","Coldplay","Adele","Michael Jackson"],1,'Tunnista kappaleen esittäjä.'],['Kuka esittää kappaleen “bad guy”?',["OneRepublic","Eminem","Billie Eilish","Linkin Park"],2,'Tunnista kappaleen esittäjä.'],['Kuka esittää kappaleen “Flowers”?',["Avicii","Miley Cyrus","Luis Fonsi","Dua Lipa"],1,'Tunnista kappaleen esittäjä.'],['Kuka esittää kappaleen “Dance Monkey”?',["Alan Walker","David Guetta ft. Sia","Tones and I","Marshmello"],2,'Tunnista kappaleen esittäjä.'],['Kuka esittää kappaleen “As It Was”?',["Mark Ronson ft. Bruno Mars","Pharrell Williams","Taylor Swift","Harry Styles"],3,'Tunnista kappaleen esittäjä.'],['Kuka esittää kappaleen “Seven Nation Army”?',["Robin Packalen","The White Stripes","JVG","Sabrina Carpenter"],1,'Tunnista kappaleen esittäjä.'],['Kuka esittää kappaleen “Smells Like Teen Spirit”?',["Nirvana"],0,'Tunnista kappaleen esittäjä.'],['Kuka esittää kappaleen “Billie Jean”?',["Michael Jackson"],0,'Tunnista kappaleen esittäjä.'],['Kuka esittää kappaleen “Rolling in the Deep”?',["Adele"],0,'Tunnista kappaleen esittäjä.'],['Kuka esittää kappaleen “Someone You Loved”?',["Ed Sheeran","The Weeknd","Imagine Dragons","Lewis Capaldi"],3,'Tunnista kappaleen esittäjä.'],['Kuka esittää kappaleen “Perfect”?',["Billie Eilish","Tones and I","Ed Sheeran","Miley Cyrus"],2,'Tunnista kappaleen esittäjä.']],medium:[['Kuka esittää kappaleen “Counting Stars”?',["Harry Styles","Tones and I","The White Stripes","OneRepublic"],3,'Tunnista kappaleen esittäjä.'],['Kuka esittää kappaleen “Thunder”?',["Lewis Capaldi","Imagine Dragons","Adele","Michael Jackson"],1,'Tunnista kappaleen esittäjä.'],['Kuka esittää kappaleen “Radioactive”?',["OneRepublic","Eminem","Imagine Dragons","Linkin Park"],2,'Tunnista kappaleen esittäjä.'],['Kuka esittää kappaleen “Demons”?',["Imagine Dragons","Luis Fonsi","Dua Lipa","Avicii"],0,'Tunnista kappaleen esittäjä.'],['Kuka esittää kappaleen “Numb”?',["Alan Walker","David Guetta ft. Sia","Linkin Park","Marshmello"],2,'Tunnista kappaleen esittäjä.'],['Kuka esittää kappaleen “In the End”?',["Mark Ronson ft. Bruno Mars","Pharrell Williams","Taylor Swift","Linkin Park"],3,'Tunnista kappaleen esittäjä.'],['Kuka esittää kappaleen “Lose Yourself”?',["Robin Packalen","Eminem","JVG","Sabrina Carpenter"],1,'Tunnista kappaleen esittäjä.'],['Kuka esittää kappaleen “Without Me”?',["Eminem"],0,'Tunnista kappaleen esittäjä.'],['Kuka esittää kappaleen “Starboy”?',["The Weeknd"],0,'Tunnista kappaleen esittäjä.'],['Kuka esittää kappaleen “Save Your Tears”?',["The Weeknd"],0,'Tunnista kappaleen esittäjä.'],['Kuka esittää kappaleen “Levitating”?',["Ed Sheeran","The Weeknd","Imagine Dragons","Dua Lipa"],3,'Tunnista kappaleen esittäjä.'],['Kuka esittää kappaleen “Despacito”?',["Miley Cyrus","Luis Fonsi","Billie Eilish","Coldplay"],1,'Tunnista kappaleen esittäjä.'],['Kuka esittää kappaleen “Wake Me Up”?',["Harry Styles","Tones and I","The White Stripes","Avicii"],3,'Tunnista kappaleen esittäjä.']],hard:[['Kuka esittää kappaleen “Faded”?',["Adele","Alan Walker","Michael Jackson","Nirvana"],1,'Tunnista kappaleen esittäjä.'],['Kuka esittää kappaleen “Alone”?',["Lewis Capaldi","Linkin Park","Marshmello","OneRepublic"],2,'Tunnista kappaleen esittäjä.'],['Kuka esittää kappaleen “Titanium”?',["Dua Lipa","Eminem","Luis Fonsi","David Guetta ft. Sia"],3,'Tunnista kappaleen esittäjä.'],['Kuka esittää kappaleen “Happy”?',["Avicii","Marshmello","Pharrell Williams","Alan Walker"],2,'Tunnista kappaleen esittäjä.'],['Kuka esittää kappaleen “Uptown Funk”?',["Pharrell Williams","David Guetta ft. Sia","Taylor Swift","Mark Ronson ft. Bruno Mars"],3,'Tunnista kappaleen esittäjä.'],['Kuka esittää kappaleen “Shake It Off”?',["Robin Packalen","Taylor Swift","JVG","Sabrina Carpenter"],1,'Tunnista kappaleen esittäjä.'],['Kuka esittää kappaleen “Anti-Hero”?',["Taylor Swift"],0,'Tunnista kappaleen esittäjä.'],['Kuka esittää kappaleen “Cruel Summer”?',["Taylor Swift"],0,'Tunnista kappaleen esittäjä.'],['Kuka esittää kappaleen “Espresso”?',["Sabrina Carpenter"],0,'Tunnista kappaleen esittäjä.'],['Kuka esittää kappaleen “Birds of a Feather”?',["Ed Sheeran","The Weeknd","Imagine Dragons","Billie Eilish"],3,'Tunnista kappaleen esittäjä.'],['Kuka esittää kappaleen “Frisbee”?',["Miley Cyrus","JVG","Billie Eilish","Coldplay"],1,'Tunnista kappaleen esittäjä.'],['Kuka esittää kappaleen “Kesärenkaat”?',["Tones and I","The White Stripes","Robin Packalen","Harry Styles"],2,'Tunnista kappaleen esittäjä.'],['Kuka esittää kappaleen “Ikuinen vappu”?',["Adele","JVG","Michael Jackson","Nirvana"],1,'Tunnista kappaleen esittäjä.']]},pe:{easy:[
 ['Miksi alkulämmittely tehdään ennen liikuntaa?',['Valmistellaan kehoa rasitukseen','Väsyttämään lihakset','Vähentämään nestettä','Korvaamaan loppuverryttely'],0,'Lämmittely nostaa kehon valmiutta liikkua.'],
 ['Mikä auttaa palautumisessa liikunnan jälkeen?',['Riittävä lepo ja monipuolinen ruoka','Unen välttäminen','Juomisen unohtaminen','Pelkkä paikallaan seisominen'],0,'Palautuminen tarvitsee lepoa ja energiaa.'],
 ['Mikä on kestävyyskunto?',['Kyky ylläpitää pitkäkestoista liikuntaa','Pelkkä liikkuvuus','Reaktionopeus vain','Tasapainon hallinta'],0,'Kestävyys liittyy hengitys- ja verenkiertoelimistön toimintaan.']],
