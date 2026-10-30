@@ -48,7 +48,27 @@
 @media(max-width:520px){
  #subjects.subjects{grid-template-columns:1fr;height:60vh !important;min-height:260px !important}
 }
-.course-intro{display:flex;align-items:center;gap:18px;padding:22px;background:linear-gradient(120deg,#edf6ff,#f4f8fc);border-radius:15px;margin:14px 18px}.course-symbol{width:64px;height:64px;flex-shrink:0;border-radius:17px;background:#fff;display:grid;place-items:center;font-size:32px;box-shadow:0 3px 14px #1d4d7512}.course-intro h3{margin:0 0 5px;font-size:21px;color:#173d60}.course-intro p{margin:0 0 7px;color:#60768a;font-size:13px}.course-intro small{color:#4382b5;font-size:11px}.course-progress{margin:8px 20px 20px;padding:15px 16px;border:1px solid #e3ebf2;border-radius:12px}.course-progress>div:first-child{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}.course-progress b{font-size:13px;color:#244765}.course-progress span{font-size:11px;color:#74869a}.course-progress-track{height:7px;background:#e8eff5;border-radius:8px;margin-top:11px;overflow:hidden}.course-progress-track i{display:block;height:100%;background:#48a1d8;border-radius:8px}.course-units{padding:0 18px 18px}.course-units>h3{font-size:15px;color:#244765;margin:0 0 10px}.course-unit{display:flex;align-items:center;gap:13px;padding:15px 13px;border:1px solid #e5edf4;border-radius:12px;margin:9px 0;background:#fff}.unit-number{width:34px;height:34px;border-radius:10px;background:#edf4fa;display:grid;place-items:center;font-weight:700;color:#3978aa;flex-shrink:0}.unit-info{flex:1;min-width:0}.unit-info b,.unit-info span,.unit-info small{display:block}.unit-info b{font-size:13px;color:#294b68}.unit-info span{font-size:11px;color:#4786b6;margin-top:3px}.unit-info small{font-size:11px;color:#8493a2;margin-top:4px}.unit-start{border:0;background:#eaf4fc;color:#2875b2;padding:10px 12px;border-radius:9px;font-weight:700;cursor:pointer;white-space:nowrap}@media(max-width:600px){.course-intro{margin:10px;padding:15px}.course-progress{margin:8px 12px 16px}.course-units{padding:0 10px 14px}.course-unit{align-items:flex-start;flex-wrap:wrap}.unit-start{margin-left:47px}}</style></head>
+.course-intro{display:flex;align-items:center;gap:18px;padding:22px;background:linear-gradient(120deg,#edf6ff,#f4f8fc);border-radius:15px;margin:14px 18px}.course-symbol{width:64px;height:64px;flex-shrink:0;border-radius:17px;background:#fff;display:grid;place-items:center;font-size:32px;box-shadow:0 3px 14px #1d4d7512}.course-intro h3{margin:0 0 5px;font-size:21px;color:#173d60}.course-intro p{margin:0 0 7px;color:#60768a;font-size:13px}.course-intro small{color:#4382b5;font-size:11px}.course-progress{margin:8px 20px 20px;padding:15px 16px;border:1px solid #e3ebf2;border-radius:12px}.course-progress>div:first-child{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}.course-progress b{font-size:13px;color:#244765}.course-progress span{font-size:11px;color:#74869a}.course-progress-track{height:7px;background:#e8eff5;border-radius:8px;margin-top:11px;overflow:hidden}.course-progress-track i{display:block;height:100%;background:#48a1d8;border-radius:8px}.course-units{padding:0 18px 18px}.course-units>h3{font-size:15px;color:#244765;margin:0 0 10px}.course-unit{display:flex;align-items:center;gap:13px;padding:15px 13px;border:1px solid #e5edf4;border-radius:12px;margin:9px 0;background:#fff}.unit-number{width:34px;height:34px;border-radius:10px;background:#edf4fa;display:grid;place-items:center;font-weight:700;color:#3978aa;flex-shrink:0}.unit-info{flex:1;min-width:0}.unit-info b,.unit-info span,.unit-info small{display:block}.unit-info b{font-size:13px;color:#294b68}.unit-info span{font-size:11px;color:#4786b6;margin-top:3px}.unit-info small{font-size:11px;color:#8493a2;margin-top:4px}.unit-start{border:0;background:#eaf4fc;color:#2875b2;padding:10px 12px;border-radius:9px;font-weight:700;cursor:pointer;white-space:nowrap}@media(max-width:600px){.course-intro{margin:10px;padding:15px}.course-progress{margin:8px 12px 16px}.course-units{padding:0 10px 14px}.course-unit{align-items:flex-start;flex-wrap:wrap}.unit-start{margin-left:47px}}
+/* Oppiaineiden listan sisäinen vieritys (ei kurssivalikon vieritys) */
+#home.active #subjects.subjects{
+ display:grid !important;
+ grid-auto-flow:row !important;
+ grid-auto-rows:min-content !important;
+ align-content:start !important;
+ height:60vh !important;
+ min-height:260px !important;
+ max-height:60vh !important;
+ overflow-y:scroll !important;
+ overflow-x:hidden !important;
+}
+#home.active #subjects.subjects>.subject{min-height:130px}
+@media(max-width:850px){
+ #home.active #subjects.subjects{height:55vh !important;max-height:55vh !important;min-height:240px !important}
+}
+@media(max-width:520px){
+ #home.active #subjects.subjects{height:55vh !important;max-height:55vh !important;min-height:240px !important}
+}
+</style></head>
 <body><div class="wrap">
 <header class="dash-top"><div class="mini-logo">🌲</div><button class="course-select" onclick="toggleCourses()"><span id="courseTitle">Valitse oppiaine</span><span>⌄</span></button></header>
 
