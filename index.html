@@ -152,11 +152,17 @@ body{background:radial-gradient(ellipse at 12% 0%,#30205a 0,transparent 38%),rad
 <section class="dash-panel" id="musicQuiz" style="margin-top:22px;padding:20px">
  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
   <div><div class="eyebrow">OISPAGAMES • LISÄOSA</div><h2 style="margin:3px 0">🎧 Musiikkitietäjä</h2><p class="muted" style="margin:0">Kuuntele kappale pelin sisällä ja arvaa esittäjä.</p></div>
-  <span class="pill">40 kappaletta</span>
+  <span class="pill" id="musicQuizTotal">82 kappaletta</span>
  </div>
  <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,.8fr);gap:18px;align-items:start;margin-top:16px">
   <div style="background:linear-gradient(130deg,#241a43,#123c48);border:1px solid #59417c;border-radius:16px;padding:18px">
-   <div class="muted" id="musicQuizCount">Kappale 1 / 40</div>
+   <div class="muted" id="musicQuizCount">Kappale 1 / 82</div>
+   <div class="music-difficulty" role="group" aria-label="Musiikin vaikeusaste" style="display:flex;gap:7px;flex-wrap:wrap;margin-top:10px">
+    <button type="button" class="btn secondary music-level active" data-level="all" onclick="setMusicQuizDifficulty('all')">Kaikki</button>
+    <button type="button" class="btn secondary music-level" data-level="easy" onclick="setMusicQuizDifficulty('easy')">🟢 Helppo · tunnetut</button>
+    <button type="button" class="btn secondary music-level" data-level="hard" onclick="setMusicQuizDifficulty('hard')">🔴 Vaikea · harvinaisemmat</button>
+   </div>
+   <p class="muted" id="musicDifficultyNote" style="font-size:12px;margin:7px 0 0">Valitse, kuinka tunnettuja kappaleita haluat arvata.</p>
    <div id="musicQuizPlayer" style="margin-top:12px;padding:20px;display:flex;align-items:center;justify-content:center;background:#100d1c;border-radius:12px;min-height:110px;position:relative">
     <button id="musicQuizPlay" class="btn primary" type="button" onclick="toggleMusicQuizAudio()" style="display:inline-flex!important;visibility:visible!important;opacity:1!important;position:relative;z-index:2;min-width:190px;min-height:48px;align-items:center;justify-content:center;cursor:pointer">▶ SOITA KAPPALE</button>
     <iframe id="musicQuizFrame" width="1" height="1" title="Musiikkitietäjän äänisoitin" allow="autoplay; encrypted-media" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;left:-9999px;border:0"></iframe>
@@ -639,6 +645,24 @@ function shuffleMusicQuizSongs(){
  musicQuizSongs.splice(0,musicQuizSongs.length,...soniqSongs,...nesuSongs);
 }
 shuffleMusicQuizSongs();
+const allMusicQuizSongs=[...musicQuizSongs];
+let musicQuizDifficulty='all';
+function setMusicQuizDifficulty(level){
+ musicQuizDifficulty=level;
+ const knownArtists=['Imagine Dragons','JVG','Robin','ibe','Cledos','Mikael Gabriel','Kygo, Imagine Dragons','Herba-X & Lakko'];
+ const filtered=level==='all'?[...allMusicQuizSongs]:allMusicQuizSongs.filter(song=>{
+  const isKnown=knownArtists.includes(song.artist);
+  return level==='easy'?isKnown:!isKnown;
+ });
+ musicQuizSongs.splice(0,musicQuizSongs.length,...filtered);
+ musicQuizCurrent=0;
+ document.querySelectorAll('.music-level').forEach(button=>button.classList.toggle('active',button.dataset.level===level));
+ const note=document.getElementById('musicDifficultyNote');
+ if(note)note.textContent=level==='easy'?'Helppo: tunnetumpia artisteja ja kappaleita.':level==='hard'?'Vaikea: harvinaisempia artisteja ja vähemmän tunnettuja kappaleita.':'Kaikki kappaleet mukana.';
+ const total=document.getElementById('musicQuizTotal');
+ if(total)total.textContent=musicQuizSongs.length+' kappaletta';
+ renderMusicQuiz();
+}
 let musicQuizCurrent=0,musicQuizAnswered=false,musicQuizIsPlaying=false;
 function stopMusicQuizAudio(){
  const frame=document.getElementById('musicQuizFrame');
