@@ -157,10 +157,11 @@ body{background:radial-gradient(ellipse at 12% 0%,#30205a 0,transparent 38%),rad
  <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,.8fr);gap:18px;align-items:start;margin-top:16px">
   <div style="background:linear-gradient(130deg,#241a43,#123c48);border:1px solid #59417c;border-radius:16px;padding:18px">
    <div class="muted" id="musicQuizCount">Kappale 1 / 40</div>
-   <div id="musicQuizPlayer" style="margin-top:12px;min-height:180px;display:flex;align-items:center;justify-content:center;background:#100d1c;border-radius:12px;overflow:hidden">
-    <iframe id="musicQuizFrame" width="100%" height="180" src="https://www.youtube-nocookie.com/embed/mMteeDSb2uI?controls=1&playsinline=1&rel=0" title="Musiikkitietäjän kappale" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="border:0;max-width:360px"></iframe>
+   <div id="musicQuizPlayer" style="margin-top:12px;padding:20px;display:flex;align-items:center;justify-content:center;background:#100d1c;border-radius:12px;min-height:110px">
+    <button id="musicQuizPlay" class="btn primary" type="button" onclick="toggleMusicQuizAudio()">▶ SOITA KAPPALE</button>
+    <iframe id="musicQuizFrame" width="1" height="1" title="Musiikkitietäjän äänisoitin" allow="autoplay; encrypted-media" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;left:-9999px;border:0"></iframe>
    </div>
-   <p id="musicQuizPlayerNote" class="muted" style="font-size:12px;margin:10px 0 0">Paina YouTube-soittimen Play-painiketta. Kappaleen nimeä ei näytetä ennen vastausta.</p>
+   <p id="musicQuizPlayerNote" class="muted" style="font-size:12px;margin:10px 0 0">Paina Soita kappale -painiketta. Kappaleen nimeä tai videota ei näytetä.</p>
   </div>
   <div>
    <div style="font-weight:800;margin-bottom:10px">Kuka esittää kappaleen?</div>
@@ -521,26 +522,40 @@ const musicQuizSongs=[
  {title:'Tarkenee',artist:'JVG'},{title:'Häissä',artist:'JVG'},{title:'Ikuinen vappu',artist:'JVG'},{title:'Amatimies',artist:'JVG'},{title:'Frisbee',artist:'JVG'},
  {title:'Frontside Ollie',artist:'Robin'},{title:'Puuttuva palanen',artist:'Robin'},{title:'Boom Kah',artist:'Robin'},{title:'Onnellinen',artist:'Robin'},{title:'Kesärenkaat',artist:'Robin'},{title:'Paperilennokki',artist:'Robin'}
 ];
-let musicQuizCurrent=0,musicQuizAnswered=false;
-const musicQuizVideoIds={'Bleeding Out':'mMteeDSb2uI'};
-function renderMusicQuiz(){
- const song=musicQuizSongs[musicQuizCurrent];musicQuizAnswered=false;
- document.getElementById('musicQuizCount').textContent='Kappale '+(musicQuizCurrent+1)+' / '+musicQuizSongs.length;
+let musicQuizCurrent=0,musicQuizAnswered=false,musicQuizIsPlaying=false;
+const musicQuizVideoIds={
+ 'Believer':'7wtfhZwyrcc','Demons':'mWRsgZuwf_8','Radioactive':'ktvTqknDobU','Thunder':'fKopy74weus','Natural':'0I647GU3Jsc','Bleeding Out':'QFKHScAStsU',
+ 'Ikuinen vappu':'hUnd1E2-un8','Frisbee':'vV1dJaup3So','Kesärenkaat':'8lmxQajVT_I'
+};
+function stopMusicQuizAudio(){
  const frame=document.getElementById('musicQuizFrame');
- const videoId=musicQuizVideoIds[song.title];
- if(videoId){
-  frame.src='https://www.youtube-nocookie.com/embed/'+videoId+'?controls=1&playsinline=1&rel=0';
-  frame.style.display='block';
-  document.getElementById('musicQuizPlayerNote').textContent='Paina YouTube-soittimen Play-painiketta. Kappaleen nimeä ei näytetä ennen vastausta.';
- }else{
-  frame.removeAttribute('src');
-  frame.style.display='none';
-  document.getElementById('musicQuizPlayerNote').textContent='Tämän kappaleen tarkistettua YouTube-upotuslinkkiä ei ole vielä lisätty.';
- }
+ if(frame)frame.src='about:blank';
+ musicQuizIsPlaying=false;
+ const play=document.getElementById('musicQuizPlay');
+ if(play)play.textContent='▶ SOITA KAPPALE';
+}
+function toggleMusicQuizAudio(){
+ if(musicQuizAnswered)return;
+ const song=musicQuizSongs[musicQuizCurrent],videoId=musicQuizVideoIds[song.title];
+ if(!videoId)return;
+ if(musicQuizIsPlaying){stopMusicQuizAudio();document.getElementById('musicQuizPlayerNote').textContent='Toisto pysäytetty. Voit kuunnella uudelleen.';return;}
+ const frame=document.getElementById('musicQuizFrame');
+ frame.src='https://www.youtube.com/embed/'+videoId+'?autoplay=1&playsinline=1&controls=0&enablejsapi=1&origin='+encodeURIComponent(window.location.origin);
+ musicQuizIsPlaying=true;
+ document.getElementById('musicQuizPlay').textContent='Ⅱ PYSÄYTÄ';
+ document.getElementById('musicQuizPlayerNote').textContent='Kappale soi pelin sisällä. Nimi ja artisti paljastuvat vasta vastauksen jälkeen.';
+}
+function renderMusicQuiz(){
+ const song=musicQuizSongs[musicQuizCurrent];musicQuizAnswered=false;stopMusicQuizAudio();
+ document.getElementById('musicQuizCount').textContent='Kappale '+(musicQuizCurrent+1)+' / '+musicQuizSongs.length;
+ const videoId=musicQuizVideoIds[song.title],play=document.getElementById('musicQuizPlay');
+ play.disabled=!videoId;
+ play.textContent='▶ SOITA KAPPALE';
+ document.getElementById('musicQuizPlayerNote').textContent=videoId?'Paina Soita kappale -painiketta. Kappaleen nimeä tai videota ei näytetä.':'Tälle kappaleelle ei ole vielä lisätty toimivaa soitinlinkkiä.';
  const artists=['Imagine Dragons','Eminem','Taylor Swift','The Weeknd','JVG','Robin'];
  const wrong=artists.filter(a=>a!==song.artist).sort(()=>Math.random()-.5).slice(0,3);
  const choices=[...wrong,song.artist].sort(()=>Math.random()-.5);
-  const answers=document.getElementById('musicQuizAnswers');
+ const answers=document.getElementById('musicQuizAnswers');
  answers.innerHTML=choices.map(a=>'<button class="btn secondary" data-artist="'+a+'">'+a+'</button>').join('');
  answers.querySelectorAll('button').forEach(button=>button.addEventListener('click',()=>answerMusicQuiz(button,button.dataset.artist)));
  document.getElementById('musicQuizFeedback').textContent='Valitse oikea vastaus.';
@@ -548,7 +563,7 @@ function renderMusicQuiz(){
  document.getElementById('musicQuizNext').textContent=musicQuizCurrent===musicQuizSongs.length-1?'Aloita alusta ↻':'Seuraava kappale →';
 }
 function answerMusicQuiz(button,artist){
- if(musicQuizAnswered)return;musicQuizAnswered=true;
+ if(musicQuizAnswered)return;musicQuizAnswered=true;stopMusicQuizAudio();
  const song=musicQuizSongs[musicQuizCurrent];
  document.querySelectorAll('#musicQuizAnswers button').forEach(b=>{b.disabled=true;if(b.textContent===song.artist){b.style.borderColor='#16a36a';b.style.background='#e8f8ef';b.style.color='#12633f'}});
  const feedback=document.getElementById('musicQuizFeedback');
