@@ -15,7 +15,7 @@
 @media(max-width:850px){.dashboard{grid-template-columns:1fr;min-height:0}.right-stack{grid-template-rows:auto auto}.dash-top{margin:-14px -14px 14px}.wrap{padding:14px}}@media(max-width:520px){.awards{gap:5px}.award{min-width:42px}.award .ico{width:42px;height:42px;font-size:24px}.dash-panel h2{padding:11px}.course-select{font-size:12px;padding:8px}.right-stack{gap:12px}}
 .achievement-list{padding:5px 17px 13px}.achievement{display:flex;align-items:center;gap:11px;padding:10px 0;border-bottom:1px solid #e7edf3;color:#7a8998}.achievement:last-child{border:0}.achievement.unlocked{color:#1a4d78}.achievement-icon{width:38px;height:38px;border-radius:11px;background:#edf2f7;display:grid;place-items:center;font-size:21px;flex-shrink:0;filter:grayscale(1);opacity:.65}.achievement.unlocked .achievement-icon{background:#e1f5e9;filter:none;opacity:1}.achievement-copy{flex:1;min-width:0}.achievement-copy b{display:block;font-size:13px}.achievement-copy small{display:block;color:#71849a;font-size:11px}.achievement>strong{font-size:12px;color:#16805a}.achievement-progress{display:block;height:4px;background:#e6edf3;border-radius:9px;margin-top:5px;overflow:hidden}.achievement-progress i{display:block;height:100%;background:#31aa79;border-radius:9px}.activity-summary{display:flex;gap:35px;padding:13px 22px 0}.activity-summary strong{display:block;font-size:26px;color:#176fc7}.activity-summary small{font-size:11px;color:#71849a}.chart-wrap{padding-top:5px}.chart-legend{text-align:center;color:#71849a;font-size:11px;margin:0 0 12px}</style></head>
 <body><div class="wrap">
-<header class="dash-top"><div class="mini-logo">🌲</div><button class="course-select" onclick="toggleCourses()"><span id="courseTitle">Valitse oppiaine</span><span>⌄</span></button><div class="user-dot">V</div></header>
+<header class="dash-top"><div class="mini-logo">🌲</div><button class="course-select" onclick="toggleCourses()"><span id="courseTitle">Valitse oppiaine</span><span>⌄</span></button></header>
 
 <section id="dashboard" class="screen active">
 <div class="dashboard">
@@ -52,6 +52,19 @@ const subjects=[
 {id:'history',name:'Historia',emoji:'🏛️',desc:'Aikakaudet, tapahtumat ja historian ilmiöt.'},
 {id:'english',name:'Englanti',emoji:'🇬🇧',desc:'Sanasto, kielioppi ja lauseet.'},
 {id:'logic',name:'Looginen päättely',emoji:'🧩',desc:'Lukusarjat, ongelmat ja oivallukset.'}
+,{id:'finnish',name:'Äidinkieli ja kirjallisuus',emoji:'📚',desc:'Luetun ymmärtäminen, kielioppi ja kirjoittaminen.'}
+,{id:'swedish',name:'Ruotsi',emoji:'🇸🇪',desc:'Sanasto, peruskielioppi ja arjen keskustelut.'}
+,{id:'religion',name:'Uskonto',emoji:'🕊️',desc:'Uskonnot, katsomukset ja juhlat.'}
+,{id:'ethics',name:'Elämänkatsomustieto',emoji:'🤝',desc:'Etiikka, arvot ja yhteinen elämä.'}
+,{id:'social',name:'Yhteiskuntaoppi',emoji:'🏛️',desc:'Demokratia, talous ja kansalaisen oikeudet.'}
+,{id:'art',name:'Kuvataide',emoji:'🎨',desc:'Värit, sommittelu ja visuaalinen ilmaisu.'}
+,{id:'music',name:'Musiikki',emoji:'🎵',desc:'Rytmi, soittimet ja musiikin perusteet.'}
+,{id:'pe',name:'Liikunta',emoji:'🏃',desc:'Liikkuminen, pelit ja kehon toimintakyky.'}
+,{id:'crafts',name:'Käsityö',emoji:'🧵',desc:'Materiaalit, työvälineet ja suunnittelu.'}
+,{id:'home',name:'Kotitalous',emoji:'🍎',desc:'Ruoanvalmistus, ravitsemus ja arjen taidot.'}
+,{id:'ict',name:'Tietotekniikka',emoji:'💻',desc:'Digitaidot, ohjelmointi ja tietoturva.'}
+,{id:'environment',name:'Ympäristöoppi',emoji:'🌿',desc:'Luonto, ympäristö ja kestävä kehitys.'}
+
 ];
 const bank={
 math:{
@@ -213,7 +226,151 @@ hard:[
 ['Jos eilen oli kaksi päivää ennen torstaita, mikä päivä on tänään?',['Tiistai','Keskiviikko','Torstai','Perjantai'],1,'Kaksi päivää ennen torstaita on tiistai, eli eilen oli tiistai.'],
 ['Neljä laatikkoa: yksi sisältää palkinnon. Vihje: palkinto ei ole laatikossa 1 tai 4, ja se on parittomassa laatikossa. Mikä laatikko?',['1','2','3','4'],2,'Ainoa pariton vaihtoehto jäljelle jäävistä on 3.'],
 ['Jos kaikki A:t ovat B:itä ja yksikään B ei ole C, voiko A olla C?',['Kyllä aina','Ei','Vain joskus','Tietoa ei ole tarpeeksi'],1,'A kuuluu B-ryhmään, jolla ei ole yhteisiä jäseniä C:n kanssa.']]
-}
+},
+finnish:{easy:[
+['Mikä on substantiivi?',['Tekemistä kuvaava sana','Esinettä tai asiaa nimeävä sana','Ominaisuutta kuvaava sana','Suhdesana'],1,'Substantiivi nimeää ihmisen, asian, paikan tai olion.'],
+['Mikä on verbin perusmuoto?',['juoksen','juoksi','juosta','juossut'],2,'Perusmuoto vastaa usein kysymykseen mitä tehdä?'],
+['Mikä näistä on adjektiivi?',['kaunis','pöytä','juosta','eilen'],0,'Adjektiivi kuvailee ominaisuutta.']],
+medium:[
+['Mikä on lauseen predikaatti: "Koira juoksi puistossa."?',['Koira','juoksi','puistossa','lause'],1,'Predikaatti kertoo, mitä tehdään tai mitä tapahtuu.'],
+['Mikä on sanan "nopeasti" sanaluokka?',['Substantiivi','Adjektiivi','Adverbi','Pronomini'],2,'Se kertoo, miten jokin tehdään.'],
+['Mikä välimerkki päättää tavallisen kysymyslauseen?',['Piste','Pilkkku','Kysymysmerkki','Kaksoispiste'],2,'Kysymyslause päättyy kysymysmerkkiin.']],
+hard:[
+['Mikä on passiivi lauseessa "Kirja luettiin illalla."?',['Kirja','luettiin','illalla','ei mikään'],1,'Tekijää ei nimetä, vaan käytetään passiivimuotoa.'],
+['Mikä on metafora?',['Suora vertaus kuin-sanalla','Kielikuva, jossa asia ilmaistaan toisena','Asiallinen määritelmä','Toiston muoto'],1,'Metafora rinnastaa asioita ilman kuin-sanaa.'],
+['Mikä on sivulauseen tunnusomainen piirre?',['Se ei voi sisältää verbiä','Se alkaa usein alistuskonjunktiolla tai relatiivipronominilla','Se on aina kysymys','Se on aina yhden sanan mittainen'],1,'Esimerkiksi koska, että ja joka voivat aloittaa sivulauseen.']]},
+swedish:{easy:[
+['Mitä "hej" tarkoittaa?',['Näkemiin','Hei','Kiitos','Ole hyvä'],1,'Se on tavallinen tervehdys.'],
+['Mitä "tack" tarkoittaa?',['Kiitos','Anteeksi','Kyllä','Huomenta'],0,'Sanaa käytetään kiitettäessä.'],
+['Mikä on "jag" suomeksi?',['Sinä','Hän','Minä','Me'],2,'Se on ensimmäisen persoonan pronomini.']],
+medium:[
+['Mitä "Jag bor i Finland" tarkoittaa?',['Olen Suomesta kotoisin','Asun Suomessa','Matkustan Suomeen','Pidän Suomesta'],1,'Bor tarkoittaa asua.'],
+['Mikä on sanan "en bok" monikko?',['en böcker','böcker','boken','bokar'],1,'Bok-sanan monikko on böcker.'],
+['Mitä "imorgon" tarkoittaa?',['Eilen','Tänään','Huomenna','Viime viikolla'],2,'Se viittaa seuraavaan päivään.']],
+hard:[
+['Mikä on oikea menneen ajan muoto: "Jag ___ fotboll igår."?',['spelar','spelade','spela','spelat'],1,'Igår kertoo menneestä ajasta.'],
+['Mitä "trots att" tarkoittaa?',['Koska','Jotta','Vaikka','Ennen kuin'],2,'Se ilmaisee vastakohtaa tai myönnytystä.'],
+['Mikä on oikea sanajärjestys?',['Idag jag går hem','Idag går jag hem','Jag idag hem går','Går idag jag hem'],1,'Kun lause alkaa ajanilmauksella, verbi tulee usein toiseksi.']]},
+religion:{easy:[
+['Mikä on pyhä kirja kristinuskossa?',['Koraani','Raamattu','Veda-kirjat','Tripitaka'],1,'Kristinuskon pyhä kirja on Raamattu.'],
+['Mikä juhla liittyy Jeesuksen syntymään?',['Pääsiäinen','Joulu','Helluntai','Juhannus'],1,'Joulua vietetään joulukuussa.'],
+['Mikä rakennus on tyypillinen kristittyjen jumalanpalveluspaikka?',['Moskeija','Synagoga','Kirkko','Temppeli'],2,'Kristityt kokoontuvat usein kirkkoon.']],
+medium:[
+['Mihin uskontoon Koraani liittyy?',['Kristinusko','Islam','Juutalaisuus','Hindulaisuus'],1,'Koraani on islamin pyhä kirja.'],
+['Mikä on synagoga?',['Buddhalainen luostari','Juutalaisten jumalanpalveluspaikka','Kristillinen kirkko','Hindutemppeli'],1,'Juutalainen yhteisö kokoontuu synagogassa.'],
+['Mikä on paasto?',['Juhlapäivä','Ruokailun tai joidenkin asioiden rajoittaminen määräajaksi','Uskonnollinen rakennus','Pyhä kirja'],1,'Paastoon voi liittyä esimerkiksi ruokailun rajoittaminen.']],
+hard:[
+['Mitä monoteismi tarkoittaa?',['Monien jumalien palvontaa','Yhden jumalan uskoa','Luonnonuskontoa','Uskonnottomuutta'],1,'Mono tarkoittaa yhtä.'],
+['Mikä on uskonnon harjoittamisen vapaus?',['Oikeus vain yhteen uskontoon','Oikeus valita, vaihtaa tai olla harjoittamatta uskontoa','Velvollisuus kuulua seurakuntaan','Kielto keskustella uskonnoista'],1,'Se kuuluu uskonnonvapauteen.'],
+['Mitä tarkoittaa pyhiinvaellus?',['Urheilukilpailu','Matka uskonnollisesti tärkeään paikkaan','Paaston päättäminen','Uskonnollinen kirja'],1,'Matkalla on uskonnollinen merkitys.']]},
+ethics:{easy:[
+['Mitä empatia tarkoittaa?',['Toisen asemaan asettumista','Sääntöjen unohtamista','Kilpailemista','Yksin työskentelyä'],0,'Empatia on kykyä ymmärtää toisen tunteita.'],
+['Mikä on arvo?',['Satunnainen numero','Tärkeänä pidetty asia tai periaate','Laskutoimitus','Laki aina'],1,'Arvot ohjaavat valintoja.'],
+['Mitä reiluus tarkoittaa?',['Kaikki saavat aina saman asian','Toisia kohdellaan oikeudenmukaisesti','Vain ystäviä autetaan','Säännöt eivät koske ketään'],1,'Reiluus liittyy oikeudenmukaiseen kohteluun.']],
+medium:[
+['Mitä on eettinen pohdinta?',['Vain mielipiteen sanomista','Oikean ja väärän sekä valintojen seurausten arviointia','Matemaattista laskemista','Historian vuosilukujen muistamista'],1,'Pohdinnassa tarkastellaan arvoja ja seurauksia.'],
+['Mikä on moraalidilemma?',['Helppo laskutehtävä','Tilanne, jossa arvot tai velvollisuudet ovat ristiriidassa','Urheilulaji','Luonnonilmiö'],1,'Valintaan voi liittyä useita perusteltuja näkökulmia.'],
+['Mitä yhdenvertaisuus tarkoittaa?',['Kaikkien samanlaisuutta','Ihmisten samanarvoisuutta ja syrjimättömyyttä','Sitä, että kaikki ajattelevat samoin','Vain aikuisten oikeuksia'],1,'Ihmisiä tulee kohdella yhdenvertaisesti.']],
+hard:[
+['Mikä on seurausetiikan perusajatus?',['Teon arviointi seurausten perusteella','Sääntöjen noudattaminen aina ilman poikkeuksia','Tekijän iän tarkastelu','Tunteiden sivuuttaminen'],0,'Seurausetiikka painottaa teon vaikutuksia.'],
+['Mitä tarkoittaa sananvapauden vastuu?',['Saa sanoa mitä tahansa ilman seurauksia','Ilmaisunvapauteen liittyy vastuu esimerkiksi muiden oikeuksista','Vain viranomaiset saavat puhua','Mielipiteitä ei saa esittää'],1,'Sananvapaus ei poista vastuuta tai muiden oikeuksia.'],
+['Mikä on kompromissi?',['Tilanne, jossa kukaan ei kuuntele','Ratkaisu, jossa osapuolet joustavat','Yksipuolinen päätös','Sääntöjen rikkominen'],1,'Osapuolet löytävät yhteisen ratkaisun joustamalla.']]},
+social:{easy:[
+['Mitä demokratia tarkoittaa?',['Yhden henkilön valtaa','Kansanvaltaa','Armeijan hallintoa','Perinnöllistä hallintoa'],1,'Kansalaiset voivat vaikuttaa päätöksentekoon.'],
+['Mikä on kunta?',['Valtioiden liitto','Paikallinen itsehallinnollinen alue','Yritys','Tuomioistuin'],1,'Kunnat järjestävät monia lähipalveluja.'],
+['Mikä on euro?',['Suomen ainoa vientituote','Usean Euroopan maan yhteinen valuutta','Verolaji','Pankki'],1,'Euro on yhteisvaluutta euroalueella.']],
+medium:[
+['Mitä verotuloilla rahoitetaan?',['Vain yksityisiä ostoksia','Yhteisiä palveluja kuten kouluja ja terveyspalveluja','Vain urheiluseuroja','Ainoastaan yritysten voittoja'],1,'Verot kerätään yhteisten menojen kattamiseen.'],
+['Mikä on eduskunta?',['Suomen ylin tuomioistuin','Suomen parlamentti, joka säätää lakeja','Kunnanvaltuusto','Pankki'],1,'Eduskunta käyttää lainsäädäntövaltaa.'],
+['Mitä inflaatio tarkoittaa?',['Hintatason yleistä nousua','Työttömyyden loppumista','Verotuksen poistumista','Rahan vaihtumista kolikoiksi'],0,'Inflaatiossa rahan ostovoima yleensä heikkenee.']],
+hard:[
+['Mitä tarkoittaa progressiivinen verotus?',['Kaikki maksavat saman euromäärän','Veroprosentti kasvaa tulojen kasvaessa','Verot maksetaan vain ostoksista','Yritykset eivät maksa veroja'],1,'Suuremmista tuloista maksetaan yleensä suurempi osuus veroa.'],
+['Mikä on vallan kolmijako?',['Vallan jakaminen lainsäädäntö-, toimeenpano- ja tuomiovaltaan','Vallan jakaminen kolmelle puolueelle','Kuntien yhdistäminen','Vaalien järjestäminen kolmesti'],0,'Eri tehtävät jaetaan eri vallankäyttäjille.'],
+['Mitä keskuspankki tekee?',['Päättää kaikkien kauppojen hinnat','Huolehtii rahapolitiikasta ja rahoitusjärjestelmän vakaudesta','Kerää kunnallisveron','Myöntää koulutodistukset'],1,'Keskuspankin tehtäviin kuuluu rahapolitiikka.']]},
+art:{easy:[
+['Mitkä ovat kolme perinteistä pääväriä maalaustaiteessa?',['Punainen, keltainen ja sininen','Vihreä, violetti ja oranssi','Musta, valkoinen ja harmaa','Pinkki, ruskea ja turkoosi'],0,'Niistä voidaan sekoittaa monia muita värejä.'],
+['Mitä sommittelu tarkoittaa?',['Teoksen osien järjestämistä','Vain värien valintaa','Paperin leikkaamista','Kuvan nimeämistä'],0,'Sommittelu ohjaa katsojan huomiota.'],
+['Mikä on luonnos?',['Valmis näyttelyteos','Alustava suunnitelma tai piirros','Valokuva','Veistosmateriaali'],1,'Luonnoksella kokeillaan ideaa ennen lopullista työtä.']],
+medium:[
+['Mitä vastavärit ovat?',['Väriympyrässä vastakkain olevat värit','Saman värin eri sävyt','Vain musta ja valkoinen','Värit, joita ei voi sekoittaa'],0,'Esimerkiksi sininen ja oranssi ovat vastavärejä.'],
+['Mitä perspektiivi auttaa kuvaamaan?',['Äänen voimakkuutta','Tilaa ja syvyyttä kuvapinnalla','Vain ihmisen tunteita','Värien lämpötilaa'],1,'Perspektiivillä luodaan vaikutelma kolmiulotteisuudesta.'],
+['Mitä kollaasissa tehdään?',['Yhdistetään eri materiaaleja ja kuvia','Vain maalataan vesiväreillä','Soitetaan musiikkia','Muotoillaan metallia'],0,'Kollaasi rakentuu yhteen liitetyistä osista.']],
+hard:[
+['Mikä on chiaroscuro?',['Valon ja varjon voimakas vastakkainasettelu','Pistekirjoitus','Värien haalistaminen','Perspektiivin mittaaminen'],0,'Tekniikalla korostetaan muotoa ja tilan tuntua.'],
+['Mitä abstrakti taide usein tekee?',['Kuvaa aina tarkasti todellisuutta','Käyttää muotoja ja värejä ilman esittävää aihetta','Sisältää vain tekstiä','Jäljittelee valokuvaa'],1,'Abstrakti teos ei välttämättä esitä tunnistettavia kohteita.'],
+['Mikä on typografia?',['Kirjainten ja tekstin visuaalista suunnittelua','Veistoksen valmistusta','Valokuvan valotusta','Värien kemiaa'],0,'Typografia vaikuttaa tekstin luettavuuteen ja ilmeeseen.']]},
+music:{easy:[
+['Kuinka monta iskua on tavallisessa 4/4-tahtilajissa tahdissa?',['2','3','4','8'],2,'Yläosan nelonen kertoo neljästä iskusta.'],
+['Mikä soitin kuuluu jousisoittimiin?',['Huilu','Viulu','Rumpu','Trumpetti'],1,'Sitä soitetaan jousella.'],
+['Mikä on tempo?',['Musiikin nopeus','Sävelkorkeus','Soittimen koko','Äänen väri'],0,'Tempo kertoo, kuinka nopeasti musiikki etenee.']],
+medium:[
+['Mitä tarkoittaa forte (f) nuoteissa?',['Hiljaa','Voimakkaasti','Nopeasti','Hitaasti'],1,'Forte on dynamiikkamerkintä.'],
+['Mikä on melodia?',['Sävelten muodostama tunnistettava sävelkulku','Vain rumpukomppi','Äänen voimakkuus','Tauko musiikissa'],0,'Melodia on usein kappaleen laulettava tai soitettava päälinja.'],
+['Mikä soitin on puupuhallin?',['Saksofoni','Pasuuna','Käyrätorvi','Tuuba'],0,'Saksofoni luokitellaan puupuhaltimiin.']],
+hard:[
+['Mikä intervalli on kahden peräkkäisen sävelen välinen etäisyys?',['Oktaavi','Intervalli','Tahtilaji','Dynamiikka'],1,'Intervalli kuvaa sävelten korkeuseroa.'],
+['Mitä synkooppi tarkoittaa?',['Painon siirtymistä tahdin heikolle iskulle','Sävelen pitkittämistä aina','Musiikin hidastamista','Tauon poistamista'],0,'Synkoopissa rytminen painotus poikkeaa tavallisesta.'],
+['Mikä on duurikolmisoinnun rakenne?',['Pieni terssi + suuri terssi','Suuri terssi + pieni terssi','Kaksi kvinttiä','Kolme samaa säveltä'],1,'Duurikolmisoinnussa alhaalta lukien on suuri ja pieni terssi.']]},
+pe:{easy:[
+['Miksi alkulämmittely tehdään ennen liikuntaa?',['Valmistellaan kehoa rasitukseen','Väsyttämään lihakset','Vähentämään nestettä','Korvaamaan loppuverryttely'],0,'Lämmittely nostaa kehon valmiutta liikkua.'],
+['Mikä auttaa palautumisessa liikunnan jälkeen?',['Riittävä lepo ja monipuolinen ruoka','Unen välttäminen','Juomisen unohtaminen','Pelkkä paikallaan seisominen'],0,'Palautuminen tarvitsee lepoa ja energiaa.'],
+['Mikä on kestävyyskunto?',['Kyky ylläpitää pitkäkestoista liikuntaa','Pelkkä liikkuvuus','Reaktionopeus vain','Tasapainon hallinta'],0,'Kestävyys liittyy hengitys- ja verenkiertoelimistön toimintaan.']],
+medium:[
+['Mikä on syke?',['Sydämen lyöntien määrä minuutissa','Hengityksen tilavuus','Lihaksen pituus','Veren lämpötila'],0,'Syke ilmoitetaan usein lyöntinä minuutissa.'],
+['Miksi liikuntasuorituksen jälkeen kannattaa tehdä loppuverryttely?',['Auttaa kehoa rauhoittumaan asteittain','Nostaa sykettä mahdollisimman korkealle','Korvaa kaiken levon','Estää hikoilun'],0,'Kevyt liike auttaa siirtymään rasituksesta lepoon.'],
+['Mikä on liikkuvuus?',['Nivelten ja lihasten mahdollistama liikerata','Juoksunopeus','Sydämen koko','Keuhkojen määrä'],0,'Liikkuvuus kertoo, kuinka laajasti keho pystyy liikkumaan.']],
+hard:[
+['Mikä energiajärjestelmä tuottaa energiaa pitkäkestoisessa kevyessä liikunnassa pääosin?',['Aerobinen energiantuotto','Vain välitön ATP-varasto','Anaerobinen maitohapollinen järjestelmä aina','Ei mikään'],0,'Hapen avulla tapahtuva energiantuotto sopii pitkäkestoiseen liikuntaan.'],
+['Mitä proprioseptiikka tarkoittaa?',['Kehon asennon ja liikkeen aistimista','Värien tunnistamista','Hengityksen säätelyä','Kuulon tarkkuutta'],0,'Aistitieto auttaa hallitsemaan asentoa ja liikettä.'],
+['Mikä on ylikuormitusperiaate harjoittelussa?',['Harjoittelua lisätään vähitellen kehittymisen aikaansaamiseksi','Harjoitellaan aina maksimaalisesti','Lepo jätetään pois','Harjoittelu pysyy aina samanlaisena'],0,'Kehittyminen vaatii sopivaa, asteittain kasvavaa haastetta.']]},
+crafts:{easy:[
+['Mihin viivainta käytetään?',['Mittaamiseen ja suorien viivojen piirtämiseen','Lämpötilan mittaamiseen','Kankaan värjäämiseen','Ruuan punnitsemiseen'],0,'Viivaimella mitataan pituuksia.'],
+['Mikä materiaali valmistetaan puukuiduista?',['Lasi','Paperi','Metalli','Villa'],1,'Paperin tärkein raaka-aine on yleensä puukuitu.'],
+['Mitä kaava tarkoittaa ompelussa?',['Vaatteen osien mallia','Silitysrautaa','Lankakerää','Neulan kokoa'],0,'Kaavan avulla leikataan kankaan osat.']],
+medium:[
+['Miksi materiaalin ominaisuudet pitää huomioida suunnittelussa?',['Ne vaikuttavat tuotteen kestävyyteen ja käyttötapaan','Ne eivät vaikuta mihinkään','Vain värin vuoksi','Jotta materiaalia kuluisi enemmän'],0,'Eri materiaalit sopivat eri käyttötarkoituksiin.'],
+['Mitä saumanvara tarkoittaa?',['Sauman viereen jätettävää ylimääräistä kangasta','Valmista napinläpeä','Kankaan kuviota','Ompelukoneen nopeutta'],0,'Saumanvara tarvitaan kappaleiden yhdistämiseen.'],
+['Mikä on prototyyppi?',['Tuotteen ensimmäinen kokeiluversio','Valmis sarjatuotanto','Työväline','Materiaaliluettelo'],0,'Prototyypillä testataan ideaa käytännössä.']],
+hard:[
+['Mitä mittatarkkuus tarkoittaa?',['Mitat vastaavat suunniteltuja arvoja mahdollisimman tarkasti','Tuote on aina suuri','Kaikki osat ovat samanvärisiä','Työtä ei tarvitse tarkistaa'],0,'Tarkat mitat auttavat osia sopimaan yhteen.'],
+['Miksi puun syysuunta huomioidaan työstössä?',['Se vaikuttaa puun lujuuteen ja työstettävyyteen','Se määrittää puun värin aina','Se kertoo puun iän tarkasti','Sillä ei ole merkitystä'],0,'Puun syyt vaikuttavat esimerkiksi halkeamiseen.'],
+['Mikä on materiaalin kiertotalouden mukainen ratkaisu?',['Korjaaminen ja uudelleenkäyttö','Käyttökelpoisen tuotteen hävittäminen','Kertakäyttöisyyden lisääminen','Materiaalien lajittelematta jättäminen'],0,'Kiertotalous pyrkii pitämään materiaalit käytössä.']]},
+home:{easy:[
+['Miksi kädet pestään ennen ruoanlaittoa?',['Vähennetään mikrobien leviämistä','Parannetaan ruoan väriä','Nopeutetaan uunia','Poistetaan kaikki ravintoaineet'],0,'Käsihygienia ehkäisee ruokien saastumista.'],
+['Mikä ruoka on hyvä kuidun lähde?',['Täysjyväleipä','Sokeri','Voi','Virvoitusjuoma'],0,'Täysjyväviljassa on runsaasti kuitua.'],
+['Mihin biojäte yleensä lajitellaan?',['Biojäteastiaan','Metallinkeräykseen','Lasinkeräykseen','Sekajätteeseen aina'],0,'Biojäte voidaan hyödyntää esimerkiksi biokaasuna ja multana.']],
+medium:[
+['Mitä tarkoittaa viimeinen käyttöpäivä?',['Päivä, jonka jälkeen helposti pilaantuvaa tuotetta ei pidä käyttää','Suositeltu parasta ennen -päivä','Ostopäivä','Valmistuspäivä'],0,'Viimeinen käyttöpäivä liittyy tuoteturvallisuuteen.'],
+['Mikä menetelmä kypsentää ruoan kuumassa vesihöyryssä?',['Höyryttäminen','Paistaminen','Grillaaminen','Leivittäminen'],0,'Höyry ympäröi ruoan ja kypsentää sen.'],
+['Miksi reseptin mittasuhteita noudatetaan leivonnassa?',['Ainesosien suhteet vaikuttavat rakenteeseen ja onnistumiseen','Vain koristelun vuoksi','Jotta taikina ei koskaan kohoa','Sillä ei ole merkitystä'],0,'Leivonnassa määrät vaikuttavat kemiallisiin ja rakenteellisiin muutoksiin.']],
+hard:[
+['Mikä on ristikontaminaatio?',['Mikrobien tai allergeenien siirtyminen elintarvikkeesta toiseen','Ruoan jäähtyminen','Veden haihtuminen','Ruoan maustaminen'],0,'Esimerkiksi raaka ruoka voi saastuttaa valmiin ruoan.'],
+['Mitä ravintoainetta elimistö käyttää ensisijaisena nopeana energianlähteenä?',['Hiilihydraatteja','Vitamiineja','Kivennäisaineita','Vettä'],0,'Hiilihydraatit ovat tärkeä energianlähde.'],
+['Mitä tarkoittaa kylmäketjun katkeaminen?',['Elintarvikkeen lämpötila nousee liikaa säilytyksen tai kuljetuksen aikana','Ruoka jäätyy aina','Pakkaus avataan','Ruoka maustetaan'],0,'Lämpötilan nousu voi nopeuttaa mikrobien kasvua.']]},
+ict:{easy:[
+['Mikä on vahva salasana?',['123456','Oma etunimi','Pitkä ja vaikeasti arvattava salasana','password'],2,'Yhdistä pituus ja vaikeasti arvattavat merkit.'],
+['Mihin selainta käytetään?',['Verkkosivujen avaamiseen','Ruoan lämmittämiseen','Kuvien tulostamiseen aina','Tietokoneen sammuttamiseen'],0,'Selain näyttää verkkosivuja.'],
+['Mikä on tiedosto?',['Tietokoneeseen tallennettu tieto','Näyttölaite','Verkkokaapeli','Näppäimistön painike'],0,'Tiedosto voi sisältää esimerkiksi tekstiä tai kuvia.']],
+medium:[
+['Mitä kaksivaiheinen tunnistautuminen lisää?',['Yhden lisävaiheen kirjautumiseen','Automaattisen julkisen profiilin','Salasanan jakamisen','Tietokoneen nopeutta'],0,'Kirjautuminen vaatii salasanan lisäksi toisen vahvistuksen.'],
+['Mikä on algoritmi?',['Vaiheittainen ohje ongelman ratkaisemiseen','Tietokoneen näyttö','Kuvan tiedostomuoto','Salasana'],0,'Ohjelmat toteuttavat algoritmeja.'],
+['Mitä tekijänoikeus suojaa?',['Tekijän luomaa teosta','Kaikkia internetin salasanoja','Tietokoneen osia','Julkisia sääennusteita'],0,'Tekijänoikeus liittyy luovaan työhön.']],
+hard:[
+['Mikä on muuttuja ohjelmoinnissa?',['Nimetty paikka tiedon tallentamiseen','Virheilmoitus aina','Näytön pikseli','Verkkosivun osoite'],0,'Muuttujan arvoa voidaan käyttää ja muuttaa ohjelmassa.'],
+['Mitä salaus tekee tiedolle?',['Muuttaa sen muotoon, jota ei voi lukea ilman avainta','Poistaa tiedoston','Nopeuttaa internetiä','Julkaisee tiedon kaikille'],0,'Salaus suojaa tietoa ulkopuolisilta.'],
+['Mitä tarkoittaa silmukka ohjelmoinnissa?',['Käskyjen toistamista ehdon tai määrän mukaan','Ohjelman poistamista','Näytön sammuttamista','Tiedoston pakkaamista'],0,'Silmukka suorittaa samoja ohjeita toistuvasti.']]},
+environment:{easy:[
+['Mikä on uusiutuva energianlähde?',['Aurinkoenergia','Kivihiili','Öljy','Maakaasu'],0,'Auringon säteilyä saadaan jatkuvasti.'],
+['Mikä näistä on hyönteinen?',['Hämähäkki','Muurahainen','Etana','Mato'],1,'Hyönteisillä on kuusi jalkaa.'],
+['Mikä auttaa vähentämään jätettä?',['Tavaroiden uudelleenkäyttö','Kaiken pakkaaminen muoviin','Kertakäyttötuotteiden suosiminen','Lajittelun välttäminen'],0,'Uudelleenkäyttö pidentää tavaroiden elinkaarta.']],
+medium:[
+['Mitä biodiversiteetti tarkoittaa?',['Luonnon monimuotoisuutta','Ilman lämpötilaa','Maaperän happamuutta','Veden suolaisuutta'],0,'Se kuvaa lajien, geenien ja elinympäristöjen monimuotoisuutta.'],
+['Mikä on ravintoketjun tuottaja?',['Kasvi tai muu yhteyttävä eliö','Petoeläin aina','Hajottaja','Kasvinsyöjä'],0,'Tuottajat valmistavat orgaanista ainetta esimerkiksi yhteyttämällä.'],
+['Mitä hiilinielu tekee?',['Sitoo ilmakehästä hiilidioksidia','Tuottaa aina hiiltä ilmaan','Poistaa happea','Lämmittää merivettä'],0,'Metsät ja meret voivat toimia hiilinieluina.']],
+hard:[
+['Mitä rehevöityminen tarkoittaa vesistössä?',['Ravinteiden lisääntymistä, joka voi kasvattaa levien määrää','Veden suolaisuuden katoamista','Jään muodostumista','Veden täydellistä puhdistumista'],0,'Liialliset ravinteet kiihdyttävät levien ja vesikasvien kasvua.'],
+['Mikä on ekologinen lokero?',['Lajin tehtävä ja tapa elää ekosysteemissä','Lajin pesä aina','Yksi maantieteellinen koordinaatti','Sääilmiö'],0,'Se kuvaa lajin elinvaatimuksia ja vuorovaikutuksia.'],
+['Mitä sopeutuminen tarkoittaa evoluutiossa?',['Perinnöllisten ominaisuuksien yleistymistä, jotka parantavat selviytymistä','Yksilön tahdonalaista muutosta','Lajin muuttumista yhdessä yössä','Elinympäristön katoamista'],0,'Luonnonvalinta voi yleistää hyödyllisiä perinnöllisiä ominaisuuksia.']]}
 };
 let stats={points:0,solved:0,correct:0,streak:0,bestStreak:0,daily:0,day:new Date().toLocaleDateString('en-CA'),history:[]};
 try{const old=JSON.parse(localStorage.getItem('villeutu2-progress')||'null');if(old)stats={...stats,...old}}catch(e){}
