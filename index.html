@@ -15,16 +15,11 @@
 @media(max-width:850px){.dashboard{grid-template-columns:1fr;min-height:0}.right-stack{grid-template-rows:auto auto}.dash-top{margin:-14px -14px 14px}.wrap{padding:14px}}@media(max-width:520px){.awards{gap:5px}.award{min-width:42px}.award .ico{width:42px;height:42px;font-size:24px}.dash-panel h2{padding:11px}.course-select{font-size:12px;padding:8px}.right-stack{gap:12px}}
 </style></head>
 <body><div class="wrap">
-<header class="dash-top"><div class="mini-logo">🌲</div><button class="course-select" onclick="toggleCourses()"><span>8B fysiikka, syksy 2026</span><span>⌄</span></button><div class="user-dot">V</div></header>
+<header class="dash-top"><div class="mini-logo">🌲</div><button class="course-select" onclick="toggleCourses()"><span id="courseTitle">Valitse oppiaine</span><span>⌄</span></button><div class="user-dot">V</div></header>
 
 <section id="dashboard" class="screen active">
 <div class="dashboard">
- <section class="dash-panel"><h2>Oppitunnit</h2><div class="lesson-list">
- <button class="lesson-row done" onclick="startFromDashboard('physics')"><span class="medal">🏆</span><span class="lesson-name">1. Kpl 17, Lämpötila ja lämpöenergia</span><span class="lesson-score">10/10</span></button>
- <button class="lesson-row done" onclick="startFromDashboard('physics')"><span class="medal">🏆</span><span class="lesson-name">2. Kpl 18, Lämpölaajeneminen</span><span class="lesson-score">8/10</span></button>
- <button class="lesson-row" onclick="startFromDashboard('physics')"><span class="medal gold">●</span><span class="lesson-name">3. Kpl 19, Olomuodon muutokset</span><span class="lesson-score">0/10</span></button>
- <button class="lesson-row done" onclick="startFromDashboard('physics')"><span class="medal bronze">🏆</span><span class="lesson-name">4. Kpl 20, Lämpöenergian siirtyminen ja varastoituminen</span><span class="lesson-score">6/10</span></button>
- </div></section>
+ <section class="dash-panel"><h2 id="dashSubjectTitle">Harjoituskokonaisuudet</h2><div class="lesson-list" id="lessonList"></div></section>
  <div class="right-stack">
   <section class="dash-panel"><h2>Pokaalit</h2><div class="awards">
    <div class="award"><div class="ico">🏆</div><strong>4</strong><small>Tällä viikolla:<br>1</small></div>
@@ -44,13 +39,9 @@
 <div style="display:flex;justify-content:flex-end;margin-top:14px"><button class="btn primary" onclick="openStudy()">Avaa kaikki oppiaineet →</button></div>
 </section>
 <div id="courseModal" class="course-modal" role="dialog" aria-modal="true" aria-label="Kurssit">
- <div class="modal-head"><span>8B fysiikka, syksy 2026</span><button class="modal-close" onclick="toggleCourses(false)">×</button></div>
+ <div class="modal-head"><span>Valitse oppiaine</span><button class="modal-close" onclick="toggleCourses(false)">×</button></div>
  <div class="modal-tabs"><button class="active" onclick="setCourseTab(this)">▣ Aktiiviset</button><button onclick="setCourseTab(this)">📁 Kaikki</button><button onclick="setCourseTab(this)">♙ Arkistoidut</button></div>
- <button class="course-option" onclick="selectCourse('7 B fysiikka 2026')"><b>7 B fysiikka 2026</b><span>▣ 7</span></button>
- <button class="course-option" onclick="selectCourse('7B kemia')"><b>7B kemia</b><span>▣ 11</span></button>
- <button class="course-option" onclick="selectCourse('8B fysiikka, syksy 2026')"><b>8B fysiikka, syksy 2026</b><span>▣ 4</span></button>
- <button class="course-option" onclick="selectCourse('Matematiikka, opintopolku 7. luokka 2025 - 2026')"><b>Matematiikka, opintopolku 7. luokka 2025 - 2026</b><span>▣ 3</span></button>
- <button class="course-option" onclick="selectCourse('Matematiikka, opintopolku 8. luokka 2026 — 2027')"><b>Matematiikka, opintopolku 8. luokka 2026 — 2027</b><span>▣ 2</span></button>
+<div id="courseOptions"></div>
 </div>
 
 <main id="home" class="screen">
@@ -238,23 +229,26 @@ hard:[
 let stats={points:0,solved:0,correct:0,streak:0,daily:0,day:new Date().toLocaleDateString('en-CA')};
 try{const old=JSON.parse(localStorage.getItem('villeutu2-progress')||'null');if(old)stats={...stats,...old}}catch(e){}
 const labels={easy:'Helppo',medium:'Keskitaso',hard:'Vaikea'};let difficulty='easy',subject='math',questions=[],index=0,locked=false,roundCorrect=0;
-function renderSubjects(){document.getElementById('subjects').innerHTML=subjects.map(s=>'<button class="subject" onclick="start(\''+s.id+'\')"><span class="emoji">'+s.emoji+'</span><h4>'+s.name+'</h4><p>'+s.desc+'</p><small>10 tehtävää · '+labels[difficulty]+' →</small></button>').join('')}
+function renderSubjects(){document.getElementById('subjects').innerHTML=subjects.map(s=>'<button class="subject" onclick="openSubject(\''+s.id+'\')"><span class="emoji">'+s.emoji+'</span><h4>'+s.name+'</h4><p>'+s.desc+'</p><small>Avaa harjoitukset →</small></button>').join('')}
 function setDifficulty(d,el){difficulty=d;document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));el.classList.add('active');renderSubjects()}
 function save(){const today=new Date().toLocaleDateString('en-CA');if(stats.day!==today){stats.day=today;stats.daily=0}try{localStorage.setItem('villeutu2-progress',JSON.stringify(stats))}catch(e){}updateStats()}
 function updateStats(){const level=Math.floor(stats.points/100)+1;document.getElementById('topPoints').textContent=stats.points;document.getElementById('topStreak').textContent=stats.streak;document.getElementById('topLevel').textContent=level;document.getElementById('level').textContent=level;document.getElementById('levelProgress').textContent=stats.points%100;document.getElementById('levelBar').style.width=(stats.points%100)+'%';document.getElementById('solved').textContent=stats.solved;document.getElementById('correct').textContent=stats.correct;document.getElementById('accuracy').textContent=(stats.solved?Math.round(stats.correct/stats.solved*100):0)+' %';document.getElementById('daily').textContent=Math.min(stats.daily,10)+' / 10';document.getElementById('dailyBar').style.width=Math.min(stats.daily*10,100)+'%'}
 function shuffle(a){return [...a].sort(()=>Math.random()-.5)}
-function startFromDashboard(id){difficulty='easy';document.querySelectorAll('.filter').forEach(x=>x.classList.toggle('active',x.dataset.level==='easy'));start(id)}
+let selectedDashboard='math';
+function openSubject(id){selectedDashboard=id;const s=subjects.find(x=>x.id===id);document.getElementById('courseTitle').textContent=s.name;document.getElementById('dashSubjectTitle').textContent=s.name+' · Harjoitukset';renderDashboard();document.getElementById('home').classList.remove('active');document.getElementById('dashboard').classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
+function renderDashboard(){const levels=[['easy','Perusteet','Kertaa aiheen tärkeimmät asiat','🥉'],['medium','Soveltavat tehtävät','Harjoittele osaamisen soveltamista','🏆'],['hard','Haastetehtävät','Kokeile vaativampia kysymyksiä','💎']];document.getElementById('lessonList').innerHTML=levels.map((x,i)=>'<button class="lesson-row" onclick="startLevel(\''+x[0]+'\')"><span class="medal">'+x[3]+'</span><span class="lesson-name">'+(i+1)+'. '+x[1]+'<small style="display:block;color:#74869a;font-size:11px">'+x[2]+'</small></span><span class="lesson-score">'+bank[selectedDashboard][x[0]].length+' tehtävää →</span></button>').join('')}
+function startLevel(level){difficulty=level;document.querySelectorAll('.filter').forEach(x=>x.classList.toggle('active',x.dataset.level===level));start(selectedDashboard)}
 function openStudy(){document.getElementById('dashboard').classList.remove('active');document.getElementById('home').classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
-function showDashboard(){document.getElementById('home').classList.remove('active');document.getElementById('gameScreen').classList.remove('active');document.getElementById('dashboard').classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
-function toggleCourses(force){const el=document.getElementById('courseModal');if(force===false)el.classList.remove('open');else el.classList.toggle('open')}
+function showDashboard(){document.getElementById('home').classList.remove('active');document.getElementById('gameScreen').classList.remove('active');document.getElementById('dashboard').classList.add('active');renderDashboard();window.scrollTo({top:0,behavior:'smooth'})}
+function toggleCourses(force){const el=document.getElementById('courseModal');if(force===false){el.classList.remove('open');return}document.getElementById('courseOptions').innerHTML=subjects.map(s=>'<button class="course-option" onclick="selectCourse(\''+s.id+'\')"><b>'+s.emoji+' '+s.name+'</b><span>Avaa →</span></button>').join('');el.classList.toggle('open')}
 function setCourseTab(btn){document.querySelectorAll('.modal-tabs button').forEach(x=>x.classList.remove('active'));btn.classList.add('active')}
-function selectCourse(name){document.querySelector('.course-select span').textContent=name;toggleCourses(false)}
+function selectCourse(id){toggleCourses(false);openSubject(id)}
 function start(id){document.getElementById('dashboard').classList.remove('active');subject=id;questions=shuffle(bank[id][difficulty]).slice(0,5);index=0;roundCorrect=0;document.getElementById('home').classList.remove('active');document.getElementById('gameScreen').classList.add('active');const s=subjects.find(x=>x.id===id);document.getElementById('subjectName').textContent=s.name.toUpperCase()+' · '+labels[difficulty].toUpperCase();document.getElementById('roundName').textContent='Harjoituskierros';document.getElementById('next').textContent='Seuraava tehtävä →';document.getElementById('next').onclick=next;renderQuestion();window.scrollTo({top:0,behavior:'smooth'})}
 function renderQuestion(){locked=false;const q=questions[index];document.getElementById('count').textContent='Tehtävä '+(index+1)+' / '+questions.length;document.getElementById('roundBar').style.width=(index/questions.length*100)+'%';document.getElementById('question').textContent=q[0];document.getElementById('feedback').textContent='';document.getElementById('feedback').className='feedback';document.getElementById('hint').textContent='Valitse oikea vastaus.';document.getElementById('next').classList.add('hidden');document.getElementById('answers').innerHTML=q[1].map((a,i)=>'<button class="answer" onclick="check('+i+',this)">'+String.fromCharCode(65+i)+'. '+a+'</button>').join('');document.getElementById('gamePoints').textContent=stats.points;document.getElementById('streak').textContent='🔥 Putki '+stats.streak}
 function check(choice,button){if(locked)return;locked=true;const q=questions[index],correct=choice===q[2],buttons=[...document.querySelectorAll('.answer')];buttons.forEach((b,i)=>{b.disabled=true;if(i===q[2])b.classList.add('correct')});const fb=document.getElementById('feedback');stats.solved++;stats.daily++;if(correct){stats.correct++;stats.points+=difficulty==='easy'?10:difficulty==='medium'?15:20;stats.streak++;roundCorrect++;fb.textContent='Oikein! Hyvin tehty. +'+(difficulty==='easy'?10:difficulty==='medium'?15:20)+' pistettä ⭐';fb.classList.add('good');toast('Oikein! ⭐')}else{stats.streak=0;button.classList.add('wrong');fb.textContent='Väärin! Ei haittaa – opitaan tästä.';fb.classList.add('bad');document.getElementById('hint').textContent='💡 Vihje: '+q[3]}document.getElementById('next').classList.remove('hidden');document.getElementById('gamePoints').textContent=stats.points;document.getElementById('streak').textContent='🔥 Putki '+stats.streak;save()}
 function next(){index++;if(index>=questions.length){finish();return}renderQuestion()}
 function finish(){document.getElementById('question').textContent='Kierros suoritettu! 🎉';document.getElementById('answers').innerHTML='';document.getElementById('feedback').textContent='Sait '+roundCorrect+' / '+questions.length+' oikein. Hienoa harjoittelua!';document.getElementById('feedback').className='feedback good';document.getElementById('hint').textContent='Voit pelata saman aiheen uudelleen tai valita uuden oppiaineen.';document.getElementById('next').textContent='Pelaa uudelleen ↻';document.getElementById('next').onclick=()=>start(subject);document.getElementById('next').classList.remove('hidden');document.getElementById('roundBar').style.width='100%'}
-function home(){document.getElementById('gameScreen').classList.remove('active');document.getElementById('home').classList.add('active');document.getElementById('next').onclick=next;document.getElementById('next').textContent='Seuraava tehtävä →';updateStats();window.scrollTo({top:0,behavior:'smooth'})}
+function home(){document.getElementById('gameScreen').classList.remove('active');document.getElementById('dashboard').classList.add('active');document.getElementById('home').classList.remove('active');renderDashboard();document.getElementById('next').onclick=next;document.getElementById('next').textContent='Seuraava tehtävä →';updateStats();window.scrollTo({top:0,behavior:'smooth'})}
 function toast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),1100)}
 renderSubjects();save();
 </script></body></html>
